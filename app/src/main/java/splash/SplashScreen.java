@@ -20,12 +20,12 @@ import firebase.FirebaseRepoImp;
 
 public class SplashScreen extends AppCompatActivity{
     private static final int SPLASH_SCREEN_TIME = 3000;
-    private LottieAnimationView lottieAnimationView;// 3 seconds
+    private LottieAnimationView lottieAnimationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen); // Your splash screen layout
+        setContentView(R.layout.activity_splash_screen);
         String userID= FirebaseRepoImp.getInstance(this).getSharedPreferences().getString("userID",null);
         lottieAnimationView = findViewById(R.id.gif_splash);
         final Handler handler = new Handler(Looper.getMainLooper());
