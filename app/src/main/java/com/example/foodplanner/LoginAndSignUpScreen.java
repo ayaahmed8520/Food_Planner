@@ -16,15 +16,14 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_and_sign_up_screen); // Your start screen layout
+        setContentView(R.layout.activity_login_and_sign_up_screen);
 
-        // Initialize buttons
         btnSignUp = findViewById(R.id.btn_start_signup);
         btnLogin = findViewById(R.id.btn_start_login);
         btnSkip = findViewById(R.id.btn_start_skip);
         btnGoogleSignIn = findViewById(R.id.btn_start_google);
 
-        // Set onClick listeners
+
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
