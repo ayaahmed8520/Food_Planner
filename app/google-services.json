@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "119789241704",
+    "project_id": "food-planner-login-signup",
+    "storage_bucket": "food-planner-login-signup.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119789241704:android:50d0c1ad7680c3e92902dd",
+        "android_client_info": {
+          "package_name": "com.example.foodplanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-Q15UY8VFASkjToiVe7sXgpkQ_TZ_mW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
