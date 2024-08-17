@@ -12,7 +12,12 @@
           "package_name": "com.example.foodplanner"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "119789241704-qpck4tag1qmn2h3tqc1cmptu3eq40uc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB-Q15UY8VFASkjToiVe7sXgpkQ_TZ_mW4"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119789241704-qpck4tag1qmn2h3tqc1cmptu3eq40uc6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

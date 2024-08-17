@@ -1,20 +1,14 @@
-package splash;
+package com.example.foodplanner;
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.foodplanner.LoginAndSignUpScreen;
-import com.example.foodplanner.MainActivity;
-import com.example.foodplanner.R;
-import com.example.foodplanner.SignUp;
 
 import firebase.FirebaseRepoImp;
 

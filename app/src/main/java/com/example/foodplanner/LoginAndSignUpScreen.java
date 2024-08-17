@@ -23,6 +23,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import Login.view.Login;
+import SignUp.view.SignUp;
+
 
 public class LoginAndSignUpScreen extends AppCompatActivity {
     private Button btnSignUp, btnLogin, btnSkip;
@@ -32,7 +35,7 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     SharedPreferences.Editor editor;
     private  SharedPreferences sharedPreferences;
-    String googleClientId = "855439930752-mg03i3irlhoi7afeis8j9qmb5rjfd9ng.apps.googleusercontent.com";
+    String googleClientId = "119789241704-qpck4tag1qmn2h3tqc1cmptu3eq40uc6.apps.googleusercontent.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
