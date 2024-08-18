@@ -24,7 +24,7 @@
             android:name=".LoginAndSignUpScreen"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name="splash.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>

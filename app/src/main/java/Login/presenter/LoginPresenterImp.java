@@ -24,7 +24,7 @@ public class LoginPresenterImp implements LoginPresenter, LoginListener {
     }
 
     @Override
-    public void validationMsgError(String message) {
+    public void MsgError(String message) {
 
     }
 

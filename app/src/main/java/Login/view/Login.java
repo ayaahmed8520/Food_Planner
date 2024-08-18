@@ -56,16 +56,16 @@ public class Login extends AppCompatActivity implements LoginListener {
     }
 
     @Override
-    public void validationMsgError(String message) {
+    public void MsgError(String message) {
         mProgressBar.setVisibility(View.GONE);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void successLogin(String userId) {
-        SharedPreferences sharedPreferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("foodPlanner_preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("userID", userId);
+        editor.putString("clientID", userId);
         editor.apply();
 
         mProgressBar.setVisibility(View.GONE);

@@ -1,4 +1,4 @@
-package view;
+package profile;
 
 public interface ProfileFragment {
     public void deleteUser();

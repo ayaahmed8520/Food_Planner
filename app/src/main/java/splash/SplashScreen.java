@@ -1,4 +1,4 @@
-package com.example.foodplanner;
+package splash;
 
 
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.os.Looper;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.foodplanner.LoginAndSignUpScreen;
+import com.example.foodplanner.MainActivity;
+import com.example.foodplanner.R;
 
 import firebase.FirebaseRepoImp;
 
@@ -20,7 +23,7 @@ public class SplashScreen extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        String userID= FirebaseRepoImp.getInstance(this).getSharedPreferences().getString("userID",null);
+        String userID= FirebaseRepoImp.getInstance(this).getSharedPreferences().getString("clientID",null);
         lottieAnimationView = findViewById(R.id.gif_splash);
         final Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {

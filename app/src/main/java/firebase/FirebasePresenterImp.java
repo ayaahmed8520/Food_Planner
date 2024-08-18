@@ -8,7 +8,7 @@ import SignUp.model.UserSignUpInfo;
 import SignUp.view.SignUpView;
 import network.LogOutResult;
 import network.SignUpResult;
-import view.ProfileFragment;
+import profile.ProfileFragment;
 
 public class FirebasePresenterImp implements FirebasePresenter, SignUpResult, LogOutResult {
     SignUpView signUpView;

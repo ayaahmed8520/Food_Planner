@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
     private ProgressBar progressBar;
     private FirebasePresenter firebasePresenter;
     private TextView backToLogin;
+    private Button btnSignUp;
 
 
     @Override
@@ -50,6 +52,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
         et_ConfirmPassword = findViewById(R.id.til_signup_confirm_password);
         backToLogin =findViewById(R.id.tv_signup_login);
         progressBar= findViewById(R.id.progress_bar);
+        btnSignUp = findViewById(R.id.btn_signup_signup);
 
 
         //create presenter obj
@@ -59,6 +62,14 @@ public class SignUp extends AppCompatActivity implements SignUpView {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SignUp.this, Login.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignUp.this, MainActivity.class);
                 startActivity(intent);
             }
         });
