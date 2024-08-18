@@ -12,10 +12,10 @@ import com.example.foodplanner.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fevorite#newInstance} factory method to
+ * Use the {@link Favorite#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fevorite extends Fragment {
+public class Favorite extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class Fevorite extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Fevorite() {
+    public Favorite() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class Fevorite extends Fragment {
      * @return A new instance of fragment Fevorite.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fevorite newInstance(String param1, String param2) {
-        Fevorite fragment = new Fevorite();
+    public static Favorite newInstance(String param1, String param2) {
+        Favorite fragment = new Favorite();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

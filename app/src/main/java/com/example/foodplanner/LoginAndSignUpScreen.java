@@ -35,7 +35,7 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     SharedPreferences.Editor editor;
     private  SharedPreferences sharedPreferences;
-    String googleClientId = "119789241704-qpck4tag1qmn2h3tqc1cmptu3eq40uc6.apps.googleusercontent.com";
+    String googleClientId = "119789241704-685r2kc051on3jjf8pg2hvjq040esj25.apps.googleusercontent.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
