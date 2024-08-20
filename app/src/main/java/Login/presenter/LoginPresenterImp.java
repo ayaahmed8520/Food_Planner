@@ -6,35 +6,35 @@ import Login.model.LoginModel;
 
 public class LoginPresenterImp implements LoginPresenter, LoginListener {
 
-    private LoginModel loginModel;
-    private LoginListener loginListener;
+    private LoginModel mModel;
+    private LoginListener mListener;
 
     public LoginPresenterImp(LoginListener listener) {
-        loginModel = new LoginModel();
-        loginListener = listener;
+        mModel = new LoginModel();
+        mListener = listener;
     }
 
     @Override
-    public void userLogin(String userEmail, String userPassword) {
-        loginModel.loginUser(userEmail, userPassword, loginListener);
+    public void userLogin(String email, String password) {
+        mModel.loginUser(email, password, mListener);
     }
 
     public boolean validateCredentials(String email, String password) {
-        return loginModel.validateCredentials(email, password, loginListener);
+        return mModel.validateCredentials(email, password, mListener);
     }
 
     @Override
-    public void MsgError(String message) {
+    public void onValidationError(String message) {
 
     }
 
     @Override
-    public void successLogin(String userId) {
-        loginListener.successLogin(userId);
+    public void onLoginSuccess(String userId) {
+        mListener.onLoginSuccess(userId);
     }
 
     @Override
-    public void LoginError(String errorMessage) {
-        loginListener.LoginError(errorMessage);
+    public void onLoginError(String errorMessage) {
+        mListener.onLoginError(errorMessage);
     }
 }

@@ -9,5 +9,5 @@ public interface SignUpView {
 
     public void userRegister(String userName,String userEmail,String userPassword,String confirmPassword);
     public void registerViewSuccess();
-    public void registrationViewFailure(@NonNull Task<AuthResult> task);
+    public void registerViewFailure(@NonNull Task<AuthResult> task);
 }

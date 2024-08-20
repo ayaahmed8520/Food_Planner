@@ -16,37 +16,35 @@ public class LoginModel {
         mAuth = FirebaseAuth.getInstance();
     }
 
-
-    public void loginUser(String userEmail, String userPassword, final LoginListener listener) {
-        mAuth.signInWithEmailAndPassword(userEmail, userPassword)
+    public void loginUser(String email, String password, final LoginListener listener) {
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             String userId = mAuth.getUid();
-                            listener.successLogin(userId);
+                            listener.onLoginSuccess(userId);
                         } else {
-                            listener.LoginError(task.getException().getMessage());
+                            listener.onLoginError(task.getException().getMessage());
                         }
                     }
-
                 });
     }
 
-    private boolean isAValidEmail(String userEmail) {
-        return Patterns.EMAIL_ADDRESS.matcher(userEmail).matches();
+    private boolean isEmailValid(String email) {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    private boolean isAValidPassword(String userPassword) {
-        return userPassword.length() >= 6;
+    private boolean isPasswordValid(String password) {
+        return password.length() >= 6;
     }
 
     public boolean validateCredentials(String email, String password, final LoginListener listener) {
-        if (!isAValidEmail(email)) {
-            listener.MsgError("Invalid email address");
+        if (!isEmailValid(email)) {
+            listener.onValidationError("Invalid email address");
             return false;
-        } else if (!isAValidPassword(password)) {
-            listener.MsgError("Password should be at least 6 characters");
+        } else if (!isPasswordValid(password)) {
+            listener.onValidationError("Password should be at least 6 characters");
             return false;
         }
         return true;

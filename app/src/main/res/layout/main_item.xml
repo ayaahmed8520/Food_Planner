@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     android:layout_width="280dp"
     android:layout_height="320dp"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardElevation="8dp"
-    app:cardCornerRadius="8dp"
-    android:layout_margin="16dp">
+    app:cardCornerRadius="20dp"
+    android:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/buttonColor">
 
         <ImageView
             android:id="@+id/dish_image"
@@ -32,11 +32,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
-            android:fontFamily="@font/itim_regular"
+            android:fontFamily="@font/meriendavariablefontwght"
             android:maxLines="2"
             android:textAlignment="center"
-            android:textColor="@color/green_text"
-            android:textSize="24sp"
+            android:textColor="@color/darkBlue"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/dish_image"
             app:layout_constraintStart_toStartOf="@+id/dish_image"

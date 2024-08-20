@@ -18,6 +18,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -34,9 +35,9 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    viewBinding {
-        viewBinding.enable = true
-    }
+        buildFeatures{
+            viewBinding = true
+        }
 }
 
 dependencies {
@@ -57,7 +58,11 @@ dependencies {
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
 
     // Firebase Authentication
-    implementation ("com.google.firebase:firebase-auth:21.1.0")
+    implementation ("com.google.firebase:firebase-auth:21.0.1")
+    implementation ("com.google.firebase:firebase-core:20.1.0")
+
+    implementation ("com.google.android.gms:play-services-auth:20.0.0")
+
 
     //room
     implementation ("androidx.room:room-runtime:2.5.0")

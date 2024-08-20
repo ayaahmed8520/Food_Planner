@@ -3,18 +3,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Login.view.Login"
-    android:background="@drawable/bg_colored">
+    tools:context="Login.view.Login">
 
+
+    <ImageView
+        android:id="@+id/img_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:contentDescription="@string/content_description_pancakes"
+        android:scaleType="centerCrop"
+        android:src="@drawable/donuts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_bg1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:contentDescription="@string/content_description_pancakes"
+        android:scaleType="centerCrop"
+        android:src="@color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email"
+        android:textSize="25sp"
+        android:textColor="@color/darkBlue"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/et_userEmail"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+
+    <TextView
+        android:id="@+id/tv_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:textSize="25sp"
+        android:textColor="@color/darkBlue"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInput_userPassword"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left" />
 
 
     <EditText
-        android:id="@+id/email_edit_text"
-        android:layout_width="0dp"
+        android:id="@+id/et_userEmail"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="example@example.com"
+        android:hint="@string/emailHint"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/password_edit_text"
+        android:textColorHint="@color/white"
+        android:autofillHints="Email"
+        android:fontFamily="@font/meriendavariablefontwght"
+        app:layout_constraintBottom_toTopOf="@+id/textInput_userPassword"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
@@ -23,32 +69,34 @@
 
 
     <EditText
-        android:id="@+id/password_edit_text"
-        android:layout_width="0dp"
+        android:id="@+id/textInput_userPassword"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/email_edit_text"
-        android:hint="Enter at least 8 characters"
+        android:layout_below="@id/et_userEmail"
+        android:hint="@string/passwordHint"
         android:inputType="textPassword"
-
-        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        android:textColorHint="@color/white"
+        android:autofillHints="Password"
+        android:fontFamily="@font/meriendavariablefontwght"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/email_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/et_userEmail" />
 
     <Button
-        android:id="@+id/login_button"
-        android:layout_width="0dp"
+        android:id="@+id/btn_login"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/password_edit_text"
-        android:background="@drawable/rounded_background"
+        android:layout_below="@id/textInput_userPassword"
+        android:background="@drawable/btn_round_background"
         android:text="@string/login"
-        style="@style/buttons"
+        style="@style/btn_style"
         app:layout_constraintBottom_toTopOf="@+id/guideline_middle"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/password_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/textInput_userPassword" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -96,28 +144,5 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
 
-    <TextView
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email"
-        android:textSize="25sp"
-        android:textColor="@color/teal_700"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/email_edit_text"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left" />
-
-    <TextView
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/password"
-        android:textSize="25sp"
-        android:textColor="@color/teal_700"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/password_edit_text"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

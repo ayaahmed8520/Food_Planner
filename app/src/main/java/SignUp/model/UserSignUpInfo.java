@@ -7,6 +7,7 @@ public class UserSignUpInfo {
     private String confirmPassword;
 
 
+    //constructor
     public UserSignUpInfo(String userName, String userEmail, String userPassword, String confirmPassword) {
         this.userName = userName;
         this.userEmail = userEmail;
@@ -14,35 +15,40 @@ public class UserSignUpInfo {
         this.confirmPassword = confirmPassword;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
 
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    //getters
+    public String getUserName() {
+        return userName;
     }
 
     public String getUserEmail() {
         return userEmail;
     }
 
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    //setters
+
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

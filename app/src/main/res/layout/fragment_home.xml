@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.10"/>
+            app:layout_constraintGuide_percent="0.06"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_horizontal_bottom"
@@ -40,40 +40,75 @@
             app:layout_constraintGuide_percent="0.95"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_home"
-            android:layout_width="300dp"
-            android:layout_height="340dp"
+            android:id="@+id/recycler_mainItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" tools:itemCount="1" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.5" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@id/gl_horizontal_top"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_home2"
+            android:id="@+id/recycler_randomCategory"
             android:layout_width="match_parent"
-            android:layout_height="800dp"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/gl_vertical_end" app:layout_constraintHorizontal_bias="0.512" app:layout_constraintStart_toStartOf="@+id/gl_vertical_start" app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintVertical_bias="1.0" app:spanCount="2"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/tv_randomIngredient"
+            app:layout_constraintEnd_toStartOf="@+id/gl_vertical_end"
+            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintStart_toStartOf="@+id/gl_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_randomCategory"
+            app:spanCount="1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_randomIngredient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/gl_horizontal_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/gl_vertical_end"
+            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintStart_toStartOf="@+id/gl_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_randomIngredient"
+            app:spanCount="1" />
 
         <TextView
             android:id="@+id/daily_inspiration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/itim_regular"
-            android:text="Daily inspiration"
-            android:textColor="@color/green_text"
-            android:textSize="34sp"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:text="@string/inspiration"
+            android:textColor="@color/titleColor"
+            android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/gl_horizontal_top" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_randomCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:text="@string/RandomCategory"
+            android:textColor="@color/darkBlue"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/gl_vertical_start" app:layout_constraintTop_toBottomOf="@+id/recycler_mainItem"/>
+
+        <TextView
+            android:id="@+id/tv_randomIngredient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/itim_regular"
-            android:text="More You Might Like..."
-            android:textColor="@color/green_text"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:text="@string/RandomIngredients"
+            android:textColor="@color/darkBlue"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/gl_vertical_start" app:layout_constraintTop_toBottomOf="@+id/recycler_view_home"/>
+            app:layout_constraintStart_toStartOf="@+id/gl_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_randomCategory" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

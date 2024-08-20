@@ -25,7 +25,7 @@ import firebase.FirebaseRepoImp;
 
 public class ProfileFragmentImp extends Fragment implements ProfileFragment {
     AlertDialog.Builder builder;
-    FirebasePresenter firebasePresenter;
+    FirebasePresenter firebasePresenterInterface;
     private ProgressBar progressBar;
 
     Button btnLogout;
@@ -38,6 +38,7 @@ public class ProfileFragmentImp extends Fragment implements ProfileFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
@@ -46,7 +47,8 @@ public class ProfileFragmentImp extends Fragment implements ProfileFragment {
         super.onViewCreated(view, savedInstanceState);
 
         progressBar= view.findViewById(R.id.progress_bar);
-        firebasePresenter = new FirebasePresenterImp(this, FirebaseRepoImp.getInstance(requireContext()));
+
+        firebasePresenterInterface = new FirebasePresenterImp(this, FirebaseRepoImp.getInstance(requireContext()));
 
         builder = new AlertDialog.Builder(requireContext());
         btnLogout=view.findViewById(R.id.btn_logout);
@@ -54,17 +56,19 @@ public class ProfileFragmentImp extends Fragment implements ProfileFragment {
             @Override
             public void onClick(View v) {
                 createLogoutDialog();
+
             }
         });
     }
 
     @Override
-    public void deleteUser() {
-        firebasePresenter.logoutCurrentUser();
+    public void logoutCurrentUser() {
+        firebasePresenterInterface.logoutCurrentUser();
     }
 
     @Override
     public void logOutSuccess() {
+
         progressBar.setVisibility(View.GONE);
         Intent intent = new Intent(requireContext(), LoginAndSignUpScreen.class);
         startActivity(intent);
@@ -87,7 +91,7 @@ public class ProfileFragmentImp extends Fragment implements ProfileFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         progressBar.setVisibility(View.VISIBLE);
 
-                        deleteUser();
+                        logoutCurrentUser();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

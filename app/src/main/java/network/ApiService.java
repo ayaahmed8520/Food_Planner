@@ -6,8 +6,8 @@ import meal.model.MealList;
 import mealDetails.model.MealListDetails;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import search.CategoryList;
-import search.IngredientList;
+import search.allCategory.model.CategoryList;
+import search.allIngrediant.model.IngredientList;
 
 public interface ApiService {
     @GET("random.php")
@@ -19,13 +19,13 @@ public interface ApiService {
     @GET("filter.php")
     Observable<MealList> getFilterByCategory(@Query("c") String category);
     @GET("filter.php")
-    Observable<MealList> getFilterByMainIngredient(@Query("i") String ingredient);
+    Observable<MealList> getFilterByMealIngredient(@Query("i") String ingredient);
 
     @GET("lookup.php")
     Observable<MealListDetails> getMealDetailsByID(@Query("i") String mealDetails);
 
     @GET("list.php?i=list")
-    Observable<IngredientList> getLIstAllIngredient();
+    Observable<IngredientList> getListAllIngredient();
 
     @GET("categories.php")
     Observable<CategoryList> getListAllCategories();

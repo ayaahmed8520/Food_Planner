@@ -9,7 +9,7 @@
         android:layout_width="250dp"
         android:layout_height="300dp"
         android:layout_margin="16dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +18,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/buttonColor">
 
             <ImageView
                 android:id="@+id/dish_image"
@@ -51,7 +52,7 @@
                 android:button="@drawable/ic_favorite_35"
                 android:checked="true"
                 android:layout_marginTop="2dp"
-                app:buttonTint="@android:color/white"
+                app:buttonTint="@color/teal_700"
                 app:layout_constraintBottom_toBottomOf="@+id/black_background"
                 app:layout_constraintEnd_toEndOf="@+id/black_background"
                 app:layout_constraintStart_toStartOf="@+id/black_background"
@@ -62,10 +63,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
-                android:fontFamily="@font/itim_regular"
+                android:fontFamily="@font/meriendavariablefontwght"
                 android:maxLines="2"
                 android:textAlignment="center"
-                android:textColor="@color/green_text"
+                android:textColor="@color/darkBlue"
                 android:textSize="23sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/dish_image"

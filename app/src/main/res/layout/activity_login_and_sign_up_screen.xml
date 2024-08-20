@@ -7,39 +7,41 @@
     tools:context=".LoginAndSignUpScreen">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img_bg"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:contentDescription="@string/content_description_pancakes"
         android:scaleType="centerCrop"
-        android:src="@drawable/startpage_bg"
+        android:src="@drawable/donuts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
+        android:id="@+id/tv_AppName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="64dp"
-        android:fontFamily="@font/itim_regular"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="@font/meriendavariablefontwght"
         android:gravity="center"
         android:text="@string/app_name"
-        android:textColor="@color/white"
+        android:textColor="@color/titleColor"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@+id/btn_start_skip" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Skip" />
 
     <Button
-        android:id="@+id/btn_start_skip"
+        android:id="@+id/btn_Skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_background"
-        android:backgroundTint="#80FFFFFF"
-        android:fontFamily="@font/itim_regular"
+        android:background="@drawable/btn_round_background"
+        android:backgroundTint="@color/whitePink"
+        android:fontFamily="@font/meriendavariablefontwght"
         android:text="@string/skip"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textColor="@color/titleColor"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
@@ -50,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.62" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top"
@@ -83,61 +85,61 @@
 
 
     <androidx.cardview.widget.CardView
-
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/guideline_middle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:backgroundTint="#75000000"
-        app:cardCornerRadius="15dp">
+        android:backgroundTint="@color/transparent"
+        app:cardCornerRadius="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="6dp">
+            android:paddingTop="10dp">
 
             <Button
-                android:id="@+id/btn_start_signup"
-                android:layout_width="0dp"
+                android:id="@+id/btn_signup"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
-                style="@style/buttons"
-                android:background="@drawable/rounded_background"
+                style="@style/btn_style"
+                android:background="@drawable/btn_round_background"
                 android:text="@string/sign_up"
-                app:layout_constraintBottom_toTopOf="@+id/btn_start_login"
+                app:layout_constraintBottom_toTopOf="@+id/btn_login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btn_start_login"
-                android:layout_width="0dp"
+                android:id="@+id/btn_login"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:text="@string/login"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
-                style="@style/buttons"
-                android:background="@drawable/rounded_background"
-                app:layout_constraintBottom_toTopOf="@+id/btn_start_google"
+                style="@style/btn_style"
+                android:background="@drawable/btn_round_background"
+                app:layout_constraintBottom_toTopOf="@+id/btn_googleSignIn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_start_signup" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_signup" />
 
             <com.google.android.gms.common.SignInButton
-                android:id="@+id/btn_start_google"
+                android:id="@+id/btn_googleSignIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:backgroundTint="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_start_login"
+                app:layout_constraintTop_toBottomOf="@+id/btn_login"
                  />
 
 

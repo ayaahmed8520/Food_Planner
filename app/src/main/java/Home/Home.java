@@ -2,6 +2,7 @@ package Home;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,7 +28,7 @@ import meal.model.SingleMeal;
 import meal.view.MealAdapter;
 import meal.view.MainMealAdapter;
 import meal.view.OnMealClick;
-import mealDetails.view.MealDetailsActivity;
+import mealDetails.view.ViewDetailsActivity;
 import network.ApiClient;
 import network.ApiService;
 import retrofit2.Retrofit;
@@ -35,11 +36,14 @@ import retrofit2.Retrofit;
 public class Home extends Fragment implements OnMealClick {
     private RecyclerView recyclerViewFirst;
     private RecyclerView recyclerViewSecond;
+    private RecyclerView recyclerViewThird;
     private MealAdapter adapter;
+    private MealAdapter adapter2;
     private MainMealAdapter adapterBig;
-    private ArrayList<SingleMeal> singleMeals;
+    private ArrayList<SingleMeal> simpleMeals;
     private String[] randomCountries;
     private String[] randomCategories;
+    private String[] randomIngrediant;
     Retrofit retrofitClient;
     ApiService apiService;
 
@@ -59,15 +63,19 @@ public class Home extends Fragment implements OnMealClick {
         //setListeners();
         apiFirstCall();
         apiSecondCall();
+        apiThirdCall();
     }
 
     private void initializeVariables(View view)
     {
-        recyclerViewFirst = view.findViewById(R.id.recycler_view_home);
-        recyclerViewSecond = view.findViewById(R.id.recycler_view_home2);
+        recyclerViewFirst = view.findViewById(R.id.recycler_mainItem);
+        recyclerViewSecond = view.findViewById(R.id.recycler_randomCategory);
+        recyclerViewThird = view.findViewById(R.id.recycler_randomIngredient);
         randomCategories = new String[]{"Beef","Chicken","Dessert","Lamb","Miscellaneous","Pork","Seafood","Side","Vegetarian"};
+        randomIngrediant = new String[]{"Beef","Chicken","Potatoes","curry","Pie","Cheese","Seafood","Side","Couscous"};
     }
 
+    @SuppressLint("CheckResult")
     private void apiFirstCall()
     {
         Observable<MealList> callFirst = apiService.getASingleRandomMeal();
@@ -76,9 +84,9 @@ public class Home extends Fragment implements OnMealClick {
         callFirst.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         myResponse -> {
-                            singleMeals = myResponse.getMeals();
+                            simpleMeals = myResponse.getMeals();
                             recyclerViewFirst.setHasFixedSize(true);
-                            adapterBig = new MainMealAdapter(singleMeals, Home.this);
+                            adapterBig = new MainMealAdapter(simpleMeals, Home.this);
                             recyclerViewFirst.setAdapter(adapterBig);
                         },
                         error->{
@@ -86,6 +94,7 @@ public class Home extends Fragment implements OnMealClick {
                         }
                 );
     }
+    @SuppressLint("CheckResult")
     private void apiSecondCall()
     {
         Observable<MealList> callSecond = apiService.getFilterByCategory(randomCategories[new Random().nextInt(randomCategories.length)]);
@@ -93,8 +102,8 @@ public class Home extends Fragment implements OnMealClick {
         callSecond.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         myResponse -> {
-                            singleMeals = myResponse.getMeals();
-                            adapter = new MealAdapter(singleMeals, Home.this);
+                            simpleMeals = myResponse.getMeals();
+                            adapter = new MealAdapter(simpleMeals, Home.this);
                             recyclerViewSecond.setAdapter(adapter);
                         },
                         error->{
@@ -103,6 +112,23 @@ public class Home extends Fragment implements OnMealClick {
                 );
     }
 
+    @SuppressLint("CheckResult")
+    private void apiThirdCall()
+    {
+        Observable<MealList> callThird = apiService.getFilterByMealIngredient(randomIngrediant[new Random().nextInt(randomIngrediant.length)]);
+
+        callThird.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        myResponse -> {
+                            simpleMeals = myResponse.getMeals();
+                            adapter2 = new MealAdapter(simpleMeals, Home.this);
+                            recyclerViewThird.setAdapter(adapter2);
+                        },
+                        error->{
+                            error.printStackTrace();
+                        }
+                );
+    }
 
     public void OnMealClicked(String position) {
         SharedPreferences sharedPreferences;
@@ -112,7 +138,7 @@ public class Home extends Fragment implements OnMealClick {
         editor.putString("mealcurrentid", position);
         editor.apply();
 
-        Intent intent = new Intent(getContext(), MealDetailsActivity.class);
+        Intent intent = new Intent(getContext(), ViewDetailsActivity.class);
         startActivity(intent);
     }
 

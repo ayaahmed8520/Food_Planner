@@ -37,9 +37,9 @@ public class Login extends AppCompatActivity implements LoginListener {
 
         mPresenter = new LoginPresenterImp(this);
 
-        mEmailEditText = findViewById(R.id.email_edit_text);
-        mPasswordEditText = findViewById(R.id.password_edit_text);
-        mLoginButton = findViewById(R.id.login_button);
+        mEmailEditText = findViewById(R.id.et_userEmail);
+        mPasswordEditText = findViewById(R.id.textInput_userPassword);
+        mLoginButton = findViewById(R.id.btn_login);
         mProgressBar = findViewById(R.id.progress_bar);
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -56,13 +56,13 @@ public class Login extends AppCompatActivity implements LoginListener {
     }
 
     @Override
-    public void MsgError(String message) {
+    public void onValidationError(String message) {
         mProgressBar.setVisibility(View.GONE);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void successLogin(String userId) {
+    public void onLoginSuccess(String userId) {
         SharedPreferences sharedPreferences = getSharedPreferences("foodPlanner_preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("clientID", userId);
@@ -71,11 +71,12 @@ public class Login extends AppCompatActivity implements LoginListener {
         mProgressBar.setVisibility(View.GONE);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(0 , 0);
         finish();
     }
 
     @Override
-    public void LoginError(String message) {
+    public void onLoginError(String message) {
         mProgressBar.setVisibility(View.GONE);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }

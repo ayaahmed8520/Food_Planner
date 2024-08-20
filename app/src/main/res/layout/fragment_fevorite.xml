@@ -44,10 +44,10 @@
         android:id="@+id/tv_my_favorite_dishes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/itim_regular"
+        android:fontFamily="@font/meriendavariablefontwght"
         android:text="My favorite dishes"
-        android:textColor="#437843"
-        android:textSize="32sp"
+        android:textColor="@color/darkBlue"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/gl_horizontal_top"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,6 +62,7 @@
         app:layout_constraintEnd_toEndOf="@id/gl_vertical_end"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/gl_vertical_start"
-        app:layout_constraintTop_toTopOf="@+id/gl_horizontal_top"/>
+        app:layout_constraintTop_toTopOf="@+id/gl_horizontal_top"
+        app:spanCount="2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

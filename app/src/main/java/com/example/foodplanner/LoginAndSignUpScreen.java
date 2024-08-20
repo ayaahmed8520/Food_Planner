@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -28,26 +29,31 @@ import SignUp.view.SignUp;
 
 
 public class LoginAndSignUpScreen extends AppCompatActivity {
-    private Button btnSignUp, btnLogin, btnSkip;
-    private SignInButton btnGoogleSignIn;
-
+    private Button loginBtn, signupBtn, skipBtn;
+    SignInButton googleSignBtn;
     GoogleSignInClient googleSignInClient;
     FirebaseAuth firebaseAuth;
     SharedPreferences.Editor editor;
     private  SharedPreferences sharedPreferences;
-    String googleClientId = "119789241704-685r2kc051on3jjf8pg2hvjq040esj25.apps.googleusercontent.com";
-
+    String googleClientId = "868989801427-d91ml5v8ih7d0nuo0hgar45tpsr2ht2l.apps.googleusercontent.com";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_and_sign_up_screen);
-
-        btnLogin = findViewById(R.id.btn_start_login);
-        btnSignUp = findViewById(R.id.btn_start_signup);
-        btnSkip =  findViewById(R.id.btn_start_skip);
-        btnGoogleSignIn = findViewById(R.id.btn_start_google);
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        initializeVariables();
+        setListeners();
+        googleSignIn();
+    }
+    private void initializeVariables()
+    {
+        loginBtn = findViewById(R.id.btn_login);
+        signupBtn = findViewById(R.id.btn_signup);
+        skipBtn =  findViewById(R.id.btn_Skip);
+        googleSignBtn = findViewById(R.id.btn_googleSignIn);
+    }
+    private void setListeners()
+    {
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginAndSignUpScreen.this, Login.class);
@@ -55,7 +61,7 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
             }
         });
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginAndSignUpScreen.this, SignUp.class);
@@ -63,21 +69,16 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
             }
         });
 
-        btnSkip.setOnClickListener(new View.OnClickListener() {
+        skipBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginAndSignUpScreen.this, MainActivity.class);
                 startActivity(intent);
             }
         });
-
-        googleSignIn();
     }
 
-
-
     private void googleSignIn() {
-
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(googleClientId)
                 .requestEmail()
@@ -85,7 +86,7 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
 
         googleSignInClient = GoogleSignIn.getClient(LoginAndSignUpScreen.this, googleSignInOptions);
 
-        btnGoogleSignIn.setOnClickListener(view -> {
+        googleSignBtn.setOnClickListener(view -> {
             Intent intent = googleSignInClient.getSignInIntent();
             startActivityForResult(intent, 100);
         });
@@ -99,7 +100,7 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100) {
             Task<GoogleSignInAccount> signInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -115,11 +116,12 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "Google sign in successful", Toast.LENGTH_SHORT).show();
 
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    String clientID = user.getUid();
+                                    String userID = user.getUid();
                                     sharedPreferences = getSharedPreferences("foodPlanner_preferences", MODE_PRIVATE);
                                     editor = sharedPreferences.edit();
-                                    editor.putString("clientID", clientID);
+                                    editor.putString("clientID", userID);
                                     editor.commit();
+                                    //firebaseFirebaseRepository.registerUserGoogle();
 
                                     startActivity(new Intent(LoginAndSignUpScreen.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                 } else {

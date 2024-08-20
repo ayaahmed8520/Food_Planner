@@ -1,33 +1,42 @@
 {
   "project_info": {
-    "project_number": "119789241704",
-    "project_id": "food-planner-login-signup",
-    "storage_bucket": "food-planner-login-signup.appspot.com"
+    "project_number": "868989801427",
+    "project_id": "food-planner-fire-base",
+    "storage_bucket": "food-planner-fire-base.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:119789241704:android:50d0c1ad7680c3e92902dd",
+        "mobilesdk_app_id": "1:868989801427:android:bc57f40659c0ca7f441526",
         "android_client_info": {
           "package_name": "com.example.foodplanner"
         }
       },
       "oauth_client": [
         {
-          "client_id": "119789241704-685r2kc051on3jjf8pg2hvjq040esj25.apps.googleusercontent.com",
+          "client_id": "868989801427-0qmq9rhgm3635qett7r1c2pt43b4oee8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foodplanner",
+            "certificate_hash": "0e6e0e55e0cd7cd273e76f860bac41ae8fb0da89"
+          }
+        },
+        {
+          "client_id": "",
           "client_type": 3
         }
       ],
       "api_key": [
+
         {
-          "current_key": "AIzaSyB-Q15UY8VFASkjToiVe7sXgpkQ_TZ_mW4"
+          "current_key": "AIzaSyBtn8BfykuOaoa_Zg5JGjGrvEgJkrs77OE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "119789241704-685r2kc051on3jjf8pg2hvjq040esj25.apps.googleusercontent.com",
+              "client_id": "868989801427-d91ml5v8ih7d0nuo0hgar45tpsr2ht2l.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

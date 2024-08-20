@@ -10,7 +10,7 @@ import network.LogOutResult;
 import network.SignUpResult;
 import profile.ProfileFragment;
 
-public class FirebasePresenterImp implements FirebasePresenter, SignUpResult, LogOutResult {
+public class FirebasePresenterImp implements FirebasePresenter, SignUpResult , LogOutResult {
     SignUpView signUpView;
     FirebaseRepo firebaseRepo;
     ProfileFragment profileFragment;
@@ -27,9 +27,8 @@ public class FirebasePresenterImp implements FirebasePresenter, SignUpResult, Lo
 
 
     @Override
-    public void registerUser(String userName,String userEmail,String userPassword,String confirmPassword) {
-        firebaseRepo.userRegistration(new UserSignUpInfo(userName,userEmail,userPassword,confirmPassword
-        ), this);
+    public void registerUser(String disPlayName,String email,String password,String confirmPassword) {
+        firebaseRepo.userRegistration(new UserSignUpInfo(disPlayName,email,password,confirmPassword) , this);
 
     }
 
@@ -45,7 +44,7 @@ public class FirebasePresenterImp implements FirebasePresenter, SignUpResult, Lo
 
     @Override
     public void registerFailure(@NonNull Task<AuthResult> task) {
-        signUpView.registrationViewFailure( task);
+        signUpView.registerViewFailure( task);
 
 
     }

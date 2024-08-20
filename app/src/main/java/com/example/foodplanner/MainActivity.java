@@ -11,10 +11,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.foodplanner.databinding.ActivityMainBinding;
 import Home.Home;
 import SignUp.view.SignUp;
-import favorite.Favorite;
+import favorite.view.Favorite;
 import firebase.FirebaseRepoImp;
 import profile.ProfileFragmentImp;
-import search.Search;
+import search.model.Search;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding activityMainBinding;

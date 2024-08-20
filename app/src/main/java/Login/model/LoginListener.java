@@ -1,7 +1,7 @@
 package Login.model;
 
 public interface LoginListener {
-    void MsgError(String message);
-    void successLogin(String userId);
-    void LoginError(String message);
+    void onValidationError(String message);
+    void onLoginSuccess(String userId);
+    void onLoginError(String message);
 }

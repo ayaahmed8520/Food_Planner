@@ -1,0 +1,125 @@
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_vertical_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_vertical_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_horizontal_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_horizontal_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_mainItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="@+id/daily_inspiration"
+            app:layout_constraintStart_toStartOf="@+id/tv_randomCategory"
+            app:layout_constraintTop_toTopOf="@id/gl_horizontal_top"
+            tools:itemCount="1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_randomCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toStartOf="@+id/gl_vertical_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_randomCategory"
+            app:spanCount="1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_randomIngredient"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/gl_horizontal_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/gl_vertical_end"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/gl_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_randomIngredient"
+            app:layout_constraintVertical_bias="0.191"
+            app:spanCount="1" />
+
+        <TextView
+            android:id="@+id/daily_inspiration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:text="@string/inspiration"
+            android:textColor="@color/titleColor"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/recycler_mainItem"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gl_vertical_end"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/recycler_mainItem"
+            app:layout_constraintTop_toTopOf="@+id/recycler_mainItem"
+            app:layout_constraintVertical_bias="0.36" />
+
+        <TextView
+            android:id="@+id/tv_randomCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:text="@string/RandomCategory"
+            android:textColor="@color/darkBlue"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/gl_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_mainItem" />
+
+        <TextView
+            android:id="@+id/tv_randomIngredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:text="@string/RandomIngredients"
+            android:textColor="@color/darkBlue"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/gl_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_randomCategory" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
