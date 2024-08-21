@@ -1,0 +1,94 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        android:background="@color/backgroundColor"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:gravity="center"
+            android:shadowColor="@color/darkBlue"
+            android:shadowDx="10"
+            android:shadowDy="10"
+            android:shadowRadius="15"
+            android:text="@string/search_by"
+            android:textColor="@color/whitePink"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_area"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            style="@style/btn_style"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_round_background"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:text="@string/area"
+            android:textAllCaps="false"
+            android:textColor="@color/whitePink"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:weightSum="2"
+            android:padding="8dp">
+
+
+            <Button
+                android:id="@+id/btn_category"
+                style="@style/btn_style"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="40dp"
+
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_round_background"
+                android:text="@string/category"
+                android:textAllCaps="false"
+                android:textColor="@color/whitePink"
+                android:textSize="24sp"
+                android:fontFamily="@font/meriendavariablefontwght" />
+
+            <Button
+                android:id="@+id/btn_ingredient"
+                style="@style/btn_style"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="40dp"
+
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_round_background"
+                android:text="@string/ingredient"
+                android:textAllCaps="false"
+                android:textColor="@color/whitePink"
+                android:textSize="24sp"
+                android:fontFamily="@font/meriendavariablefontwght"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

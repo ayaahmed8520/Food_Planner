@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,26 +15,73 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
-        <activity
-            android:name=".Login"
+
+        <!-- Google Play Services version metadata -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+
+        <activity android:name="search.particularArea.view.ParticularAreaMealActivity"
+            android:exported="false"
+            />
+        <activity android:name="search.particularCategory.ParticularCategoryMealsActivity"
+            android:exported="false"
+           />
+        <activity android:name="search.particularIngrediant.ParticularIngredientMealsActivity"
             android:exported="false" />
+        
+        <activity android:name="calendar.CalendarfromViewDetails"
+            android:exported="false"
+            android:noHistory="true"/>
+        <activity android:name=".AddRecipeToPlanActivity"
+            android:exported="false"/>
+
         <activity
-            android:name=".SignUp"
-            android:exported="false" />
+            android:name="mealDetails.view.ViewDetailsActivity"
+            android:exported="false"
+            android:noHistory="true"
+           />
+        <activity
+            android:name="search.allIngrediant.view.AllIngredientsActivity"
+            android:exported="false"
+            />
+        <activity
+            android:name="search.allCategory.view.AllCategoriesActivity"
+            android:exported="false"
+            />
+        <activity
+            android:name="search.allArea.view.AllAreaActivity"
+            android:exported="false"
+            />
+
+        <activity
+            android:name="Login.view.Login"
+            android:exported="false"
+            />
+        <activity
+            android:name="SignUp.view.SignUp"
+            android:exported="false"
+            />
         <activity
             android:name=".LoginAndSignUpScreen"
-            android:exported="false" />
+            android:exported="false"
+           />
         <activity
             android:name="splash.SplashScreen"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:noHistory="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+           >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:exported="false"
+            />
     </application>
 
 </manifest>

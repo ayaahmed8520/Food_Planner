@@ -1,3 +1,6 @@
+
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.gms.google.services)
@@ -9,12 +12,13 @@ android {
 
     defaultConfig {
         applicationId = "com.example.foodplanner"
-        minSdk = 24
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -30,6 +34,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+        buildFeatures{
+            viewBinding = true
+        }
 }
 
 dependencies {
@@ -39,6 +47,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.auth)
+    implementation(libs.car.ui.lib)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -50,7 +59,11 @@ dependencies {
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
 
     // Firebase Authentication
-    implementation ("com.google.firebase:firebase-auth:21.1.0")
+    implementation ("com.google.firebase:firebase-auth:21.0.1")
+    implementation ("com.google.firebase:firebase-core:20.1.0")
+
+    implementation ("com.google.android.gms:play-services-auth:20.0.0")
+
 
     //room
     implementation ("androidx.room:room-runtime:2.5.0")

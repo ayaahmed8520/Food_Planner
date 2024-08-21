@@ -1,0 +1,147 @@
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_foodDetails"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="60dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/content_description_pancakes"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.872"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundCorner"
+            tools:src="@drawable/background1" />
+
+        <View
+            android:id="@+id/black_background"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/black_transparent_background"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/img_foodDetails"
+            app:layout_constraintTop_toTopOf="@id/img_foodDetails" />
+
+        <CheckBox
+            android:id="@+id/btn_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:button="@drawable/sl_favourite_48dp"
+            android:visibility="gone"
+            app:buttonTint="@color/whitePink"
+            app:layout_constraintBottom_toBottomOf="@+id/black_background"
+            app:layout_constraintEnd_toEndOf="@+id/black_background"
+            app:layout_constraintStart_toStartOf="@+id/black_background"
+            app:layout_constraintTop_toTopOf="@+id/black_background" />
+
+
+        <TextView
+            android:id="@+id/tv_detailsFoodName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:maxLines="2"
+            android:text="@string/name_of_meal"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/darkBlue"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_detailsFoodCountry"
+            app:layout_constraintEnd_toStartOf="@+id/img_foodDetails"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_add_to_calender" />
+
+        <TextView
+            android:id="@+id/tv_detailsFoodCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:text="@string/country"
+            android:textAllCaps="false"
+            android:textColor="@color/whitePink"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/rv_ingredients"
+            app:layout_constraintEnd_toEndOf="@+id/tv_detailsFoodName"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_detailsFoodName"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detailsFoodName" />
+
+        <TextView
+            android:id="@+id/tv_instructionDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:padding="20dp"
+            android:text="@string/instructions"
+            android:textColor="@color/darkBlue"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/IngredientVideo" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_foodDetails" />
+
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/IngredientVideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            app:autoPlay="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_ingredients" />
+
+        <Button
+            android:id="@+id/btn_add_to_calender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_calender"
+            android:fontFamily="@font/meriendavariablefontwght"
+            android:text="@string/addToCalendar"
+            android:textAllCaps="false"
+            android:textColor="@color/whitePink"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.061"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white2">#47EAFF</color>
     <color name="green">#C1E1C1</color>
     <color name="green_text">#437843</color>
     <color name="purple">#ba53de</color>
@@ -19,5 +20,15 @@
     <color name="g_black">#33405f</color>
     <color name="red">#FF0000</color>
     <color name="grey">#D9D9D9</color>
+
+    <color name="whitePink">#D06494</color>
+    <color name="babyBlue">#62CAFA</color>
+    <color name="darkBlue">#25204d</color>
+    <color name="transparent">#6A000000</color>
+
+    <color name="backgroundColor">#FFE8DF</color>
+    <color name="titleColor">#4A1A2B</color>
+    <color name="buttonColor">#EBC0CE</color>
+    <color name="buttonTextColor">#4A1A2B</color>
 
 </resources>

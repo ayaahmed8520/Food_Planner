@@ -18,11 +18,12 @@ import network.SignUpResult;
 
 
 public class FirebaseRepoImp implements FirebaseRepo {
+
     private Context context;
     private FirebaseAuth mAuth;
     private  SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    public static final String SH_NAME="foodPlanner_preferences";
+    public static final String PREFS_NAME="foodPlanner_preferences";
 
     public SharedPreferences getSharedPreferences() {
         return sharedPreferences;
@@ -42,15 +43,18 @@ public class FirebaseRepoImp implements FirebaseRepo {
         context=_context;
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        sharedPreferences = context.getSharedPreferences(SH_NAME, MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         editor = sharedPreferences.edit();
+
+
 
     }
 
 
     @Override
-    public void userRegistration(UserSignUpInfo userSignUpInfo, SignUpResult signUpResult) {
-        mAuth.createUserWithEmailAndPassword(userSignUpInfo.getUserEmail(), userSignUpInfo.getUserPassword())
+    public void userRegistration(UserSignUpInfo signupUser , SignUpResult signUpResult) {
+
+        mAuth.createUserWithEmailAndPassword(signupUser.getUserEmail(), signupUser.getUserPassword())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -58,8 +62,8 @@ public class FirebaseRepoImp implements FirebaseRepo {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
 
-                                String clientID = user.getUid();
-                                editor.putString("clientID", clientID);
+                                String userID = user.getUid();
+                                editor.putString("clientID", userID);
                                 editor.commit();
                                 signUpResult.registerSuccess();
                             }
@@ -70,17 +74,22 @@ public class FirebaseRepoImp implements FirebaseRepo {
                         }
                     }
                 });
+
     }
 
     @Override
     public void logoutTheCurrentUser(LogOutResult logOutResult) {
         try {
             mAuth.signOut();
-            editor.putString("userID", null);
+            editor.putString("clientID", null);
             editor.commit();
             logOutResult.logOutSuccess();
         }catch (Exception exception){
             logOutResult.logOutFailure(exception);
         }
+
+
     }
+
+
 }

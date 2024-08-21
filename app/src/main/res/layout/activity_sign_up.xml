@@ -4,135 +4,164 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp"
-    android:background="@drawable/bg_colored">
+    tools:context="SignUp.view.SignUp">
+
+    <ImageView
+        android:id="@+id/img_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:contentDescription="@string/content_description_pancakes"
+        android:scaleType="centerCrop"
+        android:src="@drawable/donuts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_bg1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:contentDescription="@string/content_description_pancakes"
+        android:scaleType="centerCrop"
+        android:src="@color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_signup_person_name"
-        android:layout_width="0dp"
+        android:id="@+id/textInput_userName"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
-
         app:endIconMode="custom"
-        app:layout_constraintBottom_toTopOf="@+id/til_signup_email"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/textInput_userEmail"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/tv_randomCategory">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_signup_person_name"
+            android:id="@+id/et_userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/itim_regular"
+            android:fontFamily="@font/meriendavariablefontwght"
             android:hint="@string/display_name"
             android:inputType="textPersonName"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_signup_email"
-        android:layout_width="0dp"
+        android:id="@+id/textInput_userEmail"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
-        app:layout_constraintBottom_toTopOf="@+id/til_signup_password"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/textInput_userPassword"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/til_signup_person_name">
+        app:layout_constraintTop_toBottomOf="@+id/textInput_userName">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_signup_email"
+            android:id="@+id/et_userEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/itim_regular"
+            android:fontFamily="@font/meriendavariablefontwght"
             android:hint="@string/email"
+            android:textColorHint="@color/darkBlue"
             android:inputType="textEmailAddress"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_signup_password"
-        android:layout_width="0dp"
+        android:id="@+id/textInput_userPassword"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
         app:passwordToggleEnabled="true"
-        app:layout_constraintBottom_toTopOf="@+id/til_signup_confirm_password"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/textInput_userConfirmPassword"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/til_signup_email">
+        app:layout_constraintTop_toBottomOf="@+id/textInput_userEmail">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_signup_password"
+            android:id="@+id/et_userPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/itim_regular"
             android:hint="@string/password"
+            android:fontFamily="@font/meriendavariablefontwght"
             android:inputType="textPassword"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_signup_confirm_password"
-        android:layout_width="0dp"
+        android:id="@+id/textInput_userConfirmPassword"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
         app:passwordToggleEnabled="true"
-        app:layout_constraintBottom_toTopOf="@+id/btn_signup_signup"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btn_SignUp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/til_signup_password">
+        app:layout_constraintTop_toBottomOf="@+id/textInput_userPassword">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_signup_confirm_password"
+            android:id="@+id/et_userConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/itim_regular"
             android:hint="@string/confirm_password"
+            android:fontFamily="@font/meriendavariablefontwght"
             android:inputType="textPassword"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--
 
-      -->
     <Button
-        android:id="@+id/btn_signup_signup"
-        android:layout_width="0dp"
+        android:id="@+id/btn_SignUp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/teal_700"
-        android:fontFamily="@font/itim_regular"
         android:text="@string/sign_up"
         android:textAllCaps="false"
-        android:textSize="16sp"
-        android:background="@drawable/rounded_background"
+        android:textSize="18sp"
+        style="@style/btn_style"
+        android:background="@drawable/btn_round_background"
         android:onClick="confirmInput"
-        app:layout_constraintBottom_toTopOf="@+id/tv_signup_login"
+        app:layout_constraintBottom_toTopOf="@+id/tv_login"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_middle" />
 
     <TextView
-        android:id="@+id/tv_signup_login"
+        android:id="@+id/tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        android:fontFamily="@font/itim_regular"
+        android:fontFamily="@font/meriendavariablefontwght"
         android:onClick="onClick"
         android:text="@string/already_have_an_account_log_in"
-        android:textColor="@color/black"
+        android:textColor="@color/darkBlue"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_bottom"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/btn_signup_signup" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_SignUp"
+        tools:ignore="OnClick" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_under_title"
@@ -177,13 +206,13 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_randomCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/itim_regular"
-        android:text="@string/sign_up"
-        android:textColor="@color/teal_700"
-        android:textSize="36sp"
+        android:fontFamily="@font/meriendavariablefontwght"
+        android:text="@string/signup"
+        android:textColor="@color/darkBlue"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline_under_title"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
@@ -200,4 +229,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
