@@ -13,9 +13,11 @@ import mealDetails.model.SingleMealDetails;
 
 @Dao
 public interface MealDAO {
-
     @Query("SELECT * From MealDetails")
     Observable<List<SingleMealDetails>> getAllMeals();
+
+//    @Query("SELECT * FROM singleMeal WHERE name LIKE :first " + "LIMIT 1")
+//    Movie findMovieByName(String first);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertAll(SingleMealDetails meal);

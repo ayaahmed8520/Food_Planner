@@ -39,4 +39,3 @@ public class FavoritePresenter {
         FavoriteRepository.getInstance(context).deleteMeal(detailedMeal);
     }
 }
-

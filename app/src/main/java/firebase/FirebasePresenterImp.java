@@ -11,53 +11,53 @@ import network.SignUpResult;
 import profile.ProfileFragment;
 
 public class FirebasePresenterImp implements FirebasePresenter, SignUpResult , LogOutResult {
-    SignUpView signUpView;
-    FirebaseRepo firebaseRepo;
-    ProfileFragment profileFragment;
+    SignUpView signUpViewInterface;
+    FirebaseRepo firebaseRepositoryInterface;
+    ProfileFragment profileFragmentInterface;
 
-    public FirebasePresenterImp(SignUpView signUpView, FirebaseRepo firebaseRepo) {
-        this.signUpView = signUpView;
-        this.firebaseRepo = firebaseRepo;
+    public FirebasePresenterImp(SignUpView signUpViewInterface, FirebaseRepo firebaseRepositoryInterface) {
+        this.signUpViewInterface= signUpViewInterface;
+        this.firebaseRepositoryInterface = firebaseRepositoryInterface;
     }
-    public FirebasePresenterImp(ProfileFragment profileFragment, FirebaseRepo firebaseRepo) {
-        this.profileFragment = profileFragment;
-        this.firebaseRepo = firebaseRepo;
+    public FirebasePresenterImp(ProfileFragment profileFragmentInterface, FirebaseRepo firebaseRepositoryInterface) {
+        this.profileFragmentInterface= profileFragmentInterface;
+        this.firebaseRepositoryInterface = firebaseRepositoryInterface;
     }
 
 
 
     @Override
     public void registerUser(String disPlayName,String email,String password,String confirmPassword) {
-        firebaseRepo.userRegistration(new UserSignUpInfo(disPlayName,email,password,confirmPassword) , this);
+        firebaseRepositoryInterface.userRegistration(new UserSignUpInfo(disPlayName,email,password,confirmPassword) , this);
 
     }
 
     @Override
     public void logoutCurrentUser() {
-        firebaseRepo.logoutTheCurrentUser(this);
+        firebaseRepositoryInterface.logoutTheCurrentUser(this);
     }
 
     @Override
     public void registerSuccess() {
-        signUpView.registerViewSuccess();
+        signUpViewInterface.registerViewSuccess();
     }
 
     @Override
     public void registerFailure(@NonNull Task<AuthResult> task) {
-        signUpView.registerViewFailure( task);
+        signUpViewInterface.registerViewFailure(task);
 
 
     }
 
     @Override
     public void logOutSuccess() {
-        profileFragment.logOutSuccess();
+        profileFragmentInterface.logOutSuccess();
 
     }
 
     @Override
     public void logOutFailure(Exception exception) {
-        profileFragment.logOutFailure(exception);
+        profileFragmentInterface.logOutFailure(exception);
 
     }
 }

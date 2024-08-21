@@ -13,8 +13,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_foodDetails"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:layout_marginTop="60dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/content_description_pancakes"
@@ -37,26 +37,28 @@
                app:layout_constraintEnd_toEndOf="@id/img_foodDetails"
                app:layout_constraintTop_toTopOf="@id/img_foodDetails" />
 
-           <CheckBox
-               android:id="@+id/btn_favorite"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:button="@drawable/sl_favourite_48dp"
-               android:layout_marginTop="2dp"
-               android:visibility="gone"
-               app:buttonTint="@color/whitePink"
-               app:layout_constraintBottom_toBottomOf="@+id/black_background"
-               app:layout_constraintEnd_toEndOf="@+id/black_background"
-               app:layout_constraintStart_toStartOf="@+id/black_background"
-               app:layout_constraintTop_toTopOf="@+id/black_background" />
 
+        <CheckBox
+            android:id="@+id/btn_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:button="@drawable/sl_favourite_48dp"
+            android:visibility="gone"
+            app:buttonTint="@color/whitePink"
+            app:layout_constraintBottom_toBottomOf="@+id/black_background"
+            app:layout_constraintEnd_toEndOf="@+id/black_background"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/black_background"
+            app:layout_constraintTop_toTopOf="@+id/black_background"
+            app:layout_constraintVertical_bias="0.04" />
 
         <TextView
             android:id="@+id/tv_detailsFoodName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="40dp"
             android:fontFamily="@font/meriendavariablefontwght"
             android:maxLines="2"
@@ -64,7 +66,7 @@
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/darkBlue"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/img_foodDetails"
             app:layout_constraintHorizontal_bias="0.0"
@@ -135,7 +137,7 @@
             android:fontFamily="@font/meriendavariablefontwght"
             android:text="@string/addToCalendar"
             android:textColor="@color/whitePink"
-            android:visibility="gone"
+            android:visibility="visible"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.061"

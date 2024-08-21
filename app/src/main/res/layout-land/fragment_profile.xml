@@ -10,6 +10,7 @@
         android:layout_height="300dp"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="51dp"
+        android:background="@color/whitePink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_logout"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,7 +22,7 @@
 
     <Button
         android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="60dp"
         android:background="@drawable/btn_round_background"
         android:fontFamily="@font/meriendavariablefontwght"
@@ -32,7 +33,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/lottieAnimation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lottieAnimation" />
+        app:layout_constraintStart_toEndOf="@+id/lottieAnimation"
+        app:layout_constraintTop_toTopOf="@+id/lottieAnimation" />
 
     <ProgressBar
         android:id="@+id/progress_bar"

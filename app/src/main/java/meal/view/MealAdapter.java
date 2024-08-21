@@ -21,7 +21,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.Holder> {
     private final OnMealClick listOnClickItem;
 
     public MealAdapter(ArrayList<SingleMeal> simpleMealList, OnMealClick listOnClickItem) {
-        this.simpleMealList = simpleMealList != null ? simpleMealList : new ArrayList<>();
+        this.simpleMealList = simpleMealList;
         this.listOnClickItem = listOnClickItem;
     }
 
@@ -42,8 +42,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.Holder> {
 
     @Override
     public int getItemCount() {
-        Log.d("MealAdapter", "Size of meals list: " + (simpleMealList != null ? simpleMealList.size() : "null"));
-        return simpleMealList != null ? simpleMealList.size() : 0;
+        return simpleMealList.size();
     }
 
 

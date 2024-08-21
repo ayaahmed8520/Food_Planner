@@ -23,13 +23,13 @@ import search.allIngrediant.model.Ingredient;
 import search.allIngrediant.presenter.AllIngredientPresenter;
 import search.particularIngrediant.ParticularIngredientMealsActivity;
 
-public class AllIngredientsActivity extends AppCompatActivity implements AllIngredientsActivityInterface {
+public class AllIngredientsActivity extends AppCompatActivity implements AllIngredientsActivityInterface{
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
     IngredientAdapter ingredientAdapter;
     SearchView searchView;
-    ArrayList<Ingredient> ingredientArrayList = new ArrayList<>();
-    ArrayList<Ingredient> displayList = new ArrayList<>();
+    ArrayList<Ingredient> ingredientArrayList=new ArrayList<>();
+    ArrayList<Ingredient> displayList=new ArrayList<>();
     ImageView closeScreen;
 
     @Override
@@ -37,13 +37,13 @@ public class AllIngredientsActivity extends AppCompatActivity implements AllIngr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_ingredients);
 
-        recyclerView = findViewById(R.id.rv_ingredients);
-        layoutManager = new LinearLayoutManager(this);
+        recyclerView=findViewById(R.id.rv_ingredients);
+        layoutManager=new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        ingredientAdapter = new IngredientAdapter(this, this, new ArrayList<>());
+        ingredientAdapter= new IngredientAdapter(this,this,new ArrayList<>());
         recyclerView.setAdapter(ingredientAdapter);
-        closeScreen = findViewById(R.id.btn_close);
+        closeScreen=findViewById(R.id.btn_close);
         closeScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +52,7 @@ public class AllIngredientsActivity extends AppCompatActivity implements AllIngr
         });
 
         getIngredients();
-        searchView = findViewById(R.id.sv_searchByIngredient);
+        searchView=findViewById(R.id.sv_searchByIngredient);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
@@ -63,13 +63,13 @@ public class AllIngredientsActivity extends AppCompatActivity implements AllIngr
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                if (!newText.isEmpty()) {
+                if (!newText.isEmpty()){
                     displayList.clear();
                     ingredientAdapter.setList(displayList);
                     ingredientAdapter.notifyDataSetChanged();
 
                     String search = newText.toLowerCase(Locale.ROOT);
-                    for (Ingredient ingredient : ingredientArrayList) {
+                    for (Ingredient ingredient :ingredientArrayList) {
                         if (ingredient.getStrIngredient().toLowerCase(Locale.ROOT).startsWith(search)) {
                             displayList.add(ingredient);
                         }
@@ -77,7 +77,7 @@ public class AllIngredientsActivity extends AppCompatActivity implements AllIngr
                     ingredientAdapter.setList(displayList);
                     ingredientAdapter.notifyDataSetChanged();
 
-                } else {
+                }else{
                     displayList.clear();
                     displayList.addAll(ingredientArrayList);
                     ingredientAdapter.setList(displayList);
@@ -112,13 +112,13 @@ public class AllIngredientsActivity extends AppCompatActivity implements AllIngr
     @Override
     public void onFailureResult(String error) {
         Toast.makeText(this, error, Toast.LENGTH_LONG).show();
-        Log.e("=====TAG=====", "onFailureResult: " + error);
+        Log.e("=====TAG=====", "onFailureResult: "+ error );
     }
 
     @Override
     public void navigateToParticularIngredientMeals(String ingredientName) {
         Intent intent = new Intent(this, ParticularIngredientMealsActivity.class);
-        intent.putExtra("ingredientName", ingredientName);
+        intent.putExtra("ingredientName",ingredientName);
         startActivity(intent);
 
     }

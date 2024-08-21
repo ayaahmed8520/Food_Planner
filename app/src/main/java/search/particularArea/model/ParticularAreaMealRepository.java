@@ -31,6 +31,22 @@ public class ParticularAreaMealRepository {
         ApiService apiService =retrofit.create(ApiService.class);
         Observable<MealList> call = apiService.getFilterByArea(areaName);
 
+//        call.enqueue(new Callback<MealList>() {
+//            @Override
+//            public void onResponse(Call<MealList> call, Response<MealList> response) {
+//                if(response.isSuccessful()){
+//                    ParticularAreaMealPresenter.onSuccessResult(response.body().getMeals());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<MealList> call, Throwable t) {
+//                ParticularAreaMealPresenter.onFailureResult(t.getCause().toString());
+//            }
+//
+//
+//
+//        });
 
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

@@ -11,5 +11,6 @@ public class SearchPresenter {
         return AllAreas.getInstance().getAllAreas();
     }
 
+
 }
 

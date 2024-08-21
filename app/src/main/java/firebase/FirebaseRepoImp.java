@@ -18,11 +18,12 @@ import network.SignUpResult;
 
 
 public class FirebaseRepoImp implements FirebaseRepo {
+
     private Context context;
     private FirebaseAuth mAuth;
     private  SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    public static final String PREFS_NAME="my_preferences";
+    public static final String PREFS_NAME="foodPlanner_preferences";
 
     public SharedPreferences getSharedPreferences() {
         return sharedPreferences;
@@ -62,7 +63,7 @@ public class FirebaseRepoImp implements FirebaseRepo {
                             if (user != null) {
 
                                 String userID = user.getUid();
-                                editor.putString("userID", userID);
+                                editor.putString("clientID", userID);
                                 editor.commit();
                                 signUpResult.registerSuccess();
                             }
@@ -80,7 +81,7 @@ public class FirebaseRepoImp implements FirebaseRepo {
     public void logoutTheCurrentUser(LogOutResult logOutResult) {
         try {
             mAuth.signOut();
-            editor.putString("userID", null);
+            editor.putString("clientID", null);
             editor.commit();
             logOutResult.logOutSuccess();
         }catch (Exception exception){

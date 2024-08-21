@@ -35,27 +35,28 @@ public class SignUp extends AppCompatActivity implements SignUpView {
                     "$");
     private TextInputLayout textInputUsername ,textInputEmail,textInputPassword,textInputConfirmPassword;
     private ProgressBar progressBar;
-    private FirebasePresenter firebasePresenter;
-    private TextView backToLogin;
+    private FirebasePresenter firebasePresenterInterface;
+    private TextView goToLogin;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
+        // android.content.Context context=getApplicationContext();
+        //initialize ui
         textInputUsername = findViewById(R.id.textInput_userName);
         textInputEmail = findViewById(R.id.textInput_userEmail);
         textInputPassword = findViewById(R.id.textInput_userPassword);
         textInputConfirmPassword = findViewById(R.id.textInput_userConfirmPassword);
-        backToLogin =findViewById(R.id.tv_login);
+        goToLogin =findViewById(R.id.tv_login);
         progressBar= findViewById(R.id.progress_bar);
 
 
+        //create presenter obj
+        firebasePresenterInterface = new FirebasePresenterImp(this,FirebaseRepoImp.getInstance(getApplicationContext()));
 
-        firebasePresenter = new FirebasePresenterImp(this, FirebaseRepoImp.getInstance(getApplicationContext()));
-
-        backToLogin.setOnClickListener(new View.OnClickListener() {
+        goToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SignUp.this, Login.class);
@@ -82,7 +83,6 @@ public class SignUp extends AppCompatActivity implements SignUpView {
                 }
             }
         });
-
         textInputEmail.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -103,7 +103,6 @@ public class SignUp extends AppCompatActivity implements SignUpView {
 
             }
         });
-
         textInputPassword.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -212,7 +211,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
 
     // SIGNUP ON CLICK
     public void confirmInput(View v) {
-        if (validateEmail() && validateUsername() && validatePassword() && validateConfirmPassword()) {
+        if (validateEmail() & validateUsername() & validatePassword() & validateConfirmPassword()) {
             progressBar.setVisibility(View.VISIBLE);
 
             Log.i("TAGTAGTAG", "confirmInput: " + textInputUsername.getEditText().getText().toString());
@@ -229,7 +228,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
 
     @Override
     public void userRegister(String disPlayName, String email, String password, String confirmPassword) {
-        firebasePresenter.registerUser(disPlayName, email, password, confirmPassword);
+        firebasePresenterInterface.registerUser(disPlayName, email, password, confirmPassword);
 
     }
 
@@ -238,7 +237,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
         progressBar.setVisibility(View.GONE);
         Intent intent = new Intent(SignUp.this, MainActivity.class);
         startActivity(intent);
-        finish();  // Finish this activity to remove it from the back stack
+
     }
 
     @Override
@@ -247,8 +246,5 @@ public class SignUp extends AppCompatActivity implements SignUpView {
         Toast.makeText(this, (task.getException()).getMessage(), Toast.LENGTH_LONG).show();
         Log.i("TAGonFailureRegistration", "onFailureRegistration: "+task.getException().getMessage());
 
-    }
-
-    public void onClick(View view) {
     }
 }

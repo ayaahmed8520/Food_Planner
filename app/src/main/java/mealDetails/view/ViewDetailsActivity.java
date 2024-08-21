@@ -68,7 +68,7 @@ public class ViewDetailsActivity extends AppCompatActivity implements MealDetail
     private void initValues()
     {
         recyclerViewDetails = findViewById(R.id.rv_mealDetails);
-        mealId = FirebaseRepoImp.getInstance(this).getSharedPreferences().getString("mealcurrentid",null);
+        mealId =FirebaseRepoImp.getInstance(this).getSharedPreferences().getString("mealcurrentid",null);
         Retrofit retrofitClient = ApiClient.getClient();
         retrofitInterface = retrofitClient.create(ApiService.class);
     }

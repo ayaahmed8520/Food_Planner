@@ -28,6 +28,7 @@ public class ParticularIngredientMealsRepository {
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .build();
 
+
         ApiService apiService =retrofit.create(ApiService.class);
         Observable<MealList> call = apiService.getFilterByMealIngredient(IngredientName);
 

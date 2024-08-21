@@ -96,3 +96,4 @@ public class FavoriteMealsAdapter  extends RecyclerView.Adapter<FavoriteMealsAda
         }
     }
 }
+

@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import mealDetails.model.SingleMealDetails;
 
 
-@Database(entities = {SingleMealDetails.class}, version = 1 , exportSchema = false)
+@Database(entities = {SingleMealDetails.class}, version = 1)
 public abstract class AppDataBase extends RoomDatabase {
 
     private static AppDataBase instance = null;

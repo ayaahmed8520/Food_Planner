@@ -13,6 +13,7 @@ import Home.Home;
 import SignUp.view.SignUp;
 import favorite.view.Favorite;
 import firebase.FirebaseRepoImp;
+import profile.ProfileFragment;
 import profile.ProfileFragmentImp;
 import search.model.Search;
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new Home());
             }
             else if(item.getItemId() ==  R.id.nav_search){
-                  replaceFragment(new Search());
+                replaceFragment(new Search());
             }
             else if(item.getItemId() ==  R.id.nav_favorite){
                 if(clientID!=null){
@@ -63,10 +64,8 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
-        fragmentTransaction.addToBackStack(null); // Add this line if back navigation is desired
         fragmentTransaction.commit();
     }
-
 
     public void signupToGetMoreFeature() {
         builder.setTitle("Sign up for more features!")
@@ -87,8 +86,5 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .show();
     }
-
-
-
 
 }

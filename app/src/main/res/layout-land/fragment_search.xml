@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="center|top"
         android:orientation="vertical"
         android:background="@color/backgroundColor"
         tools:ignore="UselessParent">
@@ -16,7 +16,8 @@
             android:id="@+id/tv_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/meriendavariablefontwght"
             android:gravity="center"
             android:shadowColor="@color/darkBlue"
@@ -34,7 +35,7 @@
             android:layout_height="60dp"
             style="@style/btn_style"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="40dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/btn_round_background"
@@ -49,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="5dp"
             android:weightSum="2"
             android:padding="8dp">
 
@@ -60,7 +62,7 @@
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
+
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/btn_round_background"
@@ -77,7 +79,7 @@
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
+
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/btn_round_background"

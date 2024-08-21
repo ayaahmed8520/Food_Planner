@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +18,8 @@ import com.example.foodplanner.MainActivity;
 import com.example.foodplanner.R;
 
 import Login.model.LoginListener;
-import Login.presenter.LoginPresenterImp;
 import Login.presenter.LoginPresenter;
+import Login.presenter.LoginPresenterImp;
 
 public class Login extends AppCompatActivity implements LoginListener {
 
@@ -59,32 +58,39 @@ public class Login extends AppCompatActivity implements LoginListener {
     @Override
     public void onValidationError(String message) {
         mProgressBar.setVisibility(View.GONE);
-        Log.e("Validation Error", message);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onLoginSuccess(String clientId) {
+    public void onLoginSuccess(String userId) {
         SharedPreferences sharedPreferences = getSharedPreferences("foodPlanner_preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("clientID", clientId);
+        editor.putString("clientID", userId);
         editor.apply();
 
         mProgressBar.setVisibility(View.GONE);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        overridePendingTransition(0 , 0);
         finish();
     }
 
     @Override
     public void onLoginError(String message) {
         mProgressBar.setVisibility(View.GONE);
-        Log.e("LoginError", message);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
     private boolean validateCredentials(String email, String password) {
         boolean flag = true;
+
+        if (TextUtils.isEmpty(password)) {
+            mPasswordEditText.setError("Password field can't be empty");
+            mPasswordEditText.requestFocus();
+            flag = false;
+        } else if (password.length() < 8) {
+            mPasswordEditText.setError("Password should be at least 8 characters including (digits and letters)");
+            mPasswordEditText.requestFocus();
+            flag = false;
+        }
 
         if (TextUtils.isEmpty(email)) {
             mEmailEditText.setError("Email field can't be empty");
@@ -95,17 +101,6 @@ public class Login extends AppCompatActivity implements LoginListener {
             mEmailEditText.requestFocus();
             flag = false;
         }
-
-        if (TextUtils.isEmpty(password)) {
-            mPasswordEditText.setError("Password field can't be empty");
-            mPasswordEditText.requestFocus();
-            flag = false;
-        } else if (password.length() < 8) {
-            mPasswordEditText.setError("Password should be at least 8 characters including digits and letters");
-            mPasswordEditText.requestFocus();
-            flag = false;
-        }
-
 
         return flag;
     }

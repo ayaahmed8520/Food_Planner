@@ -21,13 +21,11 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
-
 import firebase.FirebaseRepoImp;
 import mealDetails.model.IngredientWithMeasure;
 import mealDetails.model.SingleMealDetails;
 import search.allIngrediant.view.MealDetailsIngredientsAdapter;
 import search.view.AddAndRemoveFavoriteViewInterface;
-
 
 public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.Holder> {
 
@@ -180,6 +178,4 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
         }
     }
 }
-
-
 

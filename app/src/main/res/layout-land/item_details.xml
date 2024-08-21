@@ -13,7 +13,7 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_foodDetails"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="200dp"
             android:layout_marginTop="60dp"
             android:adjustViewBounds="true"
@@ -32,8 +32,8 @@
             android:layout_height="60dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:visibility="gone"
             android:background="@drawable/black_transparent_background"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@id/img_foodDetails"
             app:layout_constraintTop_toTopOf="@id/img_foodDetails" />
 
@@ -41,8 +41,8 @@
             android:id="@+id/btn_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:button="@drawable/sl_favourite_48dp"
             android:layout_marginTop="2dp"
+            android:button="@drawable/sl_favourite_48dp"
             android:visibility="gone"
             app:buttonTint="@color/whitePink"
             app:layout_constraintBottom_toBottomOf="@+id/black_background"
@@ -56,7 +56,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="48dp"
             android:layout_marginEnd="40dp"
             android:fontFamily="@font/meriendavariablefontwght"
             android:maxLines="2"
@@ -66,10 +66,11 @@
             android:textColor="@color/darkBlue"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_detailsFoodCountry"
             app:layout_constraintEnd_toStartOf="@+id/img_foodDetails"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/img_foodDetails" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_add_to_calender" />
 
         <TextView
             android:id="@+id/tv_detailsFoodCountry"
@@ -82,8 +83,9 @@
             android:textAllCaps="false"
             android:textColor="@color/whitePink"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_foodDetails"
+            app:layout_constraintBottom_toTopOf="@+id/rv_ingredients"
             app:layout_constraintEnd_toEndOf="@+id/tv_detailsFoodName"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/tv_detailsFoodName"
             app:layout_constraintTop_toBottomOf="@+id/tv_detailsFoodName" />
 
@@ -91,15 +93,14 @@
             android:id="@+id/tv_instructionDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
             android:fontFamily="@font/meriendavariablefontwght"
+            android:padding="20dp"
             android:text="@string/instructions"
-            android:textSize="18sp"
             android:textColor="@color/darkBlue"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/IngredientVideo"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/IngredientVideo" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -130,13 +131,13 @@
             android:id="@+id/btn_add_to_calender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_calender"
             android:fontFamily="@font/meriendavariablefontwght"
             android:text="@string/addToCalendar"
+            android:textAllCaps="false"
             android:textColor="@color/whitePink"
             android:visibility="visible"
-            android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.061"
             app:layout_constraintStart_toStartOf="parent"

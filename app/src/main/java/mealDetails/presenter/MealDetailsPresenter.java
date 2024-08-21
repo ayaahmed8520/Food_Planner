@@ -19,4 +19,3 @@ public class MealDetailsPresenter {
         mealDetailsInterface.onFailureResult(error);
     }
 }
-
