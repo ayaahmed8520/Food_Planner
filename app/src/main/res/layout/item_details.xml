@@ -27,21 +27,21 @@
             tools:src="@drawable/background1" />
 
         <View
-               android:id="@+id/black_background"
-               android:layout_width="60dp"
-               android:layout_height="60dp"
-               android:layout_marginTop="8dp"
-               android:layout_marginEnd="8dp"
-               android:visibility="gone"
-               android:background="@drawable/black_transparent_background"
-               app:layout_constraintEnd_toEndOf="@id/img_foodDetails"
-               app:layout_constraintTop_toTopOf="@id/img_foodDetails" />
+            android:id="@+id/black_background"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/black_transparent_background"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/img_foodDetails"
+            app:layout_constraintTop_toTopOf="@id/img_foodDetails" />
 
 
         <CheckBox
             android:id="@+id/btn_favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginTop="2dp"
             android:button="@drawable/sl_favourite_48dp"
             android:visibility="gone"
@@ -101,7 +101,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/IngredientVideo"
-        />
+            />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -137,7 +137,7 @@
             android:fontFamily="@font/meriendavariablefontwght"
             android:text="@string/addToCalendar"
             android:textColor="@color/whitePink"
-            android:visibility="visible"
+            android:visibility="gone"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.061"

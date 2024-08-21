@@ -33,7 +33,8 @@ public class SplashScreen extends AppCompatActivity {
         LottieAnimationView animationView = findViewById(R.id.lottieAnimation);
         TextView appName = findViewById(R.id.tv_AppName);
 
-
+//        appName.animate().translationY(-1800).setDuration(1000).setStartDelay(4000);
+//        animationView.animate().translationY(-1600).setDuration(1000).setStartDelay(4000);
 
         handler = new Handler(Looper.getMainLooper());
         int SPLASH_TIME = 4000;

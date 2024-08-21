@@ -59,8 +59,8 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
         holder.meal_country.setText(detailedMeal.getStrArea());
         holder.meal_instructions.setText(detailedMeal.getStrInstructions());
         Glide.with(holder.meal_photo.getContext()).load(detailedMeal.getStrMealThumb()).into(holder.meal_photo);
-        String userID = FirebaseRepoImp.getInstance(holder.black_background.getContext()).getSharedPreferences().getString("userID", null);
-        if (userID != null) {
+        String clientID = FirebaseRepoImp.getInstance(holder.black_background.getContext()).getSharedPreferences().getString("clientID", null);
+        if (clientID != null) {
             holder.black_background.setVisibility(View.VISIBLE);
             holder.btnFavorite.setVisibility(View.VISIBLE);
             holder.btn_add_to_calender.setVisibility(View.VISIBLE);
@@ -174,6 +174,8 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
             layoutManager=new LinearLayoutManager(recyclerViewIngredients.getContext());
             layoutManager.setOrientation(RecyclerView.HORIZONTAL);
             recyclerViewIngredients.setLayoutManager(layoutManager);
+
+
 
         }
     }
