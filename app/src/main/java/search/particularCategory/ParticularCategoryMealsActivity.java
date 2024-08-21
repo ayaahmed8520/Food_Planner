@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -40,14 +39,14 @@ public class ParticularCategoryMealsActivity extends AppCompatActivity implement
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_particular_category_meals);
 
-        recyclerView= findViewById(R.id.rv_particular_category_meals);
+        recyclerView= findViewById(R.id.rv_particularCategoryMeals);
         gridlayoutManager =new GridLayoutManager(this,2);
         gridlayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(gridlayoutManager);
         particularCategoryAdapter= new ParticularCategoryAdapter(new ArrayList<>(),this);
         recyclerView.setAdapter(particularCategoryAdapter);
 
-        tvCategory=findViewById(R.id.tv_particular_category);
+        tvCategory=findViewById(R.id.tv_searchForParticularCategory);
         Intent myIntent = getIntent();
         if (myIntent != null) {
             categoryName = myIntent.getStringExtra("categoryName");
@@ -56,7 +55,7 @@ public class ParticularCategoryMealsActivity extends AppCompatActivity implement
 
         }
 
-        closeScreen=findViewById(R.id.iv_close_search_by_particular_category);
+        closeScreen=findViewById(R.id.btn_closeCategory);
         closeScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +64,7 @@ public class ParticularCategoryMealsActivity extends AppCompatActivity implement
         });
 
 
-        searchView=findViewById(R.id.sv_search_in_particular_area);
+        searchView=findViewById(R.id.sv_searchByParticularArea);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override

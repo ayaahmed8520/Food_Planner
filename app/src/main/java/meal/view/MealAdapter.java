@@ -1,5 +1,6 @@
 package meal.view;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.Holder> {
     private final OnMealClick listOnClickItem;
 
     public MealAdapter(ArrayList<SingleMeal> simpleMealList, OnMealClick listOnClickItem) {
-        this.simpleMealList = simpleMealList;
+        this.simpleMealList = simpleMealList != null ? simpleMealList : new ArrayList<>();
         this.listOnClickItem = listOnClickItem;
     }
 
@@ -41,7 +42,8 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.Holder> {
 
     @Override
     public int getItemCount() {
-        return simpleMealList.size();
+        Log.d("MealAdapter", "Size of meals list: " + (simpleMealList != null ? simpleMealList.size() : "null"));
+        return simpleMealList != null ? simpleMealList.size() : 0;
     }
 
 
@@ -51,8 +53,8 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.Holder> {
 
         public Holder(@NonNull View itemView) {
             super(itemView);
-            meal_photo = itemView.findViewById(R.id.dish_image);
-            meal_name_tv = itemView.findViewById(R.id.dish_name);
+            meal_photo = itemView.findViewById(R.id.img_dish);
+            meal_name_tv = itemView.findViewById(R.id.tv_dishName);
             meal_id_tv = itemView.findViewById(R.id.dish_id);
 
             itemView.setOnClickListener(new View.OnClickListener() {

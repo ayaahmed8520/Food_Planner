@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import mealDetails.model.IngredientWithMeasure;
 
@@ -62,11 +61,11 @@ public class MealDetailsIngredientsAdapter extends RecyclerView.Adapter<MealDeta
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ingredientName = itemView.findViewById(R.id.tv_ingredient_name_in_meal_details);
+            ingredientName = itemView.findViewById(R.id.tv_ingredientName);
 
-            ingredientMeasure = itemView.findViewById(R.id.tv_ingredient_measure);
+            ingredientMeasure = itemView.findViewById(R.id.tv_ingredientMeasure);
 
-            ingredientImageView = itemView.findViewById(R.id.iv_ingredient_image_in_meal_details);
+            ingredientImageView = itemView.findViewById(R.id.img_ingredient);
 
         }
 

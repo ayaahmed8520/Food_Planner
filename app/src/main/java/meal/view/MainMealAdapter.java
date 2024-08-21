@@ -53,8 +53,8 @@ public class MainMealAdapter extends RecyclerView.Adapter<MainMealAdapter.Holder
 
         public Holder(@NonNull View itemView) {
             super(itemView);
-            meal_photo = itemView.findViewById(R.id.dish_image);
-            meal_name_tv = itemView.findViewById(R.id.dish_name);
+            meal_photo = itemView.findViewById(R.id.img_dish);
+            meal_name_tv = itemView.findViewById(R.id.tv_dishName);
             meal_id_tv = itemView.findViewById(R.id.dish_id);
 
             itemView.setOnClickListener(new View.OnClickListener() {

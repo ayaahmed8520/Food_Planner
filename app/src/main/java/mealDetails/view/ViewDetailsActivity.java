@@ -26,6 +26,7 @@ import network.ApiService;
 import retrofit2.Retrofit;
 import search.view.AddAndRemoveFavoriteViewInterface;
 
+
 public class ViewDetailsActivity extends AppCompatActivity implements MealDetailsInterface,AddAndRemoveFavoriteViewInterface {
 
     private RecyclerView recyclerViewDetails;
@@ -43,12 +44,13 @@ public class ViewDetailsActivity extends AppCompatActivity implements MealDetail
         callApi();
     }
 
+    @SuppressLint("CheckResult")
     private void callApi()
     {
         Observable<MealListDetails> callFirst = retrofitInterface.getMealDetailsByID(mealId);
         callFirst.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        myResponse -> {
+                        (@SuppressLint("CheckResult") MealListDetails myResponse) -> {
                             detailedMeals = myResponse.getMeals();
                             recyclerViewDetails.setHasFixedSize(true);
 
@@ -65,7 +67,7 @@ public class ViewDetailsActivity extends AppCompatActivity implements MealDetail
     }
     private void initValues()
     {
-        recyclerViewDetails = findViewById(R.id.rv_view_details);
+        recyclerViewDetails = findViewById(R.id.rv_mealDetails);
         mealId = FirebaseRepoImp.getInstance(this).getSharedPreferences().getString("mealcurrentid",null);
         Retrofit retrofitClient = ApiClient.getClient();
         retrofitInterface = retrofitClient.create(ApiService.class);

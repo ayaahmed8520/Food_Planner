@@ -43,7 +43,7 @@ public class AllIngredientsActivity extends AppCompatActivity implements AllIngr
         recyclerView.setLayoutManager(layoutManager);
         ingredientAdapter = new IngredientAdapter(this, this, new ArrayList<>());
         recyclerView.setAdapter(ingredientAdapter);
-        closeScreen = findViewById(R.id.close_all_ingredients_activity);
+        closeScreen = findViewById(R.id.btn_close);
         closeScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +52,7 @@ public class AllIngredientsActivity extends AppCompatActivity implements AllIngr
         });
 
         getIngredients();
-        searchView = findViewById(R.id.sv_by_ingredient);
+        searchView = findViewById(R.id.sv_searchByIngredient);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override

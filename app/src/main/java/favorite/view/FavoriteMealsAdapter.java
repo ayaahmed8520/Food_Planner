@@ -79,10 +79,10 @@ public class FavoriteMealsAdapter  extends RecyclerView.Adapter<FavoriteMealsAda
         Button btnRemoveFromFavorite;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            meal_photo = itemView.findViewById(R.id.dish_image);
-            meal_name_tv = itemView.findViewById(R.id.dish_name);
+            meal_photo = itemView.findViewById(R.id.img_dish);
+            meal_name_tv = itemView.findViewById(R.id.tv_dishName);
             meal_id_tv = itemView.findViewById(R.id.dish_id);
-            btnRemoveFromFavorite = itemView.findViewById(R.id.btn_remove_from_favorite);
+            btnRemoveFromFavorite = itemView.findViewById(R.id.btn_removeFromFavorite);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

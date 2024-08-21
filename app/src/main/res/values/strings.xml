@@ -34,6 +34,16 @@
     <string name="area">Area</string>
     <string name="category">Category</string>
     <string name="ingredient">Ingredient</string>
+    <string name="img_bg">Image background</string>
+    <string name="addToCalendar">Add to Calendar</string>
+    <string name="logout">Logout</string>
+    <string name="favoriteDishes">My favorite dishes</string>
+    <string name="close">Close</string>
+    <string name="saveAndBack">Save And Back</string>
+    <string name="searchByIngredient">Search by Ingredient</string>
+    <string name="searchByCategory">Search by Category</string>
+    <string name="searchByArea">Search by Area</string>
+    <string name="addMealFromSearch">Add Meal from Search</string>
 
 
 </resources>

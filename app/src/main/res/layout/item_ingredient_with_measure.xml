@@ -9,11 +9,12 @@
     android:layout_margin="8dp">
 
     <ImageView
-        android:id="@+id/iv_ingredient_background"
+        android:id="@+id/img_background"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/btn_round_background"
+        android:contentDescription="@string/img_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,18 +22,19 @@
          />
 
     <ImageView
-        android:id="@+id/iv_ingredient_image_in_meal_details"
+        android:id="@+id/img_ingredient"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:contentDescription="@string/img_bg"
         android:src="@drawable/test_img"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_ingredient_background"
-        app:layout_constraintEnd_toEndOf="@+id/iv_ingredient_background"
-        app:layout_constraintStart_toStartOf="@+id/iv_ingredient_background"
-        app:layout_constraintTop_toTopOf="@+id/iv_ingredient_background"
+        app:layout_constraintBottom_toBottomOf="@+id/img_background"
+        app:layout_constraintEnd_toEndOf="@+id/img_background"
+        app:layout_constraintStart_toStartOf="@+id/img_background"
+        app:layout_constraintTop_toTopOf="@+id/img_background"
          />
 
     <TextView
-        android:id="@+id/tv_ingredient_name_in_meal_details"
+        android:id="@+id/tv_ingredientName"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
@@ -41,13 +43,13 @@
         android:textAlignment="center"
         android:textColor="@color/whitePink"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/iv_ingredient_background"
-        app:layout_constraintStart_toStartOf="@+id/iv_ingredient_background"
-        app:layout_constraintTop_toBottomOf="@+id/iv_ingredient_background"
+        app:layout_constraintEnd_toEndOf="@+id/img_background"
+        app:layout_constraintStart_toStartOf="@+id/img_background"
+        app:layout_constraintTop_toBottomOf="@+id/img_background"
         tools:text="Apple" />
 
     <TextView
-        android:id="@+id/tv_ingredient_measure"
+        android:id="@+id/tv_ingredientMeasure"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
@@ -56,8 +58,8 @@
         android:textAlignment="center"
         android:textColor="@color/darkBlue"
         android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="@+id/iv_ingredient_background"
-        app:layout_constraintStart_toStartOf="@+id/iv_ingredient_background"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ingredient_name_in_meal_details"
+        app:layout_constraintEnd_toEndOf="@+id/img_background"
+        app:layout_constraintStart_toStartOf="@+id/img_background"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ingredientName"
         tools:text="1 sliced" />
 </androidx.constraintlayout.widget.ConstraintLayout>

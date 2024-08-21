@@ -40,19 +40,12 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_and_sign_up_screen);
-        initializeVariables();
-        setListeners();
-        googleSignIn();
-    }
-    private void initializeVariables()
-    {
+
         loginBtn = findViewById(R.id.btn_login);
         signupBtn = findViewById(R.id.btn_signup);
         skipBtn =  findViewById(R.id.btn_Skip);
         googleSignBtn = findViewById(R.id.btn_googleSignIn);
-    }
-    private void setListeners()
-    {
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +69,12 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        googleSignIn();
+
     }
+
+
 
     private void googleSignIn() {
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -116,12 +114,13 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "Google sign in successful", Toast.LENGTH_SHORT).show();
 
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    String userID = user.getUid();
+                                    assert user != null;
+                                    String clientID = user.getUid();
                                     sharedPreferences = getSharedPreferences("foodPlanner_preferences", MODE_PRIVATE);
                                     editor = sharedPreferences.edit();
-                                    editor.putString("clientID", userID);
-                                    editor.commit();
-                                    //firebaseFirebaseRepository.registerUserGoogle();
+                                    editor.putString("clientID", clientID);
+                                    editor.apply();
+
 
                                     startActivity(new Intent(LoginAndSignUpScreen.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                                 } else {
@@ -132,6 +131,8 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
                     }
                 } catch (ApiException e) {
                     e.printStackTrace();
+                    Toast.makeText(this, "Sign-In Failed: " + e.getStatusCode(), Toast.LENGTH_SHORT).show();
+
                 }
             }
         }

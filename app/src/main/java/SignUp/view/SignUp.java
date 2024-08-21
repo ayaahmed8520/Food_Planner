@@ -43,8 +43,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        // android.content.Context context=getApplicationContext();
-        //initialize ui
+
         textInputUsername = findViewById(R.id.textInput_userName);
         textInputEmail = findViewById(R.id.textInput_userEmail);
         textInputPassword = findViewById(R.id.textInput_userPassword);
@@ -53,7 +52,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
         progressBar= findViewById(R.id.progress_bar);
 
 
-        //create presenter obj
+
         firebasePresenter = new FirebasePresenterImp(this, FirebaseRepoImp.getInstance(getApplicationContext()));
 
         backToLogin.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +82,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
                 }
             }
         });
+
         textInputEmail.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -103,6 +103,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
 
             }
         });
+
         textInputPassword.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -211,7 +212,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
 
     // SIGNUP ON CLICK
     public void confirmInput(View v) {
-        if (validateEmail() & validateUsername() & validatePassword() & validateConfirmPassword()) {
+        if (validateEmail() && validateUsername() && validatePassword() && validateConfirmPassword()) {
             progressBar.setVisibility(View.VISIBLE);
 
             Log.i("TAGTAGTAG", "confirmInput: " + textInputUsername.getEditText().getText().toString());
@@ -237,7 +238,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
         progressBar.setVisibility(View.GONE);
         Intent intent = new Intent(SignUp.this, MainActivity.class);
         startActivity(intent);
-
+        finish();  // Finish this activity to remove it from the back stack
     }
 
     @Override

@@ -40,12 +40,12 @@
         app:layout_constraintGuide_percent="0.95" />
 
     <TextView
-        android:id="@+id/tv_particular_area"
+        android:id="@+id/tv_searchForParticularArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/meriendavariablefontwght"
-        android:text="Area"
-        android:textColor="@color/darkBlue"
+        android:text="@string/area"
+        android:textColor="@color/titleColor"
         android:textSize="25sp"
         android:textStyle="bold"
         android:layout_marginTop="30dp"
@@ -54,16 +54,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_close_search_by_particular_area"
+        android:id="@+id/btn_closeArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/green_transparent_background"
+        android:contentDescription="@string/close"
         app:layout_constraintEnd_toStartOf="@id/gl_vertical_end"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_close_30" />
+
     <SearchView
-        android:id="@+id/sv_search_in_particular_area"
+        android:id="@+id/sv_searchByParticularArea"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:iconifiedByDefault="false"
@@ -71,19 +73,18 @@
         android:searchIcon="@drawable/ic_search_48"
         android:queryHint="Search "
         android:background="@drawable/green_transparent_background"
-
         app:layout_constraintEnd_toStartOf="@+id/gl_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/gl_vertical_start"
-        app:layout_constraintTop_toBottomOf="@+id/tv_particular_area" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_searchForParticularArea" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_particular_area_meal"
+        android:id="@+id/rv_particularAreaMeals"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:spanCount="2"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/sv_search_in_particular_area"
+        app:layout_constraintTop_toBottomOf="@id/sv_searchByParticularArea"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -17,7 +17,7 @@
 
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/area_image"
+            android:id="@+id/img_flag"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:importantForAccessibility="no"
@@ -34,7 +34,7 @@
 
 
         <TextView
-            android:id="@+id/area_name"
+            android:id="@+id/tv_countryName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"

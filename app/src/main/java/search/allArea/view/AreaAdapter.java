@@ -71,8 +71,8 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.MyViewHolder> 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             wholeItem=itemView.findViewById(R.id.layout_whole_item);
-            name=itemView.findViewById(R.id.area_name);
-            photo=itemView.findViewById(R.id.area_image);
+            name=itemView.findViewById(R.id.tv_countryName);
+            photo=itemView.findViewById(R.id.img_flag);
 
 
         }

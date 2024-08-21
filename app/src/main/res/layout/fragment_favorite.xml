@@ -41,12 +41,12 @@
         app:layout_constraintGuide_percent="0.95"/>
 
     <TextView
-        android:id="@+id/tv_my_favorite_dishes"
+        android:id="@+id/tv_FavoriteDishes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/meriendavariablefontwght"
-        android:text="My favorite dishes"
-        android:textColor="@color/darkBlue"
+        android:text="@string/favoriteDishes"
+        android:textColor="@color/titleColor"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/gl_horizontal_top"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_my_favorite"
+        android:id="@+id/rv_myFavorite"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

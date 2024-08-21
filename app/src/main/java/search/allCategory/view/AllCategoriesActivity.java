@@ -43,7 +43,7 @@ public class AllCategoriesActivity extends AppCompatActivity implements AllCateg
         recyclerView.setAdapter(categoryAdapter);
 
         getCategories();
-        closeScreen=findViewById(R.id.close_all_categories_activity);
+        closeScreen=findViewById(R.id.btn_close);
         closeScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +51,7 @@ public class AllCategoriesActivity extends AppCompatActivity implements AllCateg
             }
         });
 
-        searchView=findViewById(R.id.sv_by_category);
+        searchView=findViewById(R.id.sv_searchByCategory);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override

@@ -18,7 +18,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MealDetailsRepository {
     public static final String BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
 
-    @SuppressLint("CheckResult")
     public static void getDetailedMealRepository(String meal){
 
         Gson gson = new GsonBuilder().setLenient().create();
@@ -34,6 +33,9 @@ public class MealDetailsRepository {
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         myResponse -> {
+                            //todo
+//                            MealDetailsPresenter.onSuccessResult(myResponse.getIdMeal());
+//                            ParticularCategoryMealsPresenter.onSuccessResult(myResponse.getMeals());
                         },
                         error->{
                             MealDetailsPresenter.onFailureResult(error.getMessage());
@@ -42,3 +44,4 @@ public class MealDetailsRepository {
 
     }
 }
+

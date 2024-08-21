@@ -22,12 +22,12 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 
 import java.util.ArrayList;
 
-import firebase.FirebaseRepo;
 import firebase.FirebaseRepoImp;
 import mealDetails.model.IngredientWithMeasure;
 import mealDetails.model.SingleMealDetails;
 import search.allIngrediant.view.MealDetailsIngredientsAdapter;
 import search.view.AddAndRemoveFavoriteViewInterface;
+
 
 public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.Holder> {
 
@@ -164,11 +164,11 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
 
         public Holder(@NonNull View itemView) {
             super(itemView);
-            meal_photo = itemView.findViewById(R.id.iv_details_food);
-            meal_name_tv = itemView.findViewById(R.id.tv_details_name_of_meal);
-            meal_country = itemView.findViewById(R.id.tv_details_country);
-            meal_instructions = itemView.findViewById(R.id.tv_details_instructions);
-            mealVideo = itemView.findViewById(R.id.video);
+            meal_photo = itemView.findViewById(R.id.img_foodDetails);
+            meal_name_tv = itemView.findViewById(R.id.tv_detailsFoodName);
+            meal_country = itemView.findViewById(R.id.tv_detailsFoodCountry);
+            meal_instructions = itemView.findViewById(R.id.tv_instructionDetails);
+            mealVideo = itemView.findViewById(R.id.IngredientVideo);
             recyclerViewIngredients = itemView.findViewById(R.id.rv_ingredients);
             btnFavorite = itemView.findViewById(R.id.btn_favorite);
             btn_add_to_calender = itemView.findViewById(R.id.btn_add_to_calender);
@@ -180,5 +180,6 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
         }
     }
 }
+
 
 

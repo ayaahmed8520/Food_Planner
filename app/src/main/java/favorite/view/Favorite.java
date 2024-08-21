@@ -35,7 +35,7 @@ public class Favorite extends Fragment implements FavoriteFragmentInterface , On
     LinearLayoutManager layoutManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_fevorite, container, false);
+        return inflater.inflate(R.layout.fragment_favorite, container, false);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class Favorite extends Fragment implements FavoriteFragmentInterface , On
 
     }
     private void initUI(@NonNull View view) {
-        favoriteRecyclerView = view.findViewById(R.id.rv_my_favorite);
+        favoriteRecyclerView = view.findViewById(R.id.rv_myFavorite);
 
     }
 

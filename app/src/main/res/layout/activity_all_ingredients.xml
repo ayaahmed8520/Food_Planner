@@ -43,12 +43,12 @@
         app:layout_constraintGuide_percent="0.95"/>
 
     <TextView
-        android:id="@+id/tv_search_by_ingredient"
+        android:id="@+id/tv_searchByIngredient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/meriendavariablefontwght"
-        android:text="Search by Ingredient"
-        android:textColor="@color/darkBlue"
+        android:text="@string/searchByIngredient"
+        android:textColor="@color/titleColor"
         android:layout_marginEnd="8dp"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -58,17 +58,18 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
-        android:id="@+id/close_all_ingredients_activity"
+        android:id="@+id/btn_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/green_transparent_background"
+        android:contentDescription="@string/close"
         app:layout_constraintEnd_toStartOf="@id/gl_vertical_end"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_close_30"/>
 
     <SearchView
-        android:id="@+id/sv_by_ingredient"
+        android:id="@+id/sv_searchByIngredient"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:iconifiedByDefault="false"
@@ -78,13 +79,13 @@
         android:background="@drawable/green_transparent_background"
         app:layout_constraintEnd_toStartOf="@+id/gl_vertical_end"
         app:layout_constraintStart_toEndOf="@+id/gl_vertical_start"
-        app:layout_constraintTop_toBottomOf="@+id/tv_search_by_ingredient"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_searchByIngredient"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_ingredients"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/sv_by_ingredient"
+        app:layout_constraintTop_toBottomOf="@id/sv_searchByIngredient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/gl_vertical_end"
         app:layout_constraintHorizontal_bias="0.0"

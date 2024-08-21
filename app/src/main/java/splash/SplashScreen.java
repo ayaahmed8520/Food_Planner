@@ -1,6 +1,5 @@
 package splash;
 
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,43 +19,39 @@ import firebase.FirebaseRepoImp;
 @SuppressLint("CustomSplashScreen")
 public class SplashScreen extends AppCompatActivity {
 
+    private Handler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-
-        String clientID= FirebaseRepoImp.getInstance(this).getSharedPreferences().getString("clientID",null);
+        String clientID = FirebaseRepoImp.getInstance(this)
+                .getSharedPreferences()
+                .getString("clientID", null);
 
         LottieAnimationView animationView = findViewById(R.id.lottieAnimation);
         TextView appName = findViewById(R.id.tv_AppName);
 
-
         appName.animate().translationY(-1800).setDuration(1000).setStartDelay(4000);
         animationView.animate().translationY(-1600).setDuration(1000).setStartDelay(4000);
 
-
-        final Handler handler = new Handler(Looper.getMainLooper());
+        handler = new Handler(Looper.getMainLooper());
         int SPLASH_TIME = 4000;
 
         handler.postDelayed(() -> {
-
             Intent intent;
-
-            if(clientID!=null){
+            if (clientID != null) {
                 intent = new Intent(SplashScreen.this, MainActivity.class);
-            }
-            else
-            {
-                intent = new Intent(SplashScreen.this, LoginAndSignUpScreen.class);
+                startActivity(intent);
+            } else {
+                intent = new Intent(this, LoginAndSignUpScreen.class);
+                startActivity(intent);
             }
 
-            startActivity(intent);
-            overridePendingTransition(0 , 0);
-
+            overridePendingTransition(0, 0);
         }, SPLASH_TIME);
-
-
     }
+
+
 }

@@ -38,14 +38,14 @@ public class ParticularAreaMealActivity extends AppCompatActivity implements Par
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_particular_area_meal);
 
-        recyclerView= findViewById(R.id.rv_particular_area_meal);
+        recyclerView= findViewById(R.id.rv_particularAreaMeals);
         gridlayoutManager =new GridLayoutManager(this,2);
         gridlayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(gridlayoutManager);
         particularAreaAdapter= new ParticularAreaAdapter(new ArrayList<>(),this);
         recyclerView.setAdapter(particularAreaAdapter);
 
-        tvArea=findViewById(R.id.tv_particular_area);
+        tvArea=findViewById(R.id.tv_searchForParticularArea);
         Intent myIntent = getIntent();
         if (myIntent != null) {
             areaName = myIntent.getStringExtra("areaName");
@@ -53,7 +53,7 @@ public class ParticularAreaMealActivity extends AppCompatActivity implements Par
             getParticularAreaMeals(areaName);
         }
 
-        closeScreen=findViewById(R.id.iv_close_search_by_particular_area);
+        closeScreen=findViewById(R.id.btn_closeArea);
         closeScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +61,7 @@ public class ParticularAreaMealActivity extends AppCompatActivity implements Par
             }
         });
 
-        searchView=findViewById(R.id.sv_search_in_particular_area);
+        searchView=findViewById(R.id.sv_searchByParticularArea);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override

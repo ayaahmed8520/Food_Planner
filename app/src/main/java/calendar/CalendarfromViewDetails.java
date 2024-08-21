@@ -23,14 +23,14 @@ public class CalendarfromViewDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendarfrom_view_details);
-        returnToMeal = findViewById(R.id.btn_calendar_return);
+        setContentView(R.layout.activity_view_calendar);
+        returnToMeal = findViewById(R.id.btn_save);
         returnToMeal.setOnClickListener(view -> {
             Intent intent = new Intent(CalendarfromViewDetails.this, ViewDetailsActivity.class);
             startActivity(intent);
         });
 
-        simpleCalendarView = findViewById(R.id.simpleCalendarView);
+        simpleCalendarView = findViewById(R.id.mealsCalender);
         simpleCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {

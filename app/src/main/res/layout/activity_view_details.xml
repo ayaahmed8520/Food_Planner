@@ -8,7 +8,7 @@
     android:fillViewport="true">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_view_details"
+        android:id="@+id/rv_mealDetails"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"

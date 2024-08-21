@@ -38,14 +38,14 @@ public class ParticularIngredientMealsActivity extends AppCompatActivity impleme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_particular_ingredient_meals);
 
-        recyclerView= findViewById(R.id.rv_particular_ingredient_meals);
+        recyclerView= findViewById(R.id.rv_particularIngredientMeals);
         gridlayoutManager =new GridLayoutManager(this,2);
         gridlayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(gridlayoutManager);
         particularIngredientAdapter= new ParticularIngredientAdapter(new ArrayList<>(),this);
         recyclerView.setAdapter(particularIngredientAdapter);
 
-        tvIngredient=findViewById(R.id.tv_particular_ingredient);
+        tvIngredient=findViewById(R.id.tv_searchForParticularIngredient);
         Intent myIntent = getIntent();
         if (myIntent != null) {
             ingredientName = myIntent.getStringExtra("ingredientName");
@@ -54,7 +54,7 @@ public class ParticularIngredientMealsActivity extends AppCompatActivity impleme
 
         }
 
-        closeScreen=findViewById(R.id.close_ingredient_meals);
+        closeScreen=findViewById(R.id.btn_closeIngredient);
         closeScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +62,7 @@ public class ParticularIngredientMealsActivity extends AppCompatActivity impleme
             }
         });
 
-        searchView=findViewById(R.id.sv_search_by_particular_ingredient);
+        searchView=findViewById(R.id.sv_searchByParticularIngredient);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override

@@ -37,8 +37,8 @@ public class AllAreaActivity extends AppCompatActivity implements AllAreasActivi
         setContentView(R.layout.activity_all_area);
 
         recyclerView=findViewById(R.id.rv_areas);
-        searchView=findViewById(R.id.sv_search_area);
-        closeScreen=findViewById(R.id.iv_close_search_by_area);
+        searchView=findViewById(R.id.sv_searchByArea);
+        closeScreen=findViewById(R.id.btn_close);
         closeScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

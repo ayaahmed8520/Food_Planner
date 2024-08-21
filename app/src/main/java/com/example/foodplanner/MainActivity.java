@@ -63,8 +63,10 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack(null); // Add this line if back navigation is desired
         fragmentTransaction.commit();
     }
+
 
     public void signupToGetMoreFeature() {
         builder.setTitle("Sign up for more features!")
@@ -85,5 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .show();
     }
+
+
+
 
 }

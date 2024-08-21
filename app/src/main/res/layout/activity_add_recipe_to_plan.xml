@@ -44,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/meriendavariablefontwght"
-        android:text="Add Recipe from Search"
-        android:textColor="@color/darkBlue"
+        android:text="@string/addMealFromSearch"
+        android:textColor="@color/titleColor"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@id/gl_horizontal_top"
         app:layout_constraintStart_toStartOf="@id/gl_vertical_start"
@@ -53,19 +53,21 @@
         app:layout_constraintVertical_bias="0.551" />
 
     <ImageView
+        android:id="@+id/btn_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/close"
         app:layout_constraintBottom_toTopOf="@id/gl_horizontal_top"
         android:background="@drawable/green_transparent_background"
         app:layout_constraintEnd_toStartOf="@id/gl_vertical_end"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_close_30" />
+
     <SearchView
-        android:id="@+id/search_view"
+        android:id="@+id/searchForMeal"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:iconifiedByDefault="false"
-
         android:queryBackground="@android:color/transparent"
         android:searchIcon="@drawable/ic_search_48"
         android:queryHint="Search Recipes"
