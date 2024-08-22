@@ -7,7 +7,6 @@ public class UserSignUpInfo {
     private String confirmPassword;
 
 
-    //constructor
     public UserSignUpInfo(String userName, String userEmail, String userPassword, String confirmPassword) {
         this.userName = userName;
         this.userEmail = userEmail;
@@ -16,7 +15,6 @@ public class UserSignUpInfo {
     }
 
 
-    //getters
     public String getUserName() {
         return userName;
     }
@@ -33,7 +31,6 @@ public class UserSignUpInfo {
         return confirmPassword;
     }
 
-    //setters
 
 
     public void setUserName(String userName) {

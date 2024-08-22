@@ -29,24 +29,26 @@ import SignUp.view.SignUp;
 
 
 public class LoginAndSignUpScreen extends AppCompatActivity {
-    private Button loginBtn, signupBtn, skipBtn;
-    SignInButton googleSignBtn;
-    GoogleSignInClient googleSignInClient;
-    FirebaseAuth firebaseAuth;
-    SharedPreferences.Editor editor;
+
+    private Button btnLogin, btnSignup, btnSkip;
+    private SignInButton btnGoogleSign;
+    private GoogleSignInClient googleSignInClient;
+    private FirebaseAuth firebaseAuth;
+    private SharedPreferences.Editor editor;
     private  SharedPreferences sharedPreferences;
     String googleClientId = "868989801427-d91ml5v8ih7d0nuo0hgar45tpsr2ht2l.apps.googleusercontent.com";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_and_sign_up_screen);
 
-        loginBtn = findViewById(R.id.btn_login);
-        signupBtn = findViewById(R.id.btn_signup);
-        skipBtn =  findViewById(R.id.btn_Skip);
-        googleSignBtn = findViewById(R.id.btn_googleSignIn);
+        btnLogin = findViewById(R.id.btn_login);
+        btnSignup = findViewById(R.id.btn_signup);
+        btnSkip =  findViewById(R.id.btn_Skip);
+        btnGoogleSign = findViewById(R.id.btn_googleSignIn);
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginAndSignUpScreen.this, Login.class);
@@ -54,7 +56,7 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
             }
         });
 
-        signupBtn.setOnClickListener(new View.OnClickListener() {
+        btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginAndSignUpScreen.this, SignUp.class);
@@ -62,7 +64,7 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
             }
         });
 
-        skipBtn.setOnClickListener(new View.OnClickListener() {
+        btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginAndSignUpScreen.this, MainActivity.class);
@@ -70,13 +72,26 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
             }
         });
 
-        googleSignIn();
+        signInWithGoogle();
 
     }
 
 
 
-    private void googleSignIn() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private void signInWithGoogle() {
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(googleClientId)
                 .requestEmail()
@@ -84,7 +99,7 @@ public class LoginAndSignUpScreen extends AppCompatActivity {
 
         googleSignInClient = GoogleSignIn.getClient(LoginAndSignUpScreen.this, googleSignInOptions);
 
-        googleSignBtn.setOnClickListener(view -> {
+        btnGoogleSign.setOnClickListener(view -> {
             Intent intent = googleSignInClient.getSignInIntent();
             startActivityForResult(intent, 100);
         });

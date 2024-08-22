@@ -17,88 +17,93 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.foodplanner.MainActivity;
 import com.example.foodplanner.R;
 
-import Login.model.LoginListener;
-import Login.presenter.LoginPresenter;
-import Login.presenter.LoginPresenterImp;
+import Login.presenter.LoginPresenterIn;
+import Login.presenter.LoginPresenterInImp;
 
 public class Login extends AppCompatActivity implements LoginListener {
 
-    private EditText mEmailEditText;
-    private EditText mPasswordEditText;
-    private Button mLoginButton;
-    private ProgressBar mProgressBar;
+    private EditText etEmail;
+    private EditText etPassword;
+    private Button btnLogin;
+    private ProgressBar progressBar;
 
-    private LoginPresenter mPresenter;
+    private LoginPresenterIn loginPresenterIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mPresenter = new LoginPresenterImp(this);
+        loginPresenterIn = new LoginPresenterInImp(this);
 
-        mEmailEditText = findViewById(R.id.et_userEmail);
-        mPasswordEditText = findViewById(R.id.textInput_userPassword);
-        mLoginButton = findViewById(R.id.btn_login);
-        mProgressBar = findViewById(R.id.progress_bar);
+        etEmail = findViewById(R.id.et_userEmail);
+        etPassword = findViewById(R.id.textInput_userPassword);
+        btnLogin = findViewById(R.id.btn_login);
+        progressBar = findViewById(R.id.progress_bar);
 
-        mLoginButton.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = mEmailEditText.getText().toString();
-                String password = mPasswordEditText.getText().toString();
+                String email = etEmail.getText().toString();
+                String password = etPassword.getText().toString();
                 if (validateCredentials(email, password)) {
-                    mProgressBar.setVisibility(View.VISIBLE);
-                    mPresenter.userLogin(email, password);
+                    progressBar.setVisibility(View.VISIBLE);
+                    loginPresenterIn.userLogin(email, password);
                 }
             }
         });
     }
 
+
+
+
+
+
     @Override
-    public void onValidationError(String message) {
-        mProgressBar.setVisibility(View.GONE);
+    public void validationError(String message) {
+        progressBar.setVisibility(View.GONE);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onLoginSuccess(String userId) {
+    public void userLoginSuccess(String clientID) {
         SharedPreferences sharedPreferences = getSharedPreferences("foodPlanner_preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("clientID", userId);
+        editor.putString("clientID", clientID);
         editor.apply();
 
-        mProgressBar.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
     @Override
-    public void onLoginError(String message) {
-        mProgressBar.setVisibility(View.GONE);
+    public void userLoginFailure(String message) {
+        progressBar.setVisibility(View.GONE);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-    private boolean validateCredentials(String email, String password) {
+
+    private boolean validateCredentials(String userEmail, String userPassword) {
         boolean flag = true;
 
-        if (TextUtils.isEmpty(password)) {
-            mPasswordEditText.setError("Password field can't be empty");
-            mPasswordEditText.requestFocus();
+        if (TextUtils.isEmpty(userPassword)) {
+            etPassword.setError("Password field can't be empty");
+            etPassword.requestFocus();
             flag = false;
-        } else if (password.length() < 8) {
-            mPasswordEditText.setError("Password should be at least 8 characters including (digits and letters)");
-            mPasswordEditText.requestFocus();
+        } else if (userPassword.length() < 8) {
+            etPassword.setError("Password should be at least 8 characters including (digits and letters)");
+            etPassword.requestFocus();
             flag = false;
         }
 
-        if (TextUtils.isEmpty(email)) {
-            mEmailEditText.setError("Email field can't be empty");
-            mEmailEditText.requestFocus();
+        if (TextUtils.isEmpty(userEmail)) {
+            etEmail.setError("Email field can't be empty");
+            etEmail.requestFocus();
             flag = false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            mEmailEditText.setError("Enter a valid email address: example@example.com");
-            mEmailEditText.requestFocus();
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
+            etEmail.setError("Enter a valid userEmail address: example@example.com");
+            etEmail.requestFocus();
             flag = false;
         }
 

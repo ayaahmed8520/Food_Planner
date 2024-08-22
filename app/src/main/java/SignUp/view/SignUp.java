@@ -26,37 +26,38 @@ import firebase.FirebasePresenter;
 import firebase.FirebaseRepoImp;
 
 
-public class SignUp extends AppCompatActivity implements SignUpView {
+public class SignUp extends AppCompatActivity implements SignUpListener {
+
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     "(?=.*[0-9])" +         //at least 1 digit
                     "(?=.*[a-zA-Z])" +      //any letter
                     ".{8,}" +               //at least 8 characters
                     "$");
-    private TextInputLayout textInputUsername ,textInputEmail,textInputPassword,textInputConfirmPassword;
+
+    private TextInputLayout userName, userEmail, userPassword, userConfirmPassword;
     private ProgressBar progressBar;
-    private FirebasePresenter firebasePresenterInterface;
-    private TextView goToLogin;
+    private FirebasePresenter firebasePresenter;
+    private TextView backToLogin;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        // android.content.Context context=getApplicationContext();
-        //initialize ui
-        textInputUsername = findViewById(R.id.textInput_userName);
-        textInputEmail = findViewById(R.id.textInput_userEmail);
-        textInputPassword = findViewById(R.id.textInput_userPassword);
-        textInputConfirmPassword = findViewById(R.id.textInput_userConfirmPassword);
-        goToLogin =findViewById(R.id.tv_login);
+
+
+        userName = findViewById(R.id.textInput_userName);
+        userEmail = findViewById(R.id.textInput_userEmail);
+        userPassword = findViewById(R.id.textInput_userPassword);
+        userConfirmPassword = findViewById(R.id.textInput_userConfirmPassword);
+        backToLogin =findViewById(R.id.tv_login);
         progressBar= findViewById(R.id.progress_bar);
 
 
-        //create presenter obj
-        firebasePresenterInterface = new FirebasePresenterImp(this,FirebaseRepoImp.getInstance(getApplicationContext()));
+        firebasePresenter = new FirebasePresenterImp(this,FirebaseRepoImp.getInstance(getApplicationContext()));
 
-        goToLogin.setOnClickListener(new View.OnClickListener() {
+        backToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SignUp.this, Login.class);
@@ -64,147 +65,68 @@ public class SignUp extends AppCompatActivity implements SignUpView {
             }
         });
 
-        //textWatcher to observe user input... is it empty?
-        textInputUsername.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                textInputUsername.setError(null);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.toString().isEmpty()) {
-                    textInputUsername.setError("Field can't be empty");
-                }
-            }
-        });
-        textInputEmail.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                textInputEmail.setError(null);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.toString().isEmpty()) {
-                    textInputEmail.setError("Field can't be empty");
-
-                }
-
-            }
-        });
-        textInputPassword.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                textInputPassword.setError(null);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.toString().isEmpty()) {
-                    textInputPassword.setError("Field can't be empty");
-
-                }
-
-            }
-        });
-        textInputConfirmPassword.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                textInputConfirmPassword.setError(null);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.toString().isEmpty()) {
-                    textInputConfirmPassword.setError("Field can't be empty");
-
-                }
-
-            }
-        });
-
-
     }
 
 
+
+
     private boolean validateUsername() {
-        String usernameInput = textInputUsername.getEditText().getText().toString();
+        String usernameInput = userName.getEditText().getText().toString();
 
         if (usernameInput.isEmpty()) {
-            textInputUsername.setError("Field can't be empty");
+            userName.setError("Field can't be empty");
             return false;
         } else if (usernameInput.length() > 15) {
-            textInputUsername.setError("Username too long");
+            userName.setError("Username too long");
             return false;
         } else {
-            textInputUsername.setError(null);
+            userName.setError(null);
             return true;
         }
     }
 
     private boolean validateEmail() {
-        String emailInput = textInputEmail.getEditText().getText().toString().trim();
+        String emailInput = userEmail.getEditText().getText().toString().trim();
 
         if (emailInput.isEmpty()) {
-            textInputEmail.setError("Field can't be empty");
+            userEmail.setError("Field can't be empty");
             return false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
-            textInputEmail.setError("Please enter a valid email address");
+            userEmail.setError("Please enter a valid email address");
             return false;
         } else {
-            textInputEmail.setError(null);
+            userEmail.setError(null);
             return true;
         }
     }
 
 
     private boolean validatePassword() {
-        String passwordInput = textInputPassword.getEditText().getText().toString();
+        String passwordInput = userPassword.getEditText().getText().toString();
 
         if (passwordInput.isEmpty()) {
-            textInputPassword.setError("Field can't be empty");
+            userPassword.setError("Field can't be empty");
             return false;
         } else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()) {
-            textInputPassword.setError("Password should be at least 8 characters including(digits and letters) in English");
+            userPassword.setError("Password should be at least 8 characters including(digits and letters) in English");
             return false;
         } else {
-            textInputPassword.setError(null);
+            userPassword.setError(null);
             return true;
         }
     }
 
     private boolean validateConfirmPassword() {
-        String confirmPasswordInput = textInputConfirmPassword.getEditText().getText().toString();
+        String confirmPasswordInput = userConfirmPassword.getEditText().getText().toString();
 
         if (confirmPasswordInput.isEmpty()) {
-            textInputConfirmPassword.setError("Field can't be empty");
+            userConfirmPassword.setError("Field can't be empty");
             return false;
-        } else if (!textInputPassword.getEditText().getText().toString().equals(confirmPasswordInput)) {
-            textInputConfirmPassword.setError("Confirm password does not match password!");
+        } else if (!userPassword.getEditText().getText().toString().equals(confirmPasswordInput)) {
+            userConfirmPassword.setError("Confirm password does not match password!");
             return false;
         } else {
-            textInputConfirmPassword.setError(null);
+            userConfirmPassword.setError(null);
             return true;
         }
     }
@@ -214,12 +136,12 @@ public class SignUp extends AppCompatActivity implements SignUpView {
         if (validateEmail() & validateUsername() & validatePassword() & validateConfirmPassword()) {
             progressBar.setVisibility(View.VISIBLE);
 
-            Log.i("TAGTAGTAG", "confirmInput: " + textInputUsername.getEditText().getText().toString());
+            Log.i("SignUpTAG", "confirmInput: " + userName.getEditText().getText().toString());
 
-            userRegister(textInputUsername.getEditText().getText().toString(),
-                    textInputEmail.getEditText().getText().toString(),
-                    textInputPassword.getEditText().getText().toString(),
-                    textInputConfirmPassword.getEditText().getText().toString()
+            userRegister(userName.getEditText().getText().toString(),
+                    userEmail.getEditText().getText().toString(),
+                    userPassword.getEditText().getText().toString(),
+                    userConfirmPassword.getEditText().getText().toString()
             );
 
         }
@@ -228,12 +150,12 @@ public class SignUp extends AppCompatActivity implements SignUpView {
 
     @Override
     public void userRegister(String disPlayName, String email, String password, String confirmPassword) {
-        firebasePresenterInterface.registerUser(disPlayName, email, password, confirmPassword);
+        firebasePresenter.registerUser(disPlayName, email, password, confirmPassword);
 
     }
 
     @Override
-    public void registerViewSuccess() {
+    public void registerSuccess() {
         progressBar.setVisibility(View.GONE);
         Intent intent = new Intent(SignUp.this, MainActivity.class);
         startActivity(intent);
@@ -241,7 +163,7 @@ public class SignUp extends AppCompatActivity implements SignUpView {
     }
 
     @Override
-    public void registerViewFailure(@NonNull Task<AuthResult> task) {
+    public void registerFailure(@NonNull Task<AuthResult> task) {
         progressBar.setVisibility(View.GONE);
         Toast.makeText(this, (task.getException()).getMessage(), Toast.LENGTH_LONG).show();
         Log.i("TAGonFailureRegistration", "onFailureRegistration: "+task.getException().getMessage());

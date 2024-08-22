@@ -1,5 +1,5 @@
 package Login.presenter;
 
-public interface LoginPresenter {
+public interface LoginPresenterIn {
     void userLogin(String userEmail, String userPassword);
 }

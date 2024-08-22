@@ -5,18 +5,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
 import SignUp.model.UserSignUpInfo;
-import SignUp.view.SignUpView;
+import SignUp.view.SignUpListener;
 import network.LogOutResult;
 import network.SignUpResult;
 import profile.ProfileFragment;
 
 public class FirebasePresenterImp implements FirebasePresenter, SignUpResult , LogOutResult {
-    SignUpView signUpViewInterface;
+    SignUpListener signUpListenerInterface;
     FirebaseRepo firebaseRepositoryInterface;
     ProfileFragment profileFragmentInterface;
 
-    public FirebasePresenterImp(SignUpView signUpViewInterface, FirebaseRepo firebaseRepositoryInterface) {
-        this.signUpViewInterface= signUpViewInterface;
+    public FirebasePresenterImp(SignUpListener signUpListenerInterface, FirebaseRepo firebaseRepositoryInterface) {
+        this.signUpListenerInterface = signUpListenerInterface;
         this.firebaseRepositoryInterface = firebaseRepositoryInterface;
     }
     public FirebasePresenterImp(ProfileFragment profileFragmentInterface, FirebaseRepo firebaseRepositoryInterface) {
@@ -39,12 +39,12 @@ public class FirebasePresenterImp implements FirebasePresenter, SignUpResult , L
 
     @Override
     public void registerSuccess() {
-        signUpViewInterface.registerViewSuccess();
+        signUpListenerInterface.registerSuccess();
     }
 
     @Override
     public void registerFailure(@NonNull Task<AuthResult> task) {
-        signUpViewInterface.registerViewFailure(task);
+        signUpListenerInterface.registerFailure(task);
 
 
     }

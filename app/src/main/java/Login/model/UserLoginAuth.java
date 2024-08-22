@@ -9,42 +9,45 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginModel {
-    private FirebaseAuth mAuth;
+import Login.view.LoginListener;
 
-    public LoginModel() {
-        mAuth = FirebaseAuth.getInstance();
+public class UserLoginAuth {
+
+    private FirebaseAuth firebaseAuth;
+
+    public UserLoginAuth() {
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     public void loginUser(String email, String password, final LoginListener listener) {
-        mAuth.signInWithEmailAndPassword(email, password)
+        firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            String userId = mAuth.getUid();
-                            listener.onLoginSuccess(userId);
+                            String clientID = firebaseAuth.getUid();
+                            listener.userLoginSuccess(clientID);
                         } else {
-                            listener.onLoginError(task.getException().getMessage());
+                            listener.userLoginFailure(task.getException().getMessage());
                         }
                     }
                 });
     }
 
-    private boolean isEmailValid(String email) {
+    private boolean isAValidEmail(String email) {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    private boolean isPasswordValid(String password) {
+    private boolean isAValidPassword(String password) {
         return password.length() >= 6;
     }
 
     public boolean validateCredentials(String email, String password, final LoginListener listener) {
-        if (!isEmailValid(email)) {
-            listener.onValidationError("Invalid email address");
+        if (!isAValidEmail(email)) {
+            listener.validationError("Invalid email address");
             return false;
-        } else if (!isPasswordValid(password)) {
-            listener.onValidationError("Password should be at least 6 characters");
+        } else if (!isAValidPassword(password)) {
+            listener.validationError("Password should be at least 6 characters");
             return false;
         }
         return true;
