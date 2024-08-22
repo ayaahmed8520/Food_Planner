@@ -14,12 +14,13 @@ import android.widget.Button;
 
 import com.example.foodplanner.R;
 
-import search.allArea.view.AllAreaActivity;
-import search.allCategory.view.AllCategoriesActivity;
-import search.allIngrediant.view.AllIngredientsActivity;
+import search.allCountry.view.AllCountry;
+import search.allCategory.view.AllCategory;
+import search.allIngrediant.view.AllIngredients;
 
 public class Search extends Fragment {
     Button btnSearchByArea , btnSearchByCategory,btnSearchByIngredient;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_search, container, false);
@@ -36,21 +37,23 @@ public class Search extends Fragment {
         btnSearchByArea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(requireContext(), AllAreaActivity.class);
+                Intent intent = new Intent(requireContext(), AllCountry.class);
                 startActivity(intent);
             }
         });
+
         btnSearchByCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(requireContext(), AllCategoriesActivity.class);
+                Intent intent = new Intent(requireContext(), AllCategory.class);
                 startActivity(intent);
             }
         });
+
         btnSearchByIngredient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(requireContext(), AllIngredientsActivity.class);
+                Intent intent = new Intent(requireContext(), AllIngredients.class);
                 startActivity(intent);
             }
         });

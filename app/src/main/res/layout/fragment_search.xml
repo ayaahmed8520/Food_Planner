@@ -38,7 +38,7 @@
             android:layout_marginRight="40dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/btn_round_background"
-            android:text="@string/area"
+            android:text="@string/country"
             android:textAllCaps="false"
             android:textColor="@color/whitePink"
             android:textSize="24sp"

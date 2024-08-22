@@ -24,8 +24,7 @@ import java.util.ArrayList;
 import firebase.FirebaseRepoImp;
 import mealDetails.model.IngredientWithMeasure;
 import mealDetails.model.SingleMealDetails;
-import search.allIngrediant.view.MealDetailsIngredientsAdapter;
-import search.view.AddAndRemoveFavoriteViewInterface;
+import favorite.AddAndRemoveFavoriteViewInterface;
 
 public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.Holder> {
 

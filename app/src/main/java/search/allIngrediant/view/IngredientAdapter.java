@@ -21,15 +21,15 @@ import search.allIngrediant.model.Ingredient;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.MyViewHolder> {
     private static final String TAG = "MyAdapter";
-    AllIngredientsActivityInterface allIngredientsActivityInterface;
+    AllIngredientsInterface allIngredientsInterface;
     ArrayList<Ingredient> ingredients;
     Context context;
 
     public void setList(ArrayList<Ingredient> updatedIngredients){this.ingredients=updatedIngredients;}
 
 
-    public IngredientAdapter(Context context, AllIngredientsActivityInterface allIngredientsActivityInterface,  ArrayList<Ingredient> ingredients) {
-        this.allIngredientsActivityInterface = allIngredientsActivityInterface;
+    public IngredientAdapter(Context context, AllIngredientsInterface allIngredientsInterface, ArrayList<Ingredient> ingredients) {
+        this.allIngredientsInterface = allIngredientsInterface;
         this.ingredients = ingredients;
         this.context = context;
     }
@@ -58,7 +58,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.My
         holder.wholeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                allIngredientsActivityInterface.navigateToParticularIngredientMeals(current.getStrIngredient());
+                allIngredientsInterface.navToSpecificIngredientMeals(current.getStrIngredient());
 
             }
         });
@@ -78,7 +78,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.My
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            wholeItem=itemView.findViewById(R.id.layout_whole_item);
+            wholeItem=itemView.findViewById(R.id.layout_whole_area);
             name=itemView.findViewById(R.id.tv_countryName);
             photo=itemView.findViewById(R.id.img_flag);
 

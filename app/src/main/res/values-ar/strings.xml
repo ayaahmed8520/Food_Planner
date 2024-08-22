@@ -31,7 +31,7 @@
     <string name="passwordHint">أدخل علي الأقل 8 أحرف</string>
     <string name="inspiration">إلهام</string>
     <string name="search_by">البحث من خلال</string>
-    <string name="area">المنطقه</string>
+<!--    <string name="country">المنطقه</string>-->
     <string name="category">الفئه</string>
     <string name="ingredient">المكون</string>
     <string name="img_bg">Image background</string>

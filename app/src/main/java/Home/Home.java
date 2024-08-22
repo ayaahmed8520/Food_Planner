@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.foodplanner.R;
@@ -22,8 +21,6 @@ import com.example.foodplanner.R;
 import java.util.ArrayList;
 import java.util.Random;
 
-import favorite.model.FavoriteRepository;
-import favorite.presenter.FavoritePresenter;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -39,18 +36,18 @@ import retrofit2.Retrofit;
 
 
 public class Home extends Fragment implements OnMealClick  {
+
     private RecyclerView recyclerViewFirst;
     private RecyclerView recyclerViewSecond;
     private RecyclerView recyclerViewThird;
-    private MealAdapter adapter;
-    private MealAdapter adapter2;
-    private MainMealAdapter adapterBig;
+    private MealAdapter firstAdapter;
+    private MealAdapter secondAdapter;
+    private MainMealAdapter mainMealAdapter;
     private ArrayList<SingleMeal> simpleMealsFirst;
     private ArrayList<SingleMeal> simpleMealsSecond;
     private ArrayList<SingleMeal> simpleMealsThird;
-    private String[] randomCountries;
     private String[] randomCategories;
-    private String[] randomIngrediant;
+    private String[] randomIngredient;
     Retrofit retrofitClient;
     ApiService apiService;
 
@@ -60,6 +57,7 @@ public class Home extends Fragment implements OnMealClick  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -76,16 +74,16 @@ public class Home extends Fragment implements OnMealClick  {
         simpleMealsSecond = new ArrayList<>();
         simpleMealsThird = new ArrayList<>();
 
-        adapterBig = new MainMealAdapter(simpleMealsFirst, Home.this);
-        adapter = new MealAdapter(simpleMealsSecond, Home.this);
-        adapter2 = new MealAdapter(simpleMealsThird, Home.this);
+        mainMealAdapter = new MainMealAdapter(simpleMealsFirst, Home.this);
+        firstAdapter = new MealAdapter(simpleMealsSecond, Home.this);
+        secondAdapter = new MealAdapter(simpleMealsThird, Home.this);
 
-        recyclerViewFirst.setAdapter(adapterBig);
-        recyclerViewSecond.setAdapter(adapter);
-        recyclerViewThird.setAdapter(adapter2);
+        recyclerViewFirst.setAdapter(mainMealAdapter);
+        recyclerViewSecond.setAdapter(firstAdapter);
+        recyclerViewThird.setAdapter(secondAdapter);
 
         randomCategories = new String[]{"Beef","Chicken","Dessert","Lamb","Miscellaneous","Pork","Seafood","Side","Vegetarian"};
-        randomIngrediant = new String[]{"Salmon","Pork","Potatoes","Currants","Pine Nuts","Cheese","Sea Salt","Single Cream","Cucumber"};
+        randomIngredient = new String[]{"Salmon","Pork","Potatoes","Currants","Pine Nuts","Cheese","Sea Salt","Single Cream","Cucumber"};
 
         apiFirstCall();
         apiSecondCall();
@@ -93,10 +91,7 @@ public class Home extends Fragment implements OnMealClick  {
     }
 
 
-    private void handleError(Throwable error) {
-        error.printStackTrace();
-        Toast.makeText(getContext(), "An error occurred, please try again", Toast.LENGTH_SHORT).show();
-    }
+
 
     @SuppressLint("CheckResult")
     private void apiFirstCall() {
@@ -109,8 +104,8 @@ public class Home extends Fragment implements OnMealClick  {
                                 simpleMealsFirst = new ArrayList<>();
                             }
                             recyclerViewFirst.setHasFixedSize(true);
-                            adapterBig = new MainMealAdapter(simpleMealsFirst, Home.this);
-                            recyclerViewFirst.setAdapter(adapterBig);
+                            mainMealAdapter = new MainMealAdapter(simpleMealsFirst, Home.this);
+                            recyclerViewFirst.setAdapter(mainMealAdapter);
                         },
                         error -> {
                             error.printStackTrace();
@@ -129,8 +124,8 @@ public class Home extends Fragment implements OnMealClick  {
                 .subscribe(
                         myResponse -> {
                             simpleMealsSecond = myResponse.getMeals();
-                            adapter = new MealAdapter(simpleMealsSecond, Home.this);
-                            recyclerViewSecond.setAdapter(adapter);
+                            firstAdapter = new MealAdapter(simpleMealsSecond, Home.this);
+                            recyclerViewSecond.setAdapter(firstAdapter);
                         },
                         error -> error.printStackTrace()
                 );
@@ -138,14 +133,14 @@ public class Home extends Fragment implements OnMealClick  {
 
     @SuppressLint("CheckResult")
     private void apiThirdCall() {
-        Observable<MealList> callThird = apiService.getFilterByMealIngredient(randomIngrediant[new Random().nextInt(randomIngrediant.length)]);
+        Observable<MealList> callThird = apiService.getFilterByMealIngredient(randomIngredient[new Random().nextInt(randomIngredient.length)]);
 
         callThird.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         myResponse -> {
                             simpleMealsThird = myResponse.getMeals();
-                            adapter2 = new MealAdapter(simpleMealsThird, Home.this);
-                            recyclerViewThird.setAdapter(adapter2);
+                            secondAdapter = new MealAdapter(simpleMealsThird, Home.this);
+                            recyclerViewThird.setAdapter(secondAdapter);
                         },
                         error -> error.printStackTrace()
                 );

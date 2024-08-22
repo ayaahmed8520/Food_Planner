@@ -22,19 +22,19 @@
             android:value="@integer/google_play_services_version" />
 
 
-        <activity android:name="search.particularArea.view.ParticularAreaMealActivity"
+        <activity android:name="search.SpecificArea.view.SpecificAreaMeal"
             android:exported="false"
             />
-        <activity android:name="search.particularCategory.ParticularCategoryMealsActivity"
+        <activity android:name="search.SpecificCategory.view.SpecificCategoryMeals"
             android:exported="false"
            />
-        <activity android:name="search.particularIngrediant.ParticularIngredientMealsActivity"
+        <activity android:name="search.SpecificIngredient.view.SpecificIngredientMeals"
             android:exported="false" />
         
         <activity android:name="calendar.CalendarfromViewDetails"
             android:exported="false"
             android:noHistory="true"/>
-        <activity android:name=".AddRecipeToPlanActivity"
+        <activity android:name="calendar.AddRecipeToPlanActivity"
             android:exported="false"/>
 
         <activity
@@ -43,15 +43,15 @@
             android:noHistory="true"
            />
         <activity
-            android:name="search.allIngrediant.view.AllIngredientsActivity"
+            android:name="search.allIngrediant.view.AllIngredients"
             android:exported="false"
             />
         <activity
-            android:name="search.allCategory.view.AllCategoriesActivity"
+            android:name="search.allCategory.view.AllCategory"
             android:exported="false"
             />
         <activity
-            android:name="search.allArea.view.AllAreaActivity"
+            android:name="search.allCountry.view.AllCountry"
             android:exported="false"
             />
 

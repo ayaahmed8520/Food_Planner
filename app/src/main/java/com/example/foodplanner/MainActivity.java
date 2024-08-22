@@ -1,9 +1,11 @@
 package com.example.foodplanner;
 
+import static androidx.appcompat.app.AlertDialog.*;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -13,21 +15,22 @@ import Home.Home;
 import SignUp.view.SignUp;
 import favorite.view.Favorite;
 import firebase.FirebaseRepoImp;
-import profile.ProfileFragment;
 import profile.ProfileFragmentImp;
 import search.model.Search;
 
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding activityMainBinding;
-    AlertDialog.Builder builder;
+
+    private ActivityMainBinding activityMainBinding;
+    private Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
+
         String clientID= FirebaseRepoImp.getInstance(this).getSharedPreferences().getString("clientID",null);
-        builder = new AlertDialog.Builder(this);
+        builder = new Builder(this);
 
 
         replaceFragment(new Home());
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();

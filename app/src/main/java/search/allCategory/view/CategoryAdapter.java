@@ -20,39 +20,37 @@ import java.util.ArrayList;
 
 import search.allCategory.model.Category;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
+
     private static final String TAG = "MyAdapter";
-    AllCategoriesActivityInterface allCategoriesActivityInterface;
+    AllCategoryInterface allCategoryInterface;
     ArrayList<Category> categories;
     Context context;
 
     public void setList(ArrayList<Category> updatedCategories){this.categories=updatedCategories;}
 
 
-    public CategoryAdapter(Context context, AllCategoriesActivityInterface allCategoriesActivityInterface, ArrayList<Category> categories) {
-        this.allCategoriesActivityInterface = allCategoriesActivityInterface;
+    public CategoryAdapter(Context context, AllCategoryInterface allCategoryInterface, ArrayList<Category> categories) {
+        this.allCategoryInterface = allCategoryInterface;
         this.categories = categories;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public CategoryAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.i(TAG, "onCreateViewHolder: ");
         LayoutInflater inflater=LayoutInflater.from(parent.getContext());
         View view=inflater.inflate(R.layout.item_area,parent,false);
-        CategoryAdapter.MyViewHolder myViewHolder=new CategoryAdapter.MyViewHolder(view);
-        return myViewHolder;
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder: ");
         Category current =categories.get(position);
         holder.name.setText(current.getStrCategory());
-
-
-
         Glide.with(context)
                 .load(current.getStrCategoryThumb())
                 .placeholder(R.drawable.loading_animation)
@@ -62,7 +60,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         holder.wholeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                allCategoriesActivityInterface.navigateToParticularCategoryMeals(current.getStrCategory());
+                allCategoryInterface.navToSpecificCategoryMeals(current.getStrCategory());
 
             }
         });
@@ -74,15 +72,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         return categories.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         ConstraintLayout wholeItem;
         TextView name;
         ImageView photo;
 
 
-        public MyViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            wholeItem=itemView.findViewById(R.id.layout_whole_item);
+            wholeItem=itemView.findViewById(R.id.layout_whole_area);
             name=itemView.findViewById(R.id.tv_countryName);
             photo=itemView.findViewById(R.id.img_flag);
 

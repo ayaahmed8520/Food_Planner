@@ -23,7 +23,7 @@ import com.example.foodplanner.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import favorite.presenter.FavoritePresenter;
+import favorite.presenter.FavPresenter;
 import meal.view.OnMealClick;
 import mealDetails.model.SingleMealDetails;
 import mealDetails.view.ViewDetailsActivity;
@@ -48,7 +48,7 @@ public class Favorite extends Fragment implements FavoriteFragmentInterface , On
         favoriteRecyclerView.setAdapter(favoriteMealsAdapter);
         favoriteRecyclerView.setLayoutManager(layoutManager);
 
-        FavoritePresenter.getMeals((LifecycleOwner) requireContext(),requireContext(),this);
+        FavPresenter.getMeals((LifecycleOwner) requireContext(),requireContext(),this);
 
     }
     private void initUI(@NonNull View view) {
@@ -70,7 +70,7 @@ public class Favorite extends Fragment implements FavoriteFragmentInterface , On
 
     @Override
     public void removeMeal(SingleMealDetails meal) {
-        FavoritePresenter.removeFromFav(meal,requireContext());
+        FavPresenter.removeFromFav(meal,requireContext());
     }
 
 

@@ -23,9 +23,10 @@ import firebase.FirebasePresenterImp;
 import firebase.FirebasePresenter;
 import firebase.FirebaseRepoImp;
 
-public class ProfileFragmentImp extends Fragment implements ProfileFragment {
+public class ProfileFragmentImp extends Fragment implements ProfileFragmentIn {
+
     AlertDialog.Builder builder;
-    FirebasePresenter firebasePresenterInterface;
+    FirebasePresenter firebasePresenter;
     private ProgressBar progressBar;
 
     Button btnLogout;
@@ -38,7 +39,7 @@ public class ProfileFragmentImp extends Fragment implements ProfileFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
@@ -48,14 +49,14 @@ public class ProfileFragmentImp extends Fragment implements ProfileFragment {
 
         progressBar= view.findViewById(R.id.progress_bar);
 
-        firebasePresenterInterface = new FirebasePresenterImp(this, FirebaseRepoImp.getInstance(requireContext()));
+        firebasePresenter = new FirebasePresenterImp(this, FirebaseRepoImp.getInstance(requireContext()));
 
         builder = new AlertDialog.Builder(requireContext());
         btnLogout=view.findViewById(R.id.btn_logout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createLogoutDialog();
+                LogoutAlertDialog();
 
             }
         });
@@ -63,11 +64,11 @@ public class ProfileFragmentImp extends Fragment implements ProfileFragment {
 
     @Override
     public void logoutCurrentUser() {
-        firebasePresenterInterface.logoutCurrentUser();
+        firebasePresenter.logoutCurrentUser();
     }
 
     @Override
-    public void logOutSuccess() {
+    public void successLogOut() {
 
         progressBar.setVisibility(View.GONE);
         Intent intent = new Intent(requireContext(), LoginAndSignUpScreen.class);
@@ -76,13 +77,13 @@ public class ProfileFragmentImp extends Fragment implements ProfileFragment {
     }
 
     @Override
-    public void logOutFailure(Exception exception) {
+    public void failureLogOut(Exception exception) {
         progressBar.setVisibility(View.GONE);
         Toast.makeText(requireContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
 
     }
 
-    public void createLogoutDialog() {
+    public void LogoutAlertDialog() {
         builder.setTitle("Log Out")
                 .setMessage("Are you sure you want to log out?")
                 .setCancelable(true)

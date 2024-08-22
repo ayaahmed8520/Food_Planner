@@ -14,7 +14,7 @@ import com.example.foodplanner.R;
 import java.util.ArrayList;
 
 import calendar.CalendarfromViewDetails;
-import favorite.presenter.FavoritePresenter;
+import favorite.presenter.FavPresenter;
 import firebase.FirebaseRepoImp;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
@@ -24,7 +24,7 @@ import mealDetails.model.SingleMealDetails;
 import network.ApiClient;
 import network.ApiService;
 import retrofit2.Retrofit;
-import search.view.AddAndRemoveFavoriteViewInterface;
+import favorite.AddAndRemoveFavoriteViewInterface;
 
 
 public class ViewDetailsActivity extends AppCompatActivity implements MealDetailsInterface,AddAndRemoveFavoriteViewInterface {
@@ -97,12 +97,12 @@ public class ViewDetailsActivity extends AppCompatActivity implements MealDetail
 
     @Override
     public void addMeal(SingleMealDetails detailedMeal ) {
-        FavoritePresenter.addMeal(detailedMeal,this);
+        FavPresenter.addMeal(detailedMeal,this);
 
     }
     @Override
     public void removeMeal(SingleMealDetails detailedMeal ) {
-        FavoritePresenter.removeFromFav(detailedMeal,this);
+        FavPresenter.removeFromFav(detailedMeal,this);
     }
 
 

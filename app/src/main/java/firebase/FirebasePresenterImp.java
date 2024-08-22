@@ -6,58 +6,58 @@ import com.google.firebase.auth.AuthResult;
 
 import SignUp.model.UserSignUpInfo;
 import SignUp.view.SignUpListener;
-import network.LogOutResult;
-import network.SignUpResult;
-import profile.ProfileFragment;
+import profile.LogOutResult;
+import SignUp.view.SignUpResult;
+import profile.ProfileFragmentIn;
 
 public class FirebasePresenterImp implements FirebasePresenter, SignUpResult , LogOutResult {
-    SignUpListener signUpListenerInterface;
-    FirebaseRepo firebaseRepositoryInterface;
-    ProfileFragment profileFragmentInterface;
+    SignUpListener signUpListener;
+    FirebaseRepo firebaseRepo;
+    ProfileFragmentIn profileFragmentIn;
 
-    public FirebasePresenterImp(SignUpListener signUpListenerInterface, FirebaseRepo firebaseRepositoryInterface) {
-        this.signUpListenerInterface = signUpListenerInterface;
-        this.firebaseRepositoryInterface = firebaseRepositoryInterface;
+    public FirebasePresenterImp(SignUpListener signUpListener, FirebaseRepo firebaseRepo) {
+        this.signUpListener = signUpListener;
+        this.firebaseRepo = firebaseRepo;
     }
-    public FirebasePresenterImp(ProfileFragment profileFragmentInterface, FirebaseRepo firebaseRepositoryInterface) {
-        this.profileFragmentInterface= profileFragmentInterface;
-        this.firebaseRepositoryInterface = firebaseRepositoryInterface;
+    public FirebasePresenterImp(ProfileFragmentIn profileFragmentIn, FirebaseRepo firebaseRepo) {
+        this.profileFragmentIn = profileFragmentIn;
+        this.firebaseRepo = firebaseRepo;
     }
 
 
 
     @Override
     public void registerUser(String disPlayName,String email,String password,String confirmPassword) {
-        firebaseRepositoryInterface.userRegistration(new UserSignUpInfo(disPlayName,email,password,confirmPassword) , this);
+        firebaseRepo.userRegistration(new UserSignUpInfo(disPlayName,email,password,confirmPassword) , this);
 
     }
 
     @Override
     public void logoutCurrentUser() {
-        firebaseRepositoryInterface.logoutTheCurrentUser(this);
+        firebaseRepo.logoutTheCurrentUser(this);
     }
 
     @Override
     public void registerSuccess() {
-        signUpListenerInterface.registerSuccess();
+        signUpListener.registerSuccess();
     }
 
     @Override
     public void registerFailure(@NonNull Task<AuthResult> task) {
-        signUpListenerInterface.registerFailure(task);
+        signUpListener.registerFailure(task);
 
 
     }
 
     @Override
     public void logOutSuccess() {
-        profileFragmentInterface.logOutSuccess();
+        profileFragmentIn.successLogOut();
 
     }
 
     @Override
     public void logOutFailure(Exception exception) {
-        profileFragmentInterface.logOutFailure(exception);
+        profileFragmentIn.failureLogOut(exception);
 
     }
 }

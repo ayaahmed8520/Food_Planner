@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/layout_whole_item"
+        android:id="@+id/layout_whole_area"
         android:background="@color/darkBlue">
 
 
