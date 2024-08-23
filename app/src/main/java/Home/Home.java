@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.foodplanner.R;
 
@@ -24,12 +23,12 @@ import java.util.Random;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import meal.model.MealList;
-import meal.model.SingleMeal;
+import meal.model.MealResponse;
+import meal.model.Meal;
 import meal.view.MealAdapter;
 import meal.view.MainMealAdapter;
 import meal.view.OnMealClick;
-import mealDetails.view.ViewDetailsActivity;
+import mealDetails.view.ViewDetailsActivityMy;
 import network.ApiClient;
 import network.ApiService;
 import retrofit2.Retrofit;
@@ -43,9 +42,9 @@ public class Home extends Fragment implements OnMealClick  {
     private MealAdapter firstAdapter;
     private MealAdapter secondAdapter;
     private MainMealAdapter mainMealAdapter;
-    private ArrayList<SingleMeal> simpleMealsFirst;
-    private ArrayList<SingleMeal> simpleMealsSecond;
-    private ArrayList<SingleMeal> simpleMealsThird;
+    private ArrayList<Meal> simpleMealsFirst;
+    private ArrayList<Meal> simpleMealsSecond;
+    private ArrayList<Meal> simpleMealsThird;
     private String[] randomCategories;
     private String[] randomIngredient;
     Retrofit retrofitClient;
@@ -95,7 +94,7 @@ public class Home extends Fragment implements OnMealClick  {
 
     @SuppressLint("CheckResult")
     private void apiFirstCall() {
-        Observable<MealList> callFirst = apiService.getASingleRandomMeal();
+        Observable<MealResponse> callFirst = apiService.getASingleRandomMeal();
         callFirst.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         myResponse -> {
@@ -118,7 +117,7 @@ public class Home extends Fragment implements OnMealClick  {
 
     @SuppressLint("CheckResult")
     private void apiSecondCall() {
-        Observable<MealList> callSecond = apiService.getFilterByCategory(randomCategories[new Random().nextInt(randomCategories.length)]);
+        Observable<MealResponse> callSecond = apiService.getFilterByCategory(randomCategories[new Random().nextInt(randomCategories.length)]);
 
         callSecond.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -133,7 +132,7 @@ public class Home extends Fragment implements OnMealClick  {
 
     @SuppressLint("CheckResult")
     private void apiThirdCall() {
-        Observable<MealList> callThird = apiService.getFilterByMealIngredient(randomIngredient[new Random().nextInt(randomIngredient.length)]);
+        Observable<MealResponse> callThird = apiService.getFilterByMealIngredient(randomIngredient[new Random().nextInt(randomIngredient.length)]);
 
         callThird.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -154,7 +153,7 @@ public class Home extends Fragment implements OnMealClick  {
         editor.putString(MEAL_CURRENT_ID_KEY, position);
         editor.apply();
 
-        Intent intent = new Intent(getContext(), ViewDetailsActivity.class);
+        Intent intent = new Intent(getContext(), ViewDetailsActivityMy.class);
         startActivity(intent);
     }
 

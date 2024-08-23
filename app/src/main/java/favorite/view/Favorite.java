@@ -2,6 +2,7 @@ package favorite.view;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,11 +26,11 @@ import java.util.List;
 
 import favorite.presenter.FavPresenter;
 import meal.view.OnMealClick;
-import mealDetails.model.SingleMealDetails;
-import mealDetails.view.ViewDetailsActivity;
+import dp.MealDetails;
+import mealDetails.view.ViewDetailsActivityMy;
 
 
-public class Favorite extends Fragment implements FavoriteFragmentInterface , OnMealClick {
+public class Favorite extends Fragment implements FavoriteFragmentIn, OnMealClick {
     RecyclerView favoriteRecyclerView;
     FavoriteMealsAdapter favoriteMealsAdapter;
     LinearLayoutManager layoutManager;
@@ -56,20 +57,21 @@ public class Favorite extends Fragment implements FavoriteFragmentInterface , On
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
-    public void showData(List<SingleMealDetails> meals) {
+    public void showMeals(List<MealDetails> meals) {
         favoriteMealsAdapter.setList(meals);
         favoriteMealsAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void showDataFailed(String error) {
+    public void failedToDisplay(String error) {
         Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show();
 
     }
 
     @Override
-    public void removeMeal(SingleMealDetails meal) {
+    public void removeMeal(MealDetails meal) {
         FavPresenter.removeFromFav(meal,requireContext());
     }
 
@@ -83,7 +85,7 @@ public class Favorite extends Fragment implements FavoriteFragmentInterface , On
         editor.putString("mealcurrentid", position);
         editor.apply();
 
-        Intent intent = new Intent(getContext(), ViewDetailsActivity.class);
+        Intent intent = new Intent(getContext(), ViewDetailsActivityMy.class);
         startActivity(intent);
     }
 }

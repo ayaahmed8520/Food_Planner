@@ -16,18 +16,18 @@ import com.example.foodplanner.R;
 
 import java.util.ArrayList;
 
-import meal.model.SingleMeal;
+import meal.model.Meal;
 
 public class SpecificCategoryAdapter extends RecyclerView.Adapter<SpecificCategoryAdapter.MyViewHolder> {
     private static final String TAG = "MyAdapter";
 
-    ArrayList<SingleMeal> meals;
+    ArrayList<Meal> meals;
     SpecificCategoryMealsInterface specificCategoryMealsInterface;
 
-    public void setList(ArrayList<SingleMeal> updatedMeals){this.meals=updatedMeals;}
+    public void setList(ArrayList<Meal> updatedMeals){this.meals=updatedMeals;}
 
 
-    public SpecificCategoryAdapter(ArrayList<SingleMeal> meals, SpecificCategoryMealsInterface specificCategoryMealsInterface) {
+    public SpecificCategoryAdapter(ArrayList<Meal> meals, SpecificCategoryMealsInterface specificCategoryMealsInterface) {
         this.meals = meals;
         this.specificCategoryMealsInterface = specificCategoryMealsInterface;
     }
@@ -44,7 +44,7 @@ public class SpecificCategoryAdapter extends RecyclerView.Adapter<SpecificCatego
     @Override
     public void onBindViewHolder(@NonNull SpecificCategoryAdapter.MyViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder: ");
-        SingleMeal current = meals.get(position);
+        Meal current = meals.get(position);
         holder.meal_name_tv.setText(current.getStrMeal());
         Glide.with(holder.meal_photo.getContext())
                 .load(current.getStrMealThumb())

@@ -1,21 +1,21 @@
 package mealDetails.presenter;
 
 
-import mealDetails.model.MealDetailsRepository;
-import mealDetails.model.SingleMealDetails;
-import mealDetails.view.MealDetailsInterface;
+import dp.MealDetails;
+import mealDetails.model.MealDetailsRepo;
+import mealDetails.view.MealDetailsIn;
 
 public class MealDetailsPresenter {
-    private  static MealDetailsInterface mealDetailsInterface;
+    private  static MealDetailsIn mealDetailsIn;
 
-    public static void getMealDetailsPresenter(String meal, MealDetailsInterface detailsInterface){
-        mealDetailsInterface = detailsInterface;
-        MealDetailsRepository.getDetailedMealRepository(meal);
+    public static void getMealDetailsPresenter(String meal, MealDetailsIn detailsInterface){
+        mealDetailsIn = detailsInterface;
+        MealDetailsRepo.getDetailedMealRepo(meal);
     }
-    public static void onSuccessResult(SingleMealDetails meals){
-        mealDetailsInterface.onSuccessResult(meals);
+    public static void resultSuccess(MealDetails meals){
+        mealDetailsIn.resultSuccess(meals);
     }
-    public static void onFailureResult(String error){
-        mealDetailsInterface.onFailureResult(error);
+    public static void resultFailure(String error){
+        mealDetailsIn.resultFailure(error);
     }
 }

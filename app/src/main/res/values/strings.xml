@@ -31,7 +31,7 @@
     <string name="passwordHint">Enter at least 8 characters</string>
     <string name="inspiration">inspiration</string>
     <string name="search_by">Search By</string>
-<!--    <string name="country">Area</string>-->
+    <!--    <string name="country">Area</string>-->
     <string name="category">Category</string>
     <string name="ingredient">Ingredient</string>
     <string name="img_bg">Image background</string>
@@ -44,6 +44,14 @@
     <string name="searchByCategory">Search by Category</string>
     <string name="searchByArea">Search by Area</string>
     <string name="addMealFromSearch">Add Meal from Search</string>
+    <string name="mealType">Meal Type</string>
+    <string name="WeekPlane">Week Plane</string>
+    <string name="checkConnection">Please Check Your Connection</string>
+    <string-array name="mealType">
+        <item>Breakfast</item>
+        <item>lunch</item>
+        <item>dinner</item>
+    </string-array>
 
 
 </resources>

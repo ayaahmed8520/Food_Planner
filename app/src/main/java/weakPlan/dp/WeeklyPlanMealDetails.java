@@ -1,17 +1,17 @@
-package mealDetails.model;
+package weakPlan.dp;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "MealDetails")
-public class SingleMealDetails {
+@Entity(tableName = "Weekly_plan_details")
+public class WeeklyPlanMealDetails {
+
     @PrimaryKey
     @ColumnInfo(name = "idMeal")
     @NonNull
     private String idMeal;
-
 
     @ColumnInfo(name = "strMeal")
     private String strMeal;
@@ -157,7 +157,7 @@ public class SingleMealDetails {
         this.weekDay = weekDay;
     }
 
-    public SingleMealDetails() {
+    public WeeklyPlanMealDetails() {
     }
 
     public String getIdMeal() {

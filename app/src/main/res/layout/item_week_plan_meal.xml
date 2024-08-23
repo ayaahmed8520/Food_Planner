@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/row_week_planner"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="10dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/img_weekPlannerMeal"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/test_img"
+        android:contentDescription="@string/img_bg"
+        android:padding="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_weekPlannerMealName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/meriendavariablefontwght"
+        android:inputType="textMultiLine|textImeMultiLine"
+        android:text=""
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_weekPlannerMeal"
+        app:layout_constraintTop_toTopOf="@+id/img_weekPlannerMeal" />
+
+    <TextView
+        android:id="@+id/tv_weekPlannerMealDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/meriendavariablefontwght"
+        android:inputType="textMultiLine|textImeMultiLine"
+        android:text=""
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_weekPlannerMeal"
+        app:layout_constraintEnd_toEndOf="@+id/tv_weekPlannerMealName"
+        app:layout_constraintStart_toStartOf="@+id/tv_weekPlannerMealName"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weekPlannerMealName" />
+
+    <TextView
+        android:id="@+id/tv_weekPlannerMealType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="184dp"
+        android:layout_marginBottom="10dp"
+        android:text=""
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_removeWeekPlannerItem"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/green_transparent_background"
+        android:contentDescription="@string/close"
+        android:elevation="20dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_close_30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/dish_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

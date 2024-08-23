@@ -12,17 +12,17 @@ import com.bumptech.glide.Glide;
 import com.example.foodplanner.R;
 import java.util.ArrayList;
 
-import meal.model.SingleMeal;
+import meal.model.Meal;
 
 public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngredientAdapter.MyViewHolder> {
     private static final String TAG = "MyAdapter";
 
-    ArrayList<SingleMeal> meals;
+    ArrayList<Meal> meals;
     SpecificIngredientMealsInterface specificIngredientMealsInterface;
-    public void setList(ArrayList<SingleMeal> updatedMeals){this.meals=updatedMeals;}
+    public void setList(ArrayList<Meal> updatedMeals){this.meals=updatedMeals;}
 
 
-    public SpecificIngredientAdapter(ArrayList<SingleMeal> meals, SpecificIngredientMealsInterface specificIngredientMealsInterface) {
+    public SpecificIngredientAdapter(ArrayList<Meal> meals, SpecificIngredientMealsInterface specificIngredientMealsInterface) {
         this.meals = meals;
         this.specificIngredientMealsInterface = specificIngredientMealsInterface;
     }
@@ -39,7 +39,7 @@ public class SpecificIngredientAdapter extends RecyclerView.Adapter<SpecificIngr
     @Override
     public void onBindViewHolder(@NonNull SpecificIngredientAdapter.MyViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder: ");
-        SingleMeal current = meals.get(position);
+        Meal current = meals.get(position);
         holder.meal_name_tv.setText(current.getStrMeal());
         Glide.with(holder.meal_photo.getContext())
                 .load(current.getStrMealThumb())

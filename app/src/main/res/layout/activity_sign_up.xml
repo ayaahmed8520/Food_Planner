@@ -29,7 +29,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInput_userName"
+        android:id="@+id/textInput_mealType"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_randomCategory">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_userName"
+            android:id="@+id/et_MealType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/meriendavariablefontwght"
@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/textInput_userName">
+        app:layout_constraintTop_toBottomOf="@+id/textInput_mealType">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_userEmail"

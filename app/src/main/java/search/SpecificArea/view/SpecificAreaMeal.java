@@ -19,8 +19,8 @@ import com.example.foodplanner.R;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import meal.model.SingleMeal;
-import mealDetails.view.ViewDetailsActivity;
+import meal.model.Meal;
+import mealDetails.view.ViewDetailsActivityMy;
 import search.SpecificArea.presenter.SpecificCountryMealPresenter;
 
 
@@ -31,8 +31,8 @@ public class SpecificAreaMeal extends AppCompatActivity implements SpecificAreaM
     GridLayoutManager gridlayoutManager;
     SpecificAreaAdapter specificAreaAdapter;
     SearchView searchView;
-    ArrayList<SingleMeal> SpecificAreaMeals =new ArrayList<>();
-    ArrayList<SingleMeal> MealList =new ArrayList<>();
+    ArrayList<Meal> SpecificAreaMeals =new ArrayList<>();
+    ArrayList<Meal> MealList =new ArrayList<>();
     ImageView closeScreen;
 
     @Override
@@ -82,7 +82,7 @@ public class SpecificAreaMeal extends AppCompatActivity implements SpecificAreaM
                     Log.i("TAG", "onQueryTextChange displayList: "+ MealList);
                     Log.i("TAG", "onQueryTextChange mealsByArea: "+ SpecificAreaMeals);
                     String search = newText.toLowerCase(Locale.ROOT);
-                    for (SingleMeal meal : SpecificAreaMeals) {
+                    for (Meal meal : SpecificAreaMeals) {
                         if (meal.getStrMeal().toLowerCase(Locale.ROOT).startsWith(search)) {
                             MealList.add(meal);
                         }
@@ -111,7 +111,7 @@ public class SpecificAreaMeal extends AppCompatActivity implements SpecificAreaM
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
-    public void resultSuccess(ArrayList<SingleMeal> meals) {
+    public void resultSuccess(ArrayList<Meal> meals) {
 
         SpecificAreaMeals.addAll(meals);
         MealList.addAll(meals);
@@ -137,7 +137,7 @@ public class SpecificAreaMeal extends AppCompatActivity implements SpecificAreaM
         editor.putString("mealcurrentid", position);
         editor.apply();
 
-        Intent intent = new Intent(this, ViewDetailsActivity.class);
+        Intent intent = new Intent(this, ViewDetailsActivityMy.class);
         startActivity(intent);
     }
 }

@@ -2,7 +2,7 @@ package search.SpecificCategory.presenter;
 
 import java.util.ArrayList;
 
-import meal.model.SingleMeal;
+import meal.model.Meal;
 import search.SpecificCategory.model.SpecificCategoryMealsRepo;
 import search.SpecificCategory.view.SpecificCategoryMealsInterface;
 
@@ -13,7 +13,7 @@ public class SpecificCategoryMealsPresenter {
         specificCategoryMealsInterface =particularCategoryMealsInterface;
         SpecificCategoryMealsRepo.getParticularCategoryMeals(categoryName);
     }
-    public static void resultSuccess(ArrayList<SingleMeal> meals){
+    public static void resultSuccess(ArrayList<Meal> meals){
         specificCategoryMealsInterface.resultSuccess(meals);
     }
     public static void resultFailure(String error){

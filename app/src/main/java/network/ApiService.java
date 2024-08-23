@@ -2,8 +2,8 @@ package network;
 
 
 import io.reactivex.rxjava3.core.Observable;
-import meal.model.MealList;
-import mealDetails.model.MealListDetails;
+import meal.model.MealResponse;
+import mealDetails.model.MealDetailsResponse;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import search.allCategory.model.CategoryResponse;
@@ -11,18 +11,18 @@ import search.allIngrediant.model.IngredientResponse;
 
 public interface ApiService {
     @GET("random.php")
-    Observable<MealList> getASingleRandomMeal();
+    Observable<MealResponse> getASingleRandomMeal();
 
     @GET("filter.php")
-    Observable<MealList> getFilterByArea(@Query("a") String area);
+    Observable<MealResponse> getFilterByArea(@Query("a") String area);
 
     @GET("filter.php")
-    Observable<MealList> getFilterByCategory(@Query("c") String category);
+    Observable<MealResponse> getFilterByCategory(@Query("c") String category);
     @GET("filter.php")
-    Observable<MealList> getFilterByMealIngredient(@Query("i") String ingredient);
+    Observable<MealResponse> getFilterByMealIngredient(@Query("i") String ingredient);
 
     @GET("lookup.php")
-    Observable<MealListDetails> getMealDetailsByID(@Query("i") String mealDetails);
+    Observable<MealDetailsResponse> getMealDetailsByID(@Query("i") String mealDetails);
 
     @GET("list.php?i=list")
     Observable<IngredientResponse> getListAllIngredient();

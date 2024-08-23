@@ -21,8 +21,8 @@ import com.example.foodplanner.R;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import meal.model.SingleMeal;
-import mealDetails.view.ViewDetailsActivity;
+import meal.model.Meal;
+import mealDetails.view.ViewDetailsActivityMy;
 import search.SpecificIngredient.presenter.SpecificIngredientMealsPresenter;
 
 public class SpecificIngredientMeals extends AppCompatActivity implements SpecificIngredientMealsInterface {
@@ -32,8 +32,8 @@ public class SpecificIngredientMeals extends AppCompatActivity implements Specif
     GridLayoutManager gridlayoutManager;
     SpecificIngredientAdapter specificIngredientAdapter;
     SearchView searchView;
-    ArrayList<SingleMeal> specificIngredientMeals =new ArrayList<>();
-    ArrayList<SingleMeal> MealList =new ArrayList<>();
+    ArrayList<Meal> specificIngredientMeals =new ArrayList<>();
+    ArrayList<Meal> MealList =new ArrayList<>();
     ImageView closeScreen;
 
     @Override
@@ -82,7 +82,7 @@ public class SpecificIngredientMeals extends AppCompatActivity implements Specif
                     specificIngredientAdapter.setList(MealList);
                     specificIngredientAdapter.notifyDataSetChanged();
                     String search = newText.toLowerCase(Locale.ROOT);
-                    for (SingleMeal meal : specificIngredientMeals) {
+                    for (Meal meal : specificIngredientMeals) {
                         if (meal.getStrMeal().toLowerCase(Locale.ROOT).startsWith(search)) {
                             MealList.add(meal);
                         }
@@ -114,7 +114,7 @@ public class SpecificIngredientMeals extends AppCompatActivity implements Specif
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
-    public void resultSuccess(ArrayList<SingleMeal> meals) {
+    public void resultSuccess(ArrayList<Meal> meals) {
         //send data to the adapter :D
 
         specificIngredientMeals.addAll(meals);
@@ -136,7 +136,7 @@ public class SpecificIngredientMeals extends AppCompatActivity implements Specif
         editor = sharedPreferences.edit();
         editor.putString("mealcurrentid", position);
         editor.apply();
-        Intent intent = new Intent(this, ViewDetailsActivity.class);
+        Intent intent = new Intent(this, ViewDetailsActivityMy.class);
         startActivity(intent);
 
     }

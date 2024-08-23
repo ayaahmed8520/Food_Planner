@@ -9,16 +9,24 @@ import androidx.room.Query;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
-import mealDetails.model.SingleMealDetails;
 
 @Dao
 public interface MealDAO {
     @Query("SELECT * From MealDetails")
-    Observable<List<SingleMealDetails>> getAllMeals();
+    Observable<List<MealDetails>> getAllMeals();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insertAll(SingleMealDetails meal);
+    void insertAll(MealDetails meal);
 
     @Delete
-    void delete(SingleMealDetails meal);
+    void delete(MealDetails meal);
+
+    @Query("SELECT * FROM MealDetails")
+    List<MealDetails> getAllMealsForBackup();
+
+    @Query("DELETE FROM MealDetails") // Replace with your table name
+    void deleteAll();
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertMany(MealDetails... meals);
 }

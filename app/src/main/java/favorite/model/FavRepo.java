@@ -10,12 +10,12 @@ import dp.MealDAO;
 
 
 import io.reactivex.rxjava3.core.Observable;
-import mealDetails.model.SingleMealDetails;
+import dp.MealDetails;
 
 public class FavRepo {
     private MealDAO dao;
     private static FavRepo favRepo = null;
-    private Observable<List<SingleMealDetails>> storedMeals;
+    private Observable<List<MealDetails>> storedMeals;
 
 
     private FavRepo(Context context){
@@ -31,7 +31,7 @@ public class FavRepo {
         return favRepo;
     }
 
-    public  void insertMeal(SingleMealDetails detailedMeal){
+    public  void insertMeal(MealDetails detailedMeal){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -42,7 +42,7 @@ public class FavRepo {
     }
 
 
-    public void deleteMeal(SingleMealDetails detailedMeal) {
+    public void deleteMeal(MealDetails detailedMeal) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -52,7 +52,7 @@ public class FavRepo {
     }
 
 
-    public Observable<List<SingleMealDetails>> getAllStoredMeals() {
+    public Observable<List<MealDetails>> getAllStoredMeals() {
         return storedMeals;
     }
 }

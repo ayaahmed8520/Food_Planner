@@ -3,7 +3,7 @@ package search.SpecificIngredient.presenter;
 
 import java.util.ArrayList;
 
-import meal.model.SingleMeal;
+import meal.model.Meal;
 import search.SpecificIngredient.view.SpecificIngredientMealsInterface;
 import search.SpecificIngredient.model.SpecificIngredientMealsRepo;
 
@@ -14,7 +14,7 @@ public class SpecificIngredientMealsPresenter {
         specificIngredientMealsInterface =particularIngredientMealsInterface;
         SpecificIngredientMealsRepo.getSpecificIngredientMeals(IngredientName);
     }
-    public static void resultSuccess(ArrayList<SingleMeal> meals){
+    public static void resultSuccess(ArrayList<Meal> meals){
         specificIngredientMealsInterface.resultSuccess(meals);
     }
     public static void resultFailure(String error){

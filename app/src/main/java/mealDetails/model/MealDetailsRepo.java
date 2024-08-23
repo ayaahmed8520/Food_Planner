@@ -15,11 +15,11 @@ import network.ApiService;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MealDetailsRepository {
+public class MealDetailsRepo {
     public static final String BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
 
     @SuppressLint("CheckResult")
-    public static void getDetailedMealRepository(String meal){
+    public static void getDetailedMealRepo(String meal){
 
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
@@ -29,7 +29,7 @@ public class MealDetailsRepository {
                 .build();
 
         ApiService apiService =retrofit.create(ApiService.class);
-        Observable<MealListDetails> call = apiService.getMealDetailsByID(meal);
+        Observable<MealDetailsResponse> call = apiService.getMealDetailsByID(meal);
 
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -37,7 +37,7 @@ public class MealDetailsRepository {
 
                         },
                         error->{
-                            MealDetailsPresenter.onFailureResult(error.getMessage());
+                            MealDetailsPresenter.resultFailure(error.getMessage());
                         }
                 );
 

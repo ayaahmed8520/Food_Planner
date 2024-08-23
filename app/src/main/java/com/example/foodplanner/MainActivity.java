@@ -4,21 +4,31 @@ import static androidx.appcompat.app.AlertDialog.*;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.foodplanner.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import Home.Home;
 import SignUp.view.SignUp;
+import checkconnection.ConnectivityReceiver;
+import checkconnection.ConnectivityReceiverListener;
 import favorite.view.Favorite;
 import firebase.FirebaseRepoImp;
 import profile.ProfileFragmentImp;
 import search.model.Search;
+import weakPlan.view.WeekPlanFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ConnectivityReceiverListener {
 
     private ActivityMainBinding activityMainBinding;
     private Builder builder;
@@ -33,34 +43,52 @@ public class MainActivity extends AppCompatActivity {
         builder = new Builder(this);
 
 
+        ConnectivityReceiver connectivityReceiver = new ConnectivityReceiver(this);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            registerReceiver(connectivityReceiver,filter, getApplicationContext().RECEIVER_NOT_EXPORTED);
+        }
+
         replaceFragment(new Home());
 
-        activityMainBinding.bottomNavigationBar.setOnItemSelectedListener(item -> {
 
+        activityMainBinding.bottomNavigationBar.setOnItemSelectedListener(item -> {
             if(item.getItemId() ==  R.id.nav_home){
+
                 replaceFragment(new Home());
-            }
-            else if(item.getItemId() ==  R.id.nav_search){
+
+            } else if(item.getItemId() ==  R.id.nav_search){
+
                 replaceFragment(new Search());
-            }
-            else if(item.getItemId() ==  R.id.nav_favorite){
+
+            } else if(item.getItemId() ==  R.id.nav_favorite){
+
                 if(clientID!=null){
                     replaceFragment(new Favorite());
-                }else {
+                } else {
                     signupToGetMoreFeature();
                 }
-            }
-            else if(item.getItemId() ==  R.id.nav_profile){
+
+            } else if(item.getItemId() ==  R.id.nav_profile){
+
                 if(clientID!=null){
                     replaceFragment(new ProfileFragmentImp());
-                }else {
+                } else {
                     signupToGetMoreFeature();
                 }
+
+            } else if(item.getItemId() ==  R.id.nav_week){
+
+                if(clientID!=null){
+                    replaceFragment(new WeekPlanFragment());
+                } else {
+                    signupToGetMoreFeature();
+                }
+
             }
             return true;
         });
-
-
     }
 
 
@@ -91,4 +119,32 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
+
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        BottomNavigationView bottomNavigationView = activityMainBinding.bottomNavigationBar;
+
+        if (isConnected) {
+            // Show all menu items
+            bottomNavigationView.getMenu().findItem(R.id.nav_home).setVisible(true);
+            bottomNavigationView.getMenu().findItem(R.id.nav_search).setVisible(true);
+            bottomNavigationView.getMenu().findItem(R.id.nav_profile).setVisible(true);
+            bottomNavigationView.getMenu().findItem(R.id.nav_week).setVisible(true);
+            bottomNavigationView.getMenu().findItem(R.id.nav_favorite).setVisible(true);
+            Toast.makeText(this, "Connected to the Internet", Toast.LENGTH_SHORT).show();
+
+
+        } else {
+            // Show only favorite fragment menu item
+            bottomNavigationView.getMenu().findItem(R.id.nav_home).setVisible(false);
+            bottomNavigationView.getMenu().findItem(R.id.nav_search).setVisible(false);
+            bottomNavigationView.getMenu().findItem(R.id.nav_profile).setVisible(false);
+            bottomNavigationView.getMenu().findItem(R.id.nav_week).setVisible(false);
+            replaceFragment(new Favorite()); // Switch to Favorite fragment when offline
+
+            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }

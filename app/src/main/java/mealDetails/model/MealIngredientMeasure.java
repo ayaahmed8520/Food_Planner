@@ -1,10 +1,10 @@
 package mealDetails.model;
 
-public class IngredientWithMeasure {
-    private String ingredientName;
-    private String ingredientMeasure;
+public class MealIngredientMeasure {
+    private final String ingredientName;
+    private final String ingredientMeasure;
 
-    public IngredientWithMeasure(String ingredientName, String ingredientMeasure) {
+    public MealIngredientMeasure(String ingredientName, String ingredientMeasure) {
         this.ingredientName = ingredientName;
         this.ingredientMeasure = ingredientMeasure;
     }

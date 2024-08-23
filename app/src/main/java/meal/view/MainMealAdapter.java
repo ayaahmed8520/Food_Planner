@@ -12,15 +12,15 @@ import com.example.foodplanner.R;
 
 import java.util.ArrayList;
 
-import meal.model.SingleMeal;
+import meal.model.Meal;
 
 public class MainMealAdapter extends RecyclerView.Adapter<MainMealAdapter.Holder> {
-    private final ArrayList<SingleMeal> simpleMealList;
+    private final ArrayList<Meal> mealArrayList;
     private final OnMealClick listOnClickItem;
 
 
-    public MainMealAdapter(ArrayList<SingleMeal> simpleMealList, OnMealClick listOnClickItem) {
-        this.simpleMealList = simpleMealList;
+    public MainMealAdapter(ArrayList<Meal> mealArrayList, OnMealClick listOnClickItem) {
+        this.mealArrayList = mealArrayList;
         this.listOnClickItem = listOnClickItem;
     }
 
@@ -33,36 +33,36 @@ public class MainMealAdapter extends RecyclerView.Adapter<MainMealAdapter.Holder
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        SingleMeal simpleMeal = simpleMealList.get(position);
-        holder.meal_name_tv.setText(simpleMeal.getStrMeal());
-        holder.meal_id_tv.setText(String.valueOf(simpleMeal.getIdMeal()));
-        Glide.with(holder.meal_photo.getContext()).load(simpleMeal.getStrMealThumb()).into(holder.meal_photo);
+        Meal simpleMeal = mealArrayList.get(position);
+        holder.tv_mealName.setText(simpleMeal.getStrMeal());
+        holder.tv_mealID.setText(String.valueOf(simpleMeal.getIdMeal()));
+        Glide.with(holder.img_meal.getContext()).load(simpleMeal.getStrMealThumb()).into(holder.img_meal);
 
 
     }
 
     @Override
     public int getItemCount() {
-        return simpleMealList.size();
+        return mealArrayList.size();
     }
 
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public ImageView meal_photo;
-        public TextView meal_name_tv, meal_id_tv;
+        public ImageView img_meal;
+        public TextView tv_mealName, tv_mealID;
 
 
         public Holder(@NonNull View itemView) {
             super(itemView);
-            meal_photo = itemView.findViewById(R.id.img_dish);
-            meal_name_tv = itemView.findViewById(R.id.tv_dishName);
-            meal_id_tv = itemView.findViewById(R.id.dish_id);
+            img_meal = itemView.findViewById(R.id.img_dish);
+            tv_mealName = itemView.findViewById(R.id.tv_dishName);
+            tv_mealID = itemView.findViewById(R.id.dish_id);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (listOnClickItem != null)
                     {
-                        listOnClickItem.OnMealClicked(meal_id_tv.getText().toString());
+                        listOnClickItem.OnMealClicked(tv_mealID.getText().toString());
                     }
                 }
             });

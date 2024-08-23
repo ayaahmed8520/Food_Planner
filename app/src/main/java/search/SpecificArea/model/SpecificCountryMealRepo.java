@@ -9,7 +9,7 @@ import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import meal.model.MealList;
+import meal.model.MealResponse;
 import network.ApiService;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -29,7 +29,7 @@ public class SpecificCountryMealRepo {
                 .build();
 
         ApiService apiService =retrofit.create(ApiService.class);
-        Observable<MealList> call = apiService.getFilterByArea(areaName);
+        Observable<MealResponse> call = apiService.getFilterByArea(areaName);
 
 
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())

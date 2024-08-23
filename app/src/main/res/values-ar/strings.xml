@@ -44,6 +44,12 @@
     <string name="searchByCategory">البحث بالفئه</string>
     <string name="searchByArea">البحث بالمنطقه</string>
     <string name="addMealFromSearch">إضافه وجبه من خلال البحث</string>
+    <string name="mealType">نوع الوجبة</string>
+    <string-array name="mealType">
+        <item>فطار</item>
+        <item>غداء</item>
+        <item>عشاء</item>
+    </string-array>
 
 
 </resources>

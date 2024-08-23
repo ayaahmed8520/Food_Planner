@@ -33,7 +33,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInput_userName"
+        android:id="@+id/textInput_mealType"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_randomCategory">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_userName"
+            android:id="@+id/et_MealType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/meriendavariablefontwght"
@@ -62,10 +62,10 @@
         android:layout_marginStart="20dp"
         android:textColorHint="@color/white"
         app:errorEnabled="true"
-        app:layout_constraintBottom_toBottomOf="@+id/textInput_userName"
+        app:layout_constraintBottom_toBottomOf="@+id/textInput_mealType"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintStart_toEndOf="@+id/textInput_userName"
-        app:layout_constraintTop_toTopOf="@+id/textInput_userName">
+        app:layout_constraintStart_toEndOf="@+id/textInput_mealType"
+        app:layout_constraintTop_toTopOf="@+id/textInput_mealType">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_userEmail"
@@ -87,9 +87,9 @@
         android:textColorHint="@color/white"
         app:errorEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/guideline_middle"
-        app:layout_constraintEnd_toEndOf="@+id/textInput_userName"
+        app:layout_constraintEnd_toEndOf="@+id/textInput_mealType"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/textInput_userName"
+        app:layout_constraintTop_toBottomOf="@+id/textInput_mealType"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -112,7 +112,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/textInput_userPassword"
         app:layout_constraintEnd_toEndOf="@+id/textInput_userEmail"
         app:layout_constraintStart_toStartOf="@+id/textInput_userEmail"
-        app:layout_constraintTop_toBottomOf="@+id/textInput_userName"
+        app:layout_constraintTop_toBottomOf="@+id/textInput_mealType"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText

@@ -22,8 +22,8 @@ import com.example.foodplanner.R;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import meal.model.SingleMeal;
-import mealDetails.view.ViewDetailsActivity;
+import meal.model.Meal;
+import mealDetails.view.ViewDetailsActivityMy;
 import search.SpecificCategory.presenter.SpecificCategoryMealsPresenter;
 
 public class SpecificCategoryMeals extends AppCompatActivity implements SpecificCategoryMealsInterface {
@@ -33,8 +33,8 @@ public class SpecificCategoryMeals extends AppCompatActivity implements Specific
     GridLayoutManager gridlayoutManager;
     SpecificCategoryAdapter specificCategoryAdapter;
     SearchView searchView;
-    ArrayList<SingleMeal> specificCategoryMeals =new ArrayList<>();
-    ArrayList<SingleMeal> MealList =new ArrayList<>();
+    ArrayList<Meal> specificCategoryMeals =new ArrayList<>();
+    ArrayList<Meal> MealList =new ArrayList<>();
     ImageView closeScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +83,7 @@ public class SpecificCategoryMeals extends AppCompatActivity implements Specific
                     specificCategoryAdapter.setList(MealList);
                     specificCategoryAdapter.notifyDataSetChanged();
                     String search = newText.toLowerCase(Locale.ROOT);
-                    for (SingleMeal meal : specificCategoryMeals) {
+                    for (Meal meal : specificCategoryMeals) {
                         if (meal.getStrMeal().toLowerCase(Locale.ROOT).startsWith(search)) {
                             MealList.add(meal);
                         }
@@ -113,7 +113,7 @@ public class SpecificCategoryMeals extends AppCompatActivity implements Specific
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
-    public void resultSuccess(ArrayList<SingleMeal> meals) {
+    public void resultSuccess(ArrayList<Meal> meals) {
         specificCategoryMeals.addAll(meals);
         MealList.addAll(meals);
         specificCategoryAdapter.setList(MealList);
@@ -136,7 +136,7 @@ public class SpecificCategoryMeals extends AppCompatActivity implements Specific
         editor.putString("mealcurrentid", position);
         editor.apply();
 
-        Intent intent = new Intent(this, ViewDetailsActivity.class);
+        Intent intent = new Intent(this, ViewDetailsActivityMy.class);
         startActivity(intent);
     }
 }

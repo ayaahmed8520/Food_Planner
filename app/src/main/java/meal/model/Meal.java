@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "singleMeal")
-public class SingleMeal {
+public class Meal {
     @PrimaryKey
     @ColumnInfo(name = "idMeal")
     @NonNull
@@ -16,19 +16,19 @@ public class SingleMeal {
     @ColumnInfo(name = "strMealThumb")
     private String strMealThumb;
 
-    public SingleMeal(Long idMeal, String strMeal, String strMealThumb) {
+    public Meal(Long idMeal, String strMeal, String strMealThumb) {
         this.idMeal = idMeal;
         this.strMeal = strMeal;
         this.strMealThumb = strMealThumb;
     }
 
-    public SingleMeal(String strMeal, String strMealThumb) {
+    public Meal(String strMeal, String strMealThumb) {
 
         this.strMeal = strMeal;
         this.strMealThumb = strMealThumb;
     }
 
-    public SingleMeal() {
+    public Meal() {
     }
 
     public Long getIdMeal() { return idMeal; }

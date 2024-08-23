@@ -4,7 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+import android.content.Intent;
 import android.widget.CheckBox;
 
 import android.widget.ImageView;
@@ -21,24 +21,29 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
+
+import calendar.CalendarActivity;
 import firebase.FirebaseRepoImp;
-import mealDetails.model.IngredientWithMeasure;
-import mealDetails.model.SingleMealDetails;
-import favorite.AddAndRemoveFavoriteViewInterface;
+import dp.MealDetails;
+import meal.view.OnMealClick;
+import mealDetails.model.MealIngredientMeasure;
+import favorite.view.MyAddAndRemoveFavIn;
 
 public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.Holder> {
 
-    AddAndRemoveFavoriteViewInterface addAndRemoveFavoriteViewInterface;
-    private final ArrayList<SingleMealDetails> detailedMealsList;
-    MealDetailsInterface mealDetailsInterface;
+    MyAddAndRemoveFavIn myAddAndRemoveFavIn;
+    private final ArrayList<MealDetails> mealDetailsArrayList;
+    MealDetailsIn mealDetailsIn;
+    static OnMealClick listOnClickItem;
 
 
 
 
-    public MealDetailsAdapter(ArrayList<SingleMealDetails> detailedMealsList, AddAndRemoveFavoriteViewInterface addAndRemoveFavoriteViewInterface, MealDetailsInterface mealDetailsInterface) {
-        this.detailedMealsList = detailedMealsList;
-        this.addAndRemoveFavoriteViewInterface = addAndRemoveFavoriteViewInterface;
-        this.mealDetailsInterface = mealDetailsInterface;
+    public MealDetailsAdapter(ArrayList<MealDetails> mealDetailsArrayList, MyAddAndRemoveFavIn myAddAndRemoveFavIn, MealDetailsIn mealDetailsIn,OnMealClick listOnClickItem) {
+        this.mealDetailsArrayList = mealDetailsArrayList;
+        this.myAddAndRemoveFavIn = myAddAndRemoveFavIn;
+        this.mealDetailsIn = mealDetailsIn;
+        this.listOnClickItem= listOnClickItem;
 
 
     }
@@ -53,11 +58,11 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
     @Override
     public void onBindViewHolder(@NonNull MealDetailsAdapter.Holder holder, int position) {
 
-        SingleMealDetails detailedMeal = detailedMealsList.get(position);
-        holder.meal_name_tv.setText(detailedMeal.getStrMeal());
-        holder.meal_country.setText(detailedMeal.getStrArea());
-        holder.meal_instructions.setText(detailedMeal.getStrInstructions());
-        Glide.with(holder.meal_photo.getContext()).load(detailedMeal.getStrMealThumb()).into(holder.meal_photo);
+        MealDetails mealDetails = mealDetailsArrayList.get(position);
+        holder.tv_mealName.setText(mealDetails.getStrMeal());
+        holder.tv_mealCountry.setText(mealDetails.getStrArea());
+        holder.tv_mealInstructions.setText(mealDetails.getStrInstructions());
+        Glide.with(holder.img_meal.getContext()).load(mealDetails.getStrMealThumb()).into(holder.img_meal);
         String clientID = FirebaseRepoImp.getInstance(holder.black_background.getContext()).getSharedPreferences().getString("clientID", null);
         if (clientID != null) {
             holder.black_background.setVisibility(View.VISIBLE);
@@ -68,65 +73,70 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
                 @Override
                 public void onClick(View view) {
                     if (holder.btnFavorite.isChecked()) {
-                        addAndRemoveFavoriteViewInterface.addMeal(detailedMeal);
+                        myAddAndRemoveFavIn.addMeal(mealDetails);
                     } else {
-                        addAndRemoveFavoriteViewInterface.removeMeal(detailedMeal);
+                        myAddAndRemoveFavIn.removeMeal(mealDetails);
 
                     }
 
                 }
             });
         }
-        ArrayList<IngredientWithMeasure> ingredients=new ArrayList<IngredientWithMeasure>();
-        if (detailedMeal.strIngredient1!=null&&!detailedMeal.strIngredient1.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient1,detailedMeal.strMeasure1.toString()));
-        } if (detailedMeal.strIngredient2!=null&&!detailedMeal.strIngredient2.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient2,detailedMeal.strMeasure2.toString()));
-        } if (detailedMeal.strIngredient3!=null&&!detailedMeal.strIngredient3.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient3,detailedMeal.strMeasure3.toString()));
-        } if (detailedMeal.strIngredient4!=null&&!detailedMeal.strIngredient4.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient4,detailedMeal.strMeasure4.toString()));
-        } if (detailedMeal.strIngredient5!=null&&!detailedMeal.strIngredient5.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient5,detailedMeal.strMeasure5.toString()));
-        } if (detailedMeal.strIngredient6!=null&&!detailedMeal.strIngredient6.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient6,detailedMeal.strMeasure6.toString()));
-        } if (detailedMeal.strIngredient7!=null&&!detailedMeal.strIngredient7.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient7,detailedMeal.strMeasure7.toString()));
-        } if (detailedMeal.strIngredient8!=null&&!detailedMeal.strIngredient8.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient8,detailedMeal.strMeasure8.toString()));
-        } if (detailedMeal.strIngredient9!=null&&!detailedMeal.strIngredient9.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient9,detailedMeal.strMeasure9.toString()));
-        } if (detailedMeal.strIngredient10!=null&&!detailedMeal.strIngredient10.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient10,detailedMeal.strMeasure10.toString()));
 
-        } if (detailedMeal.strIngredient11!=null&&!detailedMeal.strIngredient11.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient11,detailedMeal.strMeasure11.toString()));
-        } if (detailedMeal.strIngredient12!=null&&!detailedMeal.strIngredient12.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient12,detailedMeal.strMeasure12.toString()));
-        } if (detailedMeal.strIngredient13!=null&&!detailedMeal.strIngredient13.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient13,detailedMeal.strMeasure13.toString()));
-        } if (detailedMeal.strIngredient14!=null&&!detailedMeal.strIngredient14.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient14,detailedMeal.strMeasure14.toString()));
-        } if (detailedMeal.strIngredient15!=null&&!detailedMeal.strIngredient15.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient15,detailedMeal.strMeasure15.toString()));
-        } if (detailedMeal.strIngredient16!=null&&!detailedMeal.strIngredient16.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient16,detailedMeal.strMeasure16.toString()));
-        } if (detailedMeal.strIngredient17!=null&&!detailedMeal.strIngredient17.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient17,detailedMeal.strMeasure17.toString()));
-        } if (detailedMeal.strIngredient18!=null&&!detailedMeal.strIngredient18.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient18,detailedMeal.strMeasure18.toString()));
-        } if (detailedMeal.strIngredient19!=null&&!detailedMeal.strIngredient19.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient19,detailedMeal.strMeasure19.toString()));
-        } if (detailedMeal.strIngredient20!=null&&!detailedMeal.strIngredient20.isEmpty()){
-            ingredients.add(new IngredientWithMeasure(detailedMeal.strIngredient20,detailedMeal.strMeasure20.toString()));
+
+
+
+        ArrayList<MealIngredientMeasure> ingredients=new ArrayList<MealIngredientMeasure>();
+        if (mealDetails.strIngredient1!=null&&!mealDetails.strIngredient1.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient1,mealDetails.strMeasure1.toString()));
+        } if (mealDetails.strIngredient2!=null&&!mealDetails.strIngredient2.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient2,mealDetails.strMeasure2.toString()));
+        } if (mealDetails.strIngredient3!=null&&!mealDetails.strIngredient3.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient3,mealDetails.strMeasure3.toString()));
+        } if (mealDetails.strIngredient4!=null&&!mealDetails.strIngredient4.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient4,mealDetails.strMeasure4.toString()));
+        } if (mealDetails.strIngredient5!=null&&!mealDetails.strIngredient5.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient5,mealDetails.strMeasure5.toString()));
+        } if (mealDetails.strIngredient6!=null&&!mealDetails.strIngredient6.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient6,mealDetails.strMeasure6.toString()));
+        } if (mealDetails.strIngredient7!=null&&!mealDetails.strIngredient7.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient7,mealDetails.strMeasure7.toString()));
+        } if (mealDetails.strIngredient8!=null&&!mealDetails.strIngredient8.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient8,mealDetails.strMeasure8.toString()));
+        } if (mealDetails.strIngredient9!=null&&!mealDetails.strIngredient9.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient9,mealDetails.strMeasure9.toString()));
+        } if (mealDetails.strIngredient10!=null&&!mealDetails.strIngredient10.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient10,mealDetails.strMeasure10.toString()));
+
+        } if (mealDetails.strIngredient11!=null&&!mealDetails.strIngredient11.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient11,mealDetails.strMeasure11.toString()));
+        } if (mealDetails.strIngredient12!=null&&!mealDetails.strIngredient12.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient12,mealDetails.strMeasure12.toString()));
+        } if (mealDetails.strIngredient13!=null&&!mealDetails.strIngredient13.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient13,mealDetails.strMeasure13.toString()));
+        } if (mealDetails.strIngredient14!=null&&!mealDetails.strIngredient14.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient14,mealDetails.strMeasure14.toString()));
+        } if (mealDetails.strIngredient15!=null&&!mealDetails.strIngredient15.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient15,mealDetails.strMeasure15.toString()));
+        } if (mealDetails.strIngredient16!=null&&!mealDetails.strIngredient16.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient16,mealDetails.strMeasure16.toString()));
+        } if (mealDetails.strIngredient17!=null&&!mealDetails.strIngredient17.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient17,mealDetails.strMeasure17.toString()));
+        } if (mealDetails.strIngredient18!=null&&!mealDetails.strIngredient18.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient18,mealDetails.strMeasure18.toString()));
+        } if (mealDetails.strIngredient19!=null&&!mealDetails.strIngredient19.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient19,mealDetails.strMeasure19.toString()));
+        } if (mealDetails.strIngredient20!=null&&!mealDetails.strIngredient20.isEmpty()){
+            ingredients.add(new MealIngredientMeasure(mealDetails.strIngredient20,mealDetails.strMeasure20.toString()));
         }
+
 
         holder.mealDetailsIngredientsAdapter= new MealDetailsIngredientsAdapter(ingredients);
         holder.recyclerViewIngredients.setAdapter( holder.mealDetailsIngredientsAdapter);
 
-        //getLifecycle().addObserver((LifecycleObserver) holder.mealVideo);
-        if (!detailedMeal.getStrYoutube().isEmpty() && !detailedMeal.getStrYoutube().equals("")&& detailedMeal.getStrYoutube() != null)  {
-            String[] split = detailedMeal.getStrYoutube().split("=");
+
+        if (!mealDetails.getStrYoutube().isEmpty() && !mealDetails.getStrYoutube().equals("")&& mealDetails.getStrYoutube() != null)  {
+            String[] split = mealDetails.getStrYoutube().split("=");
             holder.mealVideo.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
                 @Override
                 public void onReady(@NonNull YouTubePlayer youTubePlayer) {
@@ -137,7 +147,7 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
         }
 
         holder.btn_add_to_calender.setOnClickListener(view -> {
-            mealDetailsInterface.navigateToCalendar(detailedMeal.getStrMeal());
+            mealDetailsIn.goToCalendar(mealDetails.getStrMeal());
         });
 
 
@@ -145,12 +155,12 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
 
     @Override
     public int getItemCount() {
-        return detailedMealsList.size();
+        return mealDetailsArrayList.size();
     }
 
     public static class Holder extends RecyclerView.ViewHolder {
-        public ImageView meal_photo;
-        public TextView meal_name_tv, meal_country, meal_instructions;
+        public ImageView img_meal;
+        public TextView tv_mealName, tv_mealCountry, tv_mealInstructions;
         private final YouTubePlayerView mealVideo;
         RecyclerView recyclerViewIngredients;
         CheckBox btnFavorite;
@@ -159,12 +169,15 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
         MealDetailsIngredientsAdapter mealDetailsIngredientsAdapter;
         LinearLayoutManager layoutManager;
 
+        TextView tv_mealID;
+
+
         public Holder(@NonNull View itemView) {
             super(itemView);
-            meal_photo = itemView.findViewById(R.id.img_foodDetails);
-            meal_name_tv = itemView.findViewById(R.id.tv_detailsFoodName);
-            meal_country = itemView.findViewById(R.id.tv_detailsFoodCountry);
-            meal_instructions = itemView.findViewById(R.id.tv_instructionDetails);
+            img_meal = itemView.findViewById(R.id.img_foodDetails);
+            tv_mealName = itemView.findViewById(R.id.tv_detailsFoodName);
+            tv_mealCountry = itemView.findViewById(R.id.tv_detailsFoodCountry);
+            tv_mealInstructions = itemView.findViewById(R.id.tv_instructionDetails);
             mealVideo = itemView.findViewById(R.id.IngredientVideo);
             recyclerViewIngredients = itemView.findViewById(R.id.rv_ingredients);
             btnFavorite = itemView.findViewById(R.id.btn_favorite);
@@ -173,6 +186,18 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
             layoutManager=new LinearLayoutManager(recyclerViewIngredients.getContext());
             layoutManager.setOrientation(RecyclerView.HORIZONTAL);
             recyclerViewIngredients.setLayoutManager(layoutManager);
+
+            tv_mealID = itemView.findViewById(R.id.dish_id);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listOnClickItem != null)
+                    {
+                        listOnClickItem.OnMealClicked(tv_mealID.getText().toString());
+                    }
+                }
+            });
 
 
 

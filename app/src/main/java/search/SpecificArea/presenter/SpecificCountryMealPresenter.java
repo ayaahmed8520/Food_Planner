@@ -3,7 +3,7 @@ package search.SpecificArea.presenter;
 
 import java.util.ArrayList;
 
-import meal.model.SingleMeal;
+import meal.model.Meal;
 import search.SpecificArea.view.SpecificAreaMealInterface;
 import search.SpecificArea.model.SpecificCountryMealRepo;
 
@@ -14,7 +14,7 @@ public class SpecificCountryMealPresenter {
         particularAreaMealInterface= specificAreaMealInterface;
         SpecificCountryMealRepo.getParticularCountryMeals(areaName);
     }
-    public static void resultSuccess(ArrayList<SingleMeal> meals){
+    public static void resultSuccess(ArrayList<Meal> meals){
         particularAreaMealInterface.resultSuccess(meals);
     }
     public static void resultFailure(String error){

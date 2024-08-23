@@ -4,8 +4,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -47,7 +45,7 @@ public class SignUp extends AppCompatActivity implements SignUpListener {
         setContentView(R.layout.activity_sign_up);
 
 
-        userName = findViewById(R.id.textInput_userName);
+        userName = findViewById(R.id.textInput_mealType);
         userEmail = findViewById(R.id.textInput_userEmail);
         userPassword = findViewById(R.id.textInput_userPassword);
         userConfirmPassword = findViewById(R.id.textInput_userConfirmPassword);

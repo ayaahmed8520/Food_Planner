@@ -14,17 +14,17 @@ import com.example.foodplanner.R;
 
 import java.util.ArrayList;
 
-import meal.model.SingleMeal;
+import meal.model.Meal;
 
 public class SpecificAreaAdapter extends RecyclerView.Adapter<SpecificAreaAdapter.MyViewHolder> {
     private static final String TAG = "MyAdapter";
 
-    ArrayList<SingleMeal> meals;
+    ArrayList<Meal> meals;
 
-    public void setList(ArrayList<SingleMeal> updatedMeals){this.meals=updatedMeals;}
+    public void setList(ArrayList<Meal> updatedMeals){this.meals=updatedMeals;}
     SpecificAreaMealInterface specificAreaMealInterface;
 
-    public SpecificAreaAdapter(ArrayList<SingleMeal> meals, SpecificAreaMealInterface specificAreaMealInterface) {
+    public SpecificAreaAdapter(ArrayList<Meal> meals, SpecificAreaMealInterface specificAreaMealInterface) {
         this.meals = meals;
         this.specificAreaMealInterface = specificAreaMealInterface;
     }
@@ -42,7 +42,7 @@ public class SpecificAreaAdapter extends RecyclerView.Adapter<SpecificAreaAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Log.i(TAG, "onBindViewHolder: ");
-        SingleMeal current = meals.get(position);
+        Meal current = meals.get(position);
         holder.meal_name_tv.setText(current.getStrMeal());
         holder.meal_id_tv.setText(Long.toString(current.getIdMeal()));
 

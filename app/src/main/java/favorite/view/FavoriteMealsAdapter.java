@@ -15,19 +15,19 @@ import com.example.foodplanner.R;
 import java.util.List;
 
 import meal.view.OnMealClick;
-import mealDetails.model.SingleMealDetails;
+import dp.MealDetails;
 
 public class FavoriteMealsAdapter  extends RecyclerView.Adapter<FavoriteMealsAdapter.ViewHolder>{
     private Context context;
-    private List<SingleMealDetails> meals;
-    private FavoriteFragmentInterface favoriteFragmentInterface;
+    private List<MealDetails> meals;
+    private FavoriteFragmentIn favoriteFragmentIn;
     public static final String TAG = "FavoriteAdapter";
     OnMealClick listOnClickItem;
-    public FavoriteMealsAdapter(Context context, List<SingleMealDetails> meals,
-                                FavoriteFragmentInterface favoriteFragmentInterface , OnMealClick listOnClickItem){
+    public FavoriteMealsAdapter(Context context, List<MealDetails> meals,
+                                FavoriteFragmentIn favoriteFragmentIn, OnMealClick listOnClickItem){
         this.context = context;
         this.meals = meals;
-        this.favoriteFragmentInterface= favoriteFragmentInterface;
+        this.favoriteFragmentIn = favoriteFragmentIn;
         this.listOnClickItem= listOnClickItem;
 
     }
@@ -38,26 +38,26 @@ public class FavoriteMealsAdapter  extends RecyclerView.Adapter<FavoriteMealsAda
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View v = layoutInflater.inflate(R.layout.item_checked_favorite_btn, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
-        Log.i(TAG, "=========== onCreateViewHolder ===========");
+        Log.i(TAG, "FavOnCreateViewHolder");
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        SingleMealDetails currentMeal = meals.get(position);
-        holder.meal_name_tv.setText(currentMeal.getStrMeal());
-        holder.meal_id_tv.setText(String.valueOf(currentMeal.getIdMeal()));
+        MealDetails currentMeal = meals.get(position);
+        holder.tv_mealName.setText(currentMeal.getStrMeal());
+        holder.tv_mealID.setText(String.valueOf(currentMeal.getIdMeal()));
 
-        Glide.with(holder.meal_photo.getContext())
+        Glide.with(holder.img_meal.getContext())
                 .load(currentMeal.getStrMealThumb())
                 .placeholder(R.drawable.loading_animation)
                 .error(R.drawable.ic_broken_image)
-                .into(holder.meal_photo);
+                .into(holder.img_meal);
         holder.btnRemoveFromFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                favoriteFragmentInterface.removeMeal(currentMeal);
+                favoriteFragmentIn.removeMeal(currentMeal);
             }
         });
 
@@ -68,20 +68,20 @@ public class FavoriteMealsAdapter  extends RecyclerView.Adapter<FavoriteMealsAda
         return meals.size();
     }
 
-    public void setList(List<SingleMealDetails> updatedMeals){
+    public void setList(List<MealDetails> updatedMeals){
         this.meals = updatedMeals;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView meal_photo;
-        TextView meal_name_tv;
-        TextView meal_id_tv;
+        ImageView img_meal;
+        TextView tv_mealName;
+        TextView tv_mealID;
         Button btnRemoveFromFavorite;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            meal_photo = itemView.findViewById(R.id.img_dish);
-            meal_name_tv = itemView.findViewById(R.id.tv_dishName);
-            meal_id_tv = itemView.findViewById(R.id.dish_id);
+            img_meal = itemView.findViewById(R.id.img_dish);
+            tv_mealName = itemView.findViewById(R.id.tv_dishName);
+            tv_mealID = itemView.findViewById(R.id.dish_id);
             btnRemoveFromFavorite = itemView.findViewById(R.id.btn_addFromFavorite);
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +89,7 @@ public class FavoriteMealsAdapter  extends RecyclerView.Adapter<FavoriteMealsAda
                 public void onClick(View view) {
                     if (listOnClickItem != null)
                     {
-                        listOnClickItem.OnMealClicked(meal_id_tv.getText().toString());
+                        listOnClickItem.OnMealClicked(tv_mealID.getText().toString());
                     }
                 }
             });

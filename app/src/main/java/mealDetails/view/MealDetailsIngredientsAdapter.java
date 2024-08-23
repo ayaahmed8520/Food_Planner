@@ -14,14 +14,14 @@ import com.example.foodplanner.R;
 
 import java.util.ArrayList;
 
-import mealDetails.model.IngredientWithMeasure;
+import mealDetails.model.MealIngredientMeasure;
 
 public class MealDetailsIngredientsAdapter extends RecyclerView.Adapter<MealDetailsIngredientsAdapter.ViewHolder> {
-    ArrayList<IngredientWithMeasure> ingredientWithMeasures;
+    ArrayList<MealIngredientMeasure> mealIngredientMeasures;
 
 
-    public MealDetailsIngredientsAdapter(ArrayList<IngredientWithMeasure> list) {
-        ingredientWithMeasures = list;
+    public MealDetailsIngredientsAdapter(ArrayList<MealIngredientMeasure> list) {
+        mealIngredientMeasures = list;
     }
 
     @NonNull
@@ -33,10 +33,10 @@ public class MealDetailsIngredientsAdapter extends RecyclerView.Adapter<MealDeta
 
     @Override
     public void onBindViewHolder(@NonNull MealDetailsIngredientsAdapter.ViewHolder holder, int position) {
-        holder.ingredientMeasure.setText(ingredientWithMeasures.get(position).getIngredientMeasure());
-        holder.ingredientName.setText(ingredientWithMeasures.get(position).getIngredientName());
+        holder.ingredientMeasure.setText(mealIngredientMeasures.get(position).getIngredientMeasure());
+        holder.ingredientName.setText(mealIngredientMeasures.get(position).getIngredientName());
         Glide.with(holder.ingredientImageView.getContext())
-                .load(holder.ingredientImageView.getContext().getResources().getString(R.string.ingredient_img, ingredientWithMeasures.get(position).getIngredientName()))
+                .load(holder.ingredientImageView.getContext().getResources().getString(R.string.ingredient_img, mealIngredientMeasures.get(position).getIngredientName()))
                 .placeholder(R.drawable.loading_animation).error(R.drawable.ic_broken_image).into(holder.ingredientImageView);
 
 
@@ -44,11 +44,11 @@ public class MealDetailsIngredientsAdapter extends RecyclerView.Adapter<MealDeta
 
     @Override
     public int getItemCount() {
-        return ingredientWithMeasures.size();
+        return mealIngredientMeasures.size();
     }
 
-    public void setList(ArrayList<IngredientWithMeasure> arrayList) {
-        ingredientWithMeasures = arrayList;
+    public void setList(ArrayList<MealIngredientMeasure> arrayList) {
+        mealIngredientMeasures = arrayList;
         notifyDataSetChanged();
     }
 
