@@ -16,21 +16,20 @@ import java.util.concurrent.Executors;
 
 import dp.MealDAO;
 import dp.MealDetails;
-import meal.model.Meal;
 import weakPlan.dp.WeeklyPlanMeal;
 import weakPlan.dp.WeeklyPlanMealDao;
 import weakPlan.dp.WeeklyPlanMealDetails;
 import weakPlan.dp.WeeklyPlanMealDetailsDao;
 
 public class BackupDB {
-    private final FirebaseFirestore firestore;
+    private final FirebaseFirestore firebaseFirestore;
     private final MealDAO mealDAO;
     private final WeeklyPlanMealDao weeklyPlanMealDao;
     private final WeeklyPlanMealDetailsDao weeklyPlanMealDetailsDao;
     private final FirebaseAuth auth;
 
     public BackupDB(MealDAO mealDAO, WeeklyPlanMealDao myWeekDao,WeeklyPlanMealDetailsDao weeklyPlanMealDetailsDao) {
-        firestore = FirebaseFirestore.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
         this.mealDAO = mealDAO;
         this.weeklyPlanMealDao = myWeekDao;
         this.weeklyPlanMealDetailsDao = weeklyPlanMealDetailsDao;
@@ -44,13 +43,13 @@ public class BackupDB {
             String userId = user.getUid();
 
             // Backup FavMeals
-            CollectionReference collectionRefForFav = firestore.collection("users")
+            CollectionReference collectionRefForFav = firebaseFirestore.collection("users")
                     .document(userId)
                     .collection("FavMeals");
             Log.i("FirebaseAuth", "backupDataToFirestore: " + userId);
             collectionRefForFav.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    WriteBatch batch = firestore.batch();
+                    WriteBatch batch = firebaseFirestore.batch();
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         batch.delete(document.getReference());
                     }
@@ -74,13 +73,13 @@ public class BackupDB {
             });
 
             // Backup WeekPlan
-            CollectionReference collectionRefForWeekPlan = firestore.collection("users")
+            CollectionReference collectionRefForWeekPlan = firebaseFirestore.collection("users")
                     .document(userId)
                     .collection("WeekPlan");
 
             collectionRefForWeekPlan.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    WriteBatch batch = firestore.batch();
+                    WriteBatch batch = firebaseFirestore.batch();
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         batch.delete(document.getReference());
                     }
@@ -104,13 +103,13 @@ public class BackupDB {
             });
 
             // Backup WeekPlanDetails
-            CollectionReference collectionRefWeekPlanDetails = firestore.collection("users")
+            CollectionReference collectionRefWeekPlanDetails = firebaseFirestore.collection("users")
                     .document(userId)
                     .collection("WeekPlanDetails");
 
             collectionRefWeekPlanDetails.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    WriteBatch batch = firestore.batch();
+                    WriteBatch batch = firebaseFirestore.batch();
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         batch.delete(document.getReference());
                     }
@@ -141,7 +140,7 @@ public class BackupDB {
 
             Executors.newSingleThreadExecutor().execute(mealDAO::deleteAll);
 
-            CollectionReference collectionRefForFav = firestore.collection("users")
+            CollectionReference collectionRefForFav = firebaseFirestore.collection("users")
                     .document(userId)
                     .collection("FavMeals");
 
@@ -160,7 +159,7 @@ public class BackupDB {
 
             Executors.newSingleThreadExecutor().execute(weeklyPlanMealDao::deleteAll);
 
-            CollectionReference collectionRefFoWeekPlan = firestore.collection("users")
+            CollectionReference collectionRefFoWeekPlan = firebaseFirestore.collection("users")
                     .document(userId)
                     .collection("WeekPlan");
 
@@ -179,7 +178,7 @@ public class BackupDB {
 
             Executors.newSingleThreadExecutor().execute(weeklyPlanMealDetailsDao::deleteAll);
 
-            CollectionReference collectionRefForWeekPlanDetails = firestore.collection("users")
+            CollectionReference collectionRefForWeekPlanDetails = firebaseFirestore.collection("users")
                     .document(userId)
                     .collection("WeekPlanDetails");
 
