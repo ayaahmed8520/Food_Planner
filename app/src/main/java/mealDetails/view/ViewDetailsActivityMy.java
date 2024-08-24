@@ -94,8 +94,8 @@ public class ViewDetailsActivityMy extends AppCompatActivity implements MealDeta
         editor.putString("mealcurrentname", meal);
         editor.apply();
 
-        Intent intent = new Intent(this, CalendarActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, CalendarActivity.class);
+//        startActivity(intent);
     }
 
     @Override

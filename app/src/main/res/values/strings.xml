@@ -35,7 +35,7 @@
     <string name="category">Category</string>
     <string name="ingredient">Ingredient</string>
     <string name="img_bg">Image background</string>
-    <string name="addToCalendar">Add to Calendar</string>
+    <string name="addToCalendar">Make a Plan </string>
     <string name="logout">Logout</string>
     <string name="favoriteDishes">My favorite dishes</string>
     <string name="close">Close</string>
@@ -47,11 +47,14 @@
     <string name="mealType">Meal Type</string>
     <string name="WeekPlane">Week Plane</string>
     <string name="checkConnection">Please Check Your Connection</string>
+    <string name="Save">Save On Application</string>
+    <string name="calender">Save On Calendar</string>
     <string-array name="mealType">
         <item>Breakfast</item>
         <item>lunch</item>
         <item>dinner</item>
     </string-array>
+    <string name="weekPlan">My Week Plan</string>
 
 
 </resources>

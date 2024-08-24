@@ -8,6 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 import search.allCategory.model.CategoryResponse;
 import search.allIngrediant.model.IngredientResponse;
+import weakPlan.WeeklyPlanMealDetails.model.WeeklyPlanMealDetailsResponse;
 
 public interface ApiService {
     @GET("random.php")
@@ -23,6 +24,8 @@ public interface ApiService {
 
     @GET("lookup.php")
     Observable<MealDetailsResponse> getMealDetailsByID(@Query("i") String mealDetails);
+    @GET("lookup.php")
+    Observable<WeeklyPlanMealDetailsResponse> getMealDetailsByID2(@Query("i") String mealDetails);
 
     @GET("list.php?i=list")
     Observable<IngredientResponse> getListAllIngredient();

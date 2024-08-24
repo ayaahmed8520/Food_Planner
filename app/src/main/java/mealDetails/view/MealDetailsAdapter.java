@@ -147,6 +147,11 @@ public class MealDetailsAdapter extends RecyclerView.Adapter<MealDetailsAdapter.
         }
 
         holder.btn_add_to_calender.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), CalendarActivity.class);
+            intent.putExtra("img_meal", mealDetails.getStrMealThumb());
+            intent.putExtra("tv_mealName", mealDetails.getStrMeal());
+            intent.putExtra("tv_mealId", mealDetails.getIdMeal());
+            view.getContext().startActivity(intent);
             mealDetailsIn.goToCalendar(mealDetails.getStrMeal());
         });
 

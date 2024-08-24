@@ -3,6 +3,7 @@ package weakPlan.view;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -27,6 +28,7 @@ import dp.MealDetails;
 import favorite.presenter.FavPresenter;
 import favorite.view.FavoriteMealsAdapter;
 import meal.view.OnMealClick;
+import weakPlan.WeeklyPlanMealDetails.view.WeeklyPlanMealDetailsActivity;
 import weakPlan.dp.WeeklyPlanMeal;
 import weakPlan.presenter.WeekPlanMealPresenter;
 
@@ -88,7 +90,7 @@ public class WeekPlanFragment extends Fragment implements WeekPlanInterface, OnM
         editor.putString("planMealCurrentId", position);
         editor.apply();
 
-//        Intent intent = new Intent(getContext(), ViewDetailsActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(getContext(), WeeklyPlanMealDetailsActivity.class);
+        startActivity(intent);
     }
 }

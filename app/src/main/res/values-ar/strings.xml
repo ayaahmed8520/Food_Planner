@@ -35,7 +35,7 @@
     <string name="category">الفئه</string>
     <string name="ingredient">المكون</string>
     <string name="img_bg">Image background</string>
-    <string name="addToCalendar">إضاقه إلي التقويم</string>
+    <string name="addToCalendar">إضتفه إلي االخطه</string>
     <string name="logout">تسجيل الخروج</string>
     <string name="favoriteDishes">أطباقي المفضله</string>
     <string name="close">إغلاق</string>
@@ -50,6 +50,12 @@
         <item>غداء</item>
         <item>عشاء</item>
     </string-array>
+
+    <string name="WeekPlane">تخطيط الاسبوع</string>
+    <string name="checkConnection">من فضلك قك بفحص اتصالك بالانترنت</string>
+    <string name="Save">حفظ علي البرنامج</string>
+    <string name="calender">حفظ علي القويم</string>
+    <string name="weekPlan">تخطيط الاسبوع</string>
 
 
 </resources>
