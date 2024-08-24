@@ -17,8 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.foodplanner.MainActivity;
 import com.example.foodplanner.R;
 
+import Backup.BackupDB;
 import Login.presenter.LoginPresenterIn;
 import Login.presenter.LoginPresenterInImp;
+import dp.AppDataBase;
+import dp.MealDAO;
+import weakPlan.dp.WeeklyPlanMealDao;
+import weakPlan.dp.WeeklyPlanMealDetailsDao;
 
 public class Login extends AppCompatActivity implements LoginListener {
 
@@ -28,6 +33,11 @@ public class Login extends AppCompatActivity implements LoginListener {
     private ProgressBar progressBar;
 
     private LoginPresenterIn loginPresenterIn;
+
+    WeeklyPlanMealDetailsDao weeklyPlanMealDetailsDao;
+    WeeklyPlanMealDao weeklyPlanMealDao;
+    MealDAO mealDAO;
+    BackupDB backupDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +51,8 @@ public class Login extends AppCompatActivity implements LoginListener {
         btnLogin = findViewById(R.id.btn_login);
         progressBar = findViewById(R.id.progress_bar);
 
+
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +61,12 @@ public class Login extends AppCompatActivity implements LoginListener {
                 if (validateCredentials(email, password)) {
                     progressBar.setVisibility(View.VISIBLE);
                     loginPresenterIn.userLogin(email, password);
+
+                    mealDAO = AppDataBase.getInstance(v.getContext()).mealDAO();
+                    weeklyPlanMealDao = AppDataBase.getInstance(v.getContext()).getWeeklyPlanMealDao();
+                    weeklyPlanMealDetailsDao = AppDataBase.getInstance(v.getContext()).getWeeklyPlanMealDetailsDao();
+                    backupDB = new BackupDB(mealDAO, weeklyPlanMealDao, weeklyPlanMealDetailsDao);
+                    backupDB.restoreDataFromFirestore();
                 }
             }
         });

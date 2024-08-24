@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import SignUp.model.UserSignUpInfo;
-import profile.LogOutResult;
+import logout.LogOutResult;
 import SignUp.view.SignUpResult;
 
 

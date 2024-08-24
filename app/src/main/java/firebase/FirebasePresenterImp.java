@@ -6,9 +6,9 @@ import com.google.firebase.auth.AuthResult;
 
 import SignUp.model.UserSignUpInfo;
 import SignUp.view.SignUpListener;
-import profile.LogOutResult;
+import logout.LogOutResult;
 import SignUp.view.SignUpResult;
-import profile.ProfileFragmentIn;
+import logout.ProfileFragmentIn;
 
 public class FirebasePresenterImp implements FirebasePresenter, SignUpResult , LogOutResult {
     SignUpListener signUpListener;

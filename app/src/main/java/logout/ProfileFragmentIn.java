@@ -1,4 +1,4 @@
-package profile;
+package logout;
 
 public interface ProfileFragmentIn {
     public void logoutCurrentUser();

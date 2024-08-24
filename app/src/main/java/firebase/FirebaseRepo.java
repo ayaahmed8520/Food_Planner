@@ -2,7 +2,7 @@ package firebase;
 
 
 import SignUp.model.UserSignUpInfo;
-import profile.LogOutResult;
+import logout.LogOutResult;
 import SignUp.view.SignUpResult;
 
 public interface FirebaseRepo {

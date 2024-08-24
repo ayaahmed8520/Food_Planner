@@ -5,10 +5,8 @@ import static androidx.appcompat.app.AlertDialog.*;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +22,7 @@ import checkconnection.ConnectivityReceiver;
 import checkconnection.ConnectivityReceiverListener;
 import favorite.view.Favorite;
 import firebase.FirebaseRepoImp;
-import profile.ProfileFragmentImp;
+import logout.ProfileFragmentImp;
 import search.model.Search;
 import weakPlan.view.WeekPlanFragment;
 

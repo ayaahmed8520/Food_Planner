@@ -1,4 +1,4 @@
-package profile;
+package logout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,20 +19,36 @@ import android.widget.Toast;
 import com.example.foodplanner.LoginAndSignUpScreen;
 import com.example.foodplanner.R;
 
+import Backup.BackupDB;
+import dp.AppDataBase;
+import dp.MealDAO;
 import firebase.FirebasePresenterImp;
 import firebase.FirebasePresenter;
 import firebase.FirebaseRepoImp;
+import weakPlan.dp.WeeklyPlanMealDao;
+import weakPlan.dp.WeeklyPlanMealDetailsDao;
 
 public class ProfileFragmentImp extends Fragment implements ProfileFragmentIn {
 
     AlertDialog.Builder builder;
     FirebasePresenter firebasePresenter;
     private ProgressBar progressBar;
+    BackupDB backupDB;
+    WeeklyPlanMealDetailsDao weeklyPlanMealDetailsDao;
+    WeeklyPlanMealDao weeklyPlanMealDao;
+    MealDAO mealDAO;
+
 
     Button btnLogout;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        weeklyPlanMealDao = AppDataBase.getInstance(this.getContext()).getWeeklyPlanMealDao();
+        weeklyPlanMealDetailsDao = AppDataBase.getInstance(this.getContext()).getWeeklyPlanMealDetailsDao();
+        mealDAO = AppDataBase.getInstance(this.getContext()).mealDAO();
+        backupDB = new BackupDB(mealDAO,weeklyPlanMealDao,weeklyPlanMealDetailsDao);
+        backupDB.backupDataToFirestore();
 
     }
 

@@ -1,4 +1,4 @@
-package profile;
+package logout;
 
 public interface LogOutResult {
     public void logOutSuccess();
