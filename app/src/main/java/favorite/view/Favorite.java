@@ -28,6 +28,8 @@ import favorite.presenter.FavPresenter;
 import meal.view.OnMealClick;
 import dp.MealDetails;
 import mealDetails.view.ViewDetailsActivityMy;
+import weakPlan.WeeklyPlanMealDetails.view.WeeklyPlanMealDetailsActivity;
+import weakPlan.dp.WeeklyPlanMealDetails;
 
 
 public class Favorite extends Fragment implements FavoriteFragmentIn, OnMealClick {
@@ -85,7 +87,7 @@ public class Favorite extends Fragment implements FavoriteFragmentIn, OnMealClic
         editor.putString("mealcurrentid", position);
         editor.apply();
 
-        Intent intent = new Intent(getContext(), ViewDetailsActivityMy.class);
+        Intent intent = new Intent(getContext(), WeeklyPlanMealDetailsActivity.class);
         startActivity(intent);
     }
 }

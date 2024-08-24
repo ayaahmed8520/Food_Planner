@@ -138,8 +138,10 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
             bottomNavigationView.getMenu().findItem(R.id.nav_home).setVisible(false);
             bottomNavigationView.getMenu().findItem(R.id.nav_search).setVisible(false);
             bottomNavigationView.getMenu().findItem(R.id.nav_profile).setVisible(false);
-            bottomNavigationView.getMenu().findItem(R.id.nav_week).setVisible(false);
-            replaceFragment(new Favorite()); // Switch to Favorite fragment when offline
+            bottomNavigationView.getMenu().findItem(R.id.nav_week).setVisible(true);
+            bottomNavigationView.getMenu().findItem(R.id.nav_favorite).setVisible(true);
+
+           // replaceFragment(new Favorite()); // Switch to Favorite fragment when offline
 
             Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
