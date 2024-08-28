@@ -17,11 +17,11 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name="weakPlan.WeeklyPlanMealDetails.view.WeeklyPlanMealDetailsActivity"
+            android:name=".view.weeklyPlanMealDetails.WeeklyPlanMealDetailsActivity"
             android:exported="false" />
 
         <receiver
-            android:name="checkconnection.ConnectivityReceiver"
+            android:name=".model.network.checkconnection.ConnectivityReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -31,49 +31,49 @@
         </receiver>
 
         <activity
-            android:name="checkconnection.CennectionLostActivity"
+            android:name=".model.network.checkconnection.CennectionLostActivity"
             android:exported="false" /> <!-- Google Play Services version metadata -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="search.SpecificArea.view.SpecificAreaMeal"
+            android:name=".view.SpecificArea.SpecificAreaMeal"
             android:exported="false" />
         <activity
-            android:name="search.SpecificCategory.view.SpecificCategoryMeals"
+            android:name=".view.SpecificCategory.SpecificCategoryMeals"
             android:exported="false" />
         <activity
-            android:name="search.SpecificIngredient.view.SpecificIngredientMeals"
+            android:name=".view.specificIngredient.SpecificIngredientMeals"
             android:exported="false" />
         <activity
-            android:name="calendar.CalendarActivity"
+            android:name=".view.CalendarActivity"
             android:exported="false"
             android:noHistory="true" />
         <activity
-            android:name="mealDetails.view.ViewDetailsActivityMy"
+            android:name=".view.mealDetails.ViewDetailsActivityMy"
             android:exported="false"
             android:noHistory="true" />
         <activity
-            android:name="search.allIngrediant.view.AllIngredients"
+            android:name=".view.allIngredient.AllIngredients"
             android:exported="false" />
         <activity
-            android:name="search.allCategory.view.AllCategory"
+            android:name=".view.AllCategory.AllCategory"
             android:exported="false" />
         <activity
-            android:name="search.allCountry.view.AllCountry"
+            android:name=".view.allCountry.AllCountry"
             android:exported="false" />
         <activity
-            android:name="Login.view.Login"
+            android:name=".view.login.Login"
             android:exported="false" />
         <activity
-            android:name="SignUp.view.SignUp"
+            android:name=".view.signUp.SignUp"
             android:exported="false" />
         <activity
-            android:name=".LoginAndSignUpScreen"
+            android:name=".view.LoginAndSignUpScreen"
             android:exported="false" />
         <activity
-            android:name="splash.SplashScreen"
+            android:name=".view.SplashScreen"
             android:exported="true"
             android:noHistory="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -84,7 +84,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="false" />
     </application>
 

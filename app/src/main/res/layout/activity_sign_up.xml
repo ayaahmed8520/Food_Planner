@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="SignUp.view.SignUp">
+    tools:context=".view.signUp.SignUp">
 
     <ImageView
         android:id="@+id/img_bg"
