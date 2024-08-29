@@ -1,6 +1,6 @@
 package com.example.foodplanner.presenter;
 
-import android.content.Context;
+
 
 import androidx.lifecycle.LiveData;
 
@@ -9,16 +9,15 @@ import java.util.List;
 import com.example.foodplanner.model.WeekPlanRepo;
 import com.example.foodplanner.view.weekPlan.WeekPlanInterface;
 import com.example.foodplanner.model.dp.weekPlanDB.WeeklyPlanMeal;
-import com.example.foodplanner.model.dp.weekPlanDB.WeekPlanLocalDataSource;
 
 public class WeekPlanMealPresenter {
 
     private WeekPlanInterface weekPlanInterface;
     private static WeekPlanRepo weekPlanRepo;
 
-    public WeekPlanMealPresenter(WeekPlanInterface weekPlanView, Context context) {
+    public WeekPlanMealPresenter(WeekPlanRepo weekPlanRepository ,WeekPlanInterface weekPlanView) {
         this.weekPlanInterface = weekPlanView;
-        this.weekPlanRepo = new WeekPlanRepo(WeekPlanLocalDataSource.getInstance(context.getApplicationContext()));
+        this.weekPlanRepo = weekPlanRepository;
     }
 
     public LiveData<List<WeeklyPlanMeal>> getPlannedMeals() {
@@ -33,3 +32,5 @@ public class WeekPlanMealPresenter {
         weekPlanRepo.deleteMeal(meal);
     }
 }
+
+

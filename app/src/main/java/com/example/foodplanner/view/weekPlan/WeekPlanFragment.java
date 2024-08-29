@@ -23,6 +23,8 @@ import com.example.foodplanner.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.foodplanner.model.WeekPlanRepo;
+import com.example.foodplanner.model.dp.weekPlanDB.WeekPlanLocalDataSource;
 import com.example.foodplanner.view.meal.OnMealClick;
 import com.example.foodplanner.view.weeklyPlanMealDetails.WeeklyPlanMealDetailsActivity;
 import com.example.foodplanner.model.dp.weekPlanDB.WeeklyPlanMeal;
@@ -45,7 +47,7 @@ public class WeekPlanFragment extends Fragment implements WeekPlanInterface, OnM
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        weekPlanMealPresenter = new WeekPlanMealPresenter(this,getContext());
+        weekPlanMealPresenter = new WeekPlanMealPresenter(new WeekPlanRepo(WeekPlanLocalDataSource.getInstance(requireContext())),this);
         initUI(view);
 
         layoutManager = new LinearLayoutManager(requireContext());

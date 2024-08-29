@@ -67,7 +67,7 @@ public class Home extends Fragment implements OnMealClick, InHomeView {
         firstAdapter = new MealAdapter(simpleMealsSecond, Home.this);
         secondAdapter = new MealAdapter(simpleMealsThird, Home.this);
 
-        // Initialize RecyclerViews and Adapters...
+
         recyclerViewFirst.setAdapter(mainMealAdapter);
         recyclerViewSecond.setAdapter(firstAdapter);
         recyclerViewThird.setAdapter(secondAdapter);

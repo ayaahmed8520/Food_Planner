@@ -15,14 +15,17 @@ import com.example.foodplanner.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.foodplanner.model.FavRepo;
+import com.example.foodplanner.model.dp.MealLocalDataSourceImpl;
 import com.example.foodplanner.presenter.FavPresenter;
+import com.example.foodplanner.view.fav.FavoriteFragmentIn;
 import com.example.foodplanner.view.fav.MyAddAndRemoveFavIn;
 import com.example.foodplanner.model.firebase.InFirebaseImp;
 import com.example.foodplanner.model.mealDetails.MealDetails;
 import com.example.foodplanner.presenter.MealDetailsPresenter;
 import com.example.foodplanner.view.meal.OnMealClick;
 
-public class ViewDetailsActivityMy extends AppCompatActivity implements MealDetailsIn, MyAddAndRemoveFavIn, OnMealClick {
+public class ViewDetailsActivityMy extends AppCompatActivity implements MealDetailsIn, MyAddAndRemoveFavIn, OnMealClick ,FavoriteFragmentIn {
 
     private RecyclerView recyclerViewDetails;
     private MealDetailsAdapter mealDetailsAdapter;
@@ -38,8 +41,10 @@ public class ViewDetailsActivityMy extends AppCompatActivity implements MealDeta
 
         initValues();
 
+
         mealDetailsPresenter = new MealDetailsPresenter(this);
-        favPresenter = new FavPresenter(null, this);
+
+        favPresenter = new FavPresenter(new FavRepo(MealLocalDataSourceImpl.getInstance(getApplicationContext())),this);
 
         if (mealId != null) {
             mealDetailsPresenter.getMealDetails(mealId);
@@ -85,6 +90,16 @@ public class ViewDetailsActivityMy extends AppCompatActivity implements MealDeta
     @Override
     public void addMeal(MealDetails mealDetails) {
         favPresenter.addMeal(mealDetails);
+    }
+
+    @Override
+    public void showMeals(List<MealDetails> meals) {
+
+    }
+
+    @Override
+    public void failedToDisplay(String error) {
+
     }
 
     @Override
