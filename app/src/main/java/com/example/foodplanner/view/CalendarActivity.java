@@ -13,12 +13,16 @@ import com.example.foodplanner.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
+import com.example.foodplanner.model.WeekPlanRepo;
+import com.example.foodplanner.model.dp.weekPlanDB.WeekPlanLocalDataSource;
 import com.example.foodplanner.model.dp.weekPlanDB.WeeklyPlanMeal;
 import com.example.foodplanner.presenter.WeekPlanMealPresenter;
+import com.example.foodplanner.view.weekPlan.WeekPlanInterface;
 
-public class CalendarActivity extends AppCompatActivity {
+public class CalendarActivity extends AppCompatActivity implements WeekPlanInterface {
 
     CalendarView simpleCalendarView;
     Button btn_saveOnApp;
@@ -39,20 +43,21 @@ public class CalendarActivity extends AppCompatActivity {
         sp_mealType = findViewById(R.id.spinner_mealType);
         simpleCalendarView = findViewById(R.id.mealsCalender);
 
-        // Initialize the presenter with the context
-        weekPlanMealPresenter = new WeekPlanMealPresenter(null, this); // Passing 'null' since we don't have a view interface in this activity
 
-        // Set initial date
+
+        weekPlanMealPresenter = new WeekPlanMealPresenter(new WeekPlanRepo(WeekPlanLocalDataSource.getInstance(getApplicationContext())), this);
+
+
         selectedDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
-        // Set date change listener for CalendarView
+
         simpleCalendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
         });
 
         btn_saveOnApp.setOnClickListener(view -> {
 
-            // Retrieve the passed data
+
             Intent intent = getIntent();
             String mealImageUrl = intent.getStringExtra("img_meal");
             String mealName = intent.getStringExtra("tv_mealName");
@@ -73,6 +78,20 @@ public class CalendarActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void showPlannedMeals(List<WeeklyPlanMeal> meals) {
+
+    }
+
+    @Override
+    public void failedToDisplayPlanMeals(String error) {
+
+    }
+
+    @Override
+    public void removePlannedMeal(WeeklyPlanMeal meal) {
+
+    }
 }
 
 

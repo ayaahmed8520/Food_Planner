@@ -22,6 +22,8 @@ import com.example.foodplanner.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.foodplanner.model.FavRepo;
+import com.example.foodplanner.model.dp.MealLocalDataSourceImpl;
 import com.example.foodplanner.presenter.FavPresenter;
 import com.example.foodplanner.view.meal.OnMealClick;
 import com.example.foodplanner.model.mealDetails.MealDetails;
@@ -44,7 +46,7 @@ public class Favorite extends Fragment implements FavoriteFragmentIn, OnMealClic
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        favPresenter = new FavPresenter(this, getContext());
+        favPresenter = new FavPresenter(new FavRepo(MealLocalDataSourceImpl.getInstance(getContext())),this);
         initUI(view);
 
         layoutManager = new LinearLayoutManager(requireContext());
@@ -53,14 +55,14 @@ public class Favorite extends Fragment implements FavoriteFragmentIn, OnMealClic
         favoriteRecyclerView.setLayoutManager(layoutManager);
 
 
-        observeFavoriteMeals();
+        updateFavoriteMeals();
     }
 
     private void initUI(@NonNull View view) {
         favoriteRecyclerView = view.findViewById(R.id.rv_myFavorite);
     }
 
-    private void observeFavoriteMeals() {
+    private void updateFavoriteMeals() {
         favPresenter.getFavoriteMeals().observe(getViewLifecycleOwner(), meals -> {
             favoriteMealsAdapter.setList(meals);
             favoriteMealsAdapter.notifyDataSetChanged();

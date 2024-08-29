@@ -16,9 +16,9 @@ public class FavPresenter {
     private FavoriteFragmentIn favoriteFragmentView;
     private FavRepo favRepo;
 
-    public FavPresenter(FavoriteFragmentIn favView, Context context) {
+    public FavPresenter(FavRepo favRepository , FavoriteFragmentIn favView) {
         this.favoriteFragmentView = favView;
-        this.favRepo = new FavRepo(MealLocalDataSourceImpl.getInstance(context.getApplicationContext()));
+        this.favRepo = favRepository;
     }
 
     public LiveData<List<MealDetails>> getFavoriteMeals() {
@@ -33,3 +33,5 @@ public class FavPresenter {
         favRepo.deleteMeal(meal);
     }
 }
+
+

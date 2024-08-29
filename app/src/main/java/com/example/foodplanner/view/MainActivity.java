@@ -24,7 +24,6 @@ import com.example.foodplanner.model.network.checkconnection.ConnectivityReceive
 import com.example.foodplanner.view.fav.Favorite;
 import com.example.foodplanner.model.firebase.InFirebaseImp;
 import com.example.foodplanner.view.logout.ProfileFragmentImp;
-import com.example.foodplanner.model.Search;
 import com.example.foodplanner.view.weekPlan.WeekPlanFragment;
 
 public class MainActivity extends AppCompatActivity implements ConnectivityReceiverListener {
